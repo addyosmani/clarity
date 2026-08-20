@@ -1,5 +1,7 @@
 # Clarity
 
+[![skills.sh](https://skills.sh/b/addyosmani/clarity)](https://skills.sh/addyosmani/clarity)
+
 Clear writing is a matter of understanding what your reader needs, and giving it to them in a way that they can understand.
 
 `clarity` is also an Agent Skill that applies the rules below when you draft, rewrite, or review prose with a coding agent. To install it:
