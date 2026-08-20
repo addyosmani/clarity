@@ -274,6 +274,11 @@ def analyze(text):
             "signpost_openers": signpost_openers[:25],
             "dash_count": len(dashes),
             "multi_dash_sentences": dash_clusters,
+            "overloaded_sentences": [
+                f"({n}w) {t[:96]}" for t, n in
+                sorted(((t, len(WORD_RE.findall(t))) for t in sents),
+                       key=lambda x: -x[1]) if n > 40
+            ],
             "stock_openers": phrase_hits(text, OPENER_PHRASES),
             "stock_closers": phrase_hits(text, CLOSERS),
             "model_lexis": phrase_hits(text, LEXIS),

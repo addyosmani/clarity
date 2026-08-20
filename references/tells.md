@@ -128,7 +128,28 @@ Fix: take a position, or state precisely which way the author leans and what mak
      given you a position, ask for one rather than manufacturing it.
 ```
 
-### 1.8 Coin-and-define
+### 1.8 Padding
+
+Two sources, and neither is "nothing to say."
+
+```txt
+Writing to a length.   A piece that needed 900 words is delivered at 1,500 because 1,500
+                       looked serious. Symptoms: a paragraph restating the previous one in
+                       new words, an example that proves what the last example proved, a
+                       caveat nobody needed.
+Writing to a form.     An introduction that introduces nothing and a conclusion that
+                       concludes nothing, present because posts are supposed to have them.
+                       Same for a "background" section nobody asked for.
+```
+
+```txt
+Test:  does this sentence leave the reader holding more than the one before it? Restating,
+       throat-clearing, and announcing what you are about to say all fail it.
+Fix:   cut, and let the piece be short. Do not redistribute the words elsewhere.
+Note:  a deliberate restatement for emphasis is fine once. A rhythm of restatement is not.
+```
+
+### 1.9 Coin-and-define
 
 Naming your own concept and then defining it, often in italics on first use. "Let's call this
 answerability." "This is where back-pressure comes in. Back-pressure is..."
@@ -150,7 +171,7 @@ Before: Let's call this answerability: the property that someone can be asked wh
 After:  Someone has to be able to say why the system did that, and be right.
 ```
 
-### 1.9 Abstract-noun pile-ups and lazy extremes
+### 1.10 Abstract-noun pile-ups and lazy extremes
 
 ```txt
 Watch: correctness, maintainability, security, performance, cost efficiency, and
@@ -482,7 +503,24 @@ After:  AlphaEvolve searched without favoring symmetry or human-looking designs,
 
 One short sentence for emphasis is a normal device. A row of them is manufactured profundity.
 
-### 3.12 Formulaic sayings
+### 3.12 The overloaded sentence
+
+The mirror of 3.11. One sentence carrying three ideas where three sentences would carry one
+each, usually held together by commas and "and" until the reader loses the subject.
+
+```txt
+Watch: sentences past ~40 words; three or more subordinate clauses; a subject and its verb
+       separated by more than a dozen words
+Why:   the reader has to hold the opening in memory while parsing the middle. Ornate
+       construction is usually a sign the writer had not finished deciding what they meant.
+Earned: a long sentence whose length enacts something, or a list the reader reads as a list
+Fix:   find the period. Most overloaded sentences have two or three already implied in them.
+```
+
+Do not swap one uniform length for another. The goal is a mix, per 3.9 and the cadence
+targets in `calibration.md`.
+
+### 3.13 Formulaic sayings
 
 ```txt
 Watch: X is the Y of Z, X becomes a trap, the language of, the currency of, the architecture
@@ -491,7 +529,7 @@ Before: Symmetry is the language of trust.
 After:  Symmetric layouts feel more predictable to most users.
 ```
 
-### 3.13 Fake candor
+### 3.14 Fake candor
 
 ```txt
 Watch: Honestly?, Look,, Here's the thing, The thing is, Let's be honest, Real talk, I'll be
@@ -500,7 +538,7 @@ Why:   a staged pause before an ordinary point. The casual register does not red
 Note:  "honestly" and "look" mid-sentence are ordinary. The tell is the standalone opener.
 ```
 
-### 3.14 Pretend depth
+### 3.15 Pretend depth
 
 ```txt
 Watch: the real question is, at its core, in reality, what really matters, fundamentally,
@@ -633,4 +671,8 @@ Genuine asides, parentheticals, and self-corrections: "(I keep wanting to say al
 Real variance in sentence length
 A word the author repeats because it is their word
 A position stated without balance
+Contractions. "It's" and "won't" and "can't" are how people talk. Prose that refuses them
+  reads stiff, and expanding them to sound formal is an edit in the wrong direction.
+A sentence opening on "But", "And", or "So". All three are ordinary, and "But" is the
+  strongest word available at the head of a sentence.
 ```
