@@ -23,6 +23,30 @@ Everything else is surface.
 Surface work still matters, and this skill does plenty of it. But run it in the right order.
 A draft with nothing in it cannot be rescued by deleting its adverbs.
 
+`README.md` argues for the eighteen rules this skill implements. Read it once for the
+reasoning; the mechanics below are enough to work from. The mapping:
+
+```txt
+ 1  write for one reader        Gate 0 q5; interview q3
+ 2  what they bring vs need     Gate 0 q6
+ 3  one arguable point          Gate 0 q1
+ 4  only you could say it       Gate 0 q2 and q4; the only-you test; the interview
+ 5  every sentence pays         tells 1.8 (padding); the only-you test
+ 6  specific enough to be wrong the specificity ladder; tells 1.3
+ 7  someone in the sentence     edit pass 3; tells 3.5, 3.6
+ 8  plain word, short sentence  tells 3.12 (overloaded), section 4; prose_stats
+ 9  cut, then stop              edit pass 5; calibration 3.2 and 4.1
+10  say the relation            edit pass 9; tells 3.2
+11  position, and its weakness  tells 1.6, 1.7
+12  say it the way you'd say it self-check (the lunch test); tells section 7
+13  do not perform              the Never list; calibration section 2
+14  the first sentence's job    edit pass 1
+15  paragraphs earn the next    edit pass 10; tells 2.6
+16  stop where the thought does edit pass 12; tells 2.5
+17  rewrite, do not smooth      edit pass 14b; co-write mode; interview
+18  read it aloud               edit pass 15
+```
+
 ## Load references on demand
 
 ```txt
@@ -250,6 +274,12 @@ Ordered. Earlier items change what later items are looking at.
     only restates its own heading.
 14. Re-read for the words. `references/tells.md` has the catalog. Treat every hit as a
     hypothesis, not a verdict.
+14b. Check that you rewrote rather than smoothed. Rewriting moves a paragraph, deletes a
+    section, and digs out the sentence buried inside the one on the page. Smoothing takes a
+    rough sentence someone actually meant and evens it into one anybody could have written.
+    It feels like improvement and it is how the only interesting line in a draft disappears.
+    This applies to every mode, not only to co-writing: a sentence you did not understand is
+    not the same as a sentence that is wrong.
 15. Read the result aloud, or subvocalize it end to end. This catches what no list catches:
     the paragraph that plods, the clause you run out of breath in, the three sentences that
     turn out to have the same shape. Where the reading stumbles, the sentence is wrong even
@@ -333,6 +363,10 @@ Does the ending return to something concrete, or does it widen into a thesis tha
 Did I flatten each of my best lines and check that the residual claim still names an actor,
   a mechanism, or a limit? If the flattened version collapses, the rhythm was carrying it.
 Did I overcorrect: zero hedges, zero dashes, zero passives, an anchor in every sentence?
+Would I say each of these sentences to a colleague over lunch? Anything I would not say out
+  loud does not go out. Contractions, a sentence opening on "But", and the first person all
+  pass this test; the formal expansion of them usually does not.
+Did I cut a sentence that was doing no work, or one that was simply short?
 Is there anything in here that only this author could have written?
 ```
 
