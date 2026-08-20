@@ -105,7 +105,17 @@ Earned: when the objection is attributed, or is one a real reader in this audien
         the text then answers in full. In a design doc, a genuinely considered alternative.
 Fix:   state the real claim directly. One rejected option can be legitimate; three short
        unrelated rejections in a row are a drafting artifact.
-``` When you cannot name who holds it, cut it.
+```
+
+**Do not read this as "cut the counterargument."** The opposite failure is more common in
+practice and worse: a piece that never meets the strongest objection to itself. A real
+objection, one a named person or a real segment of the audience actually holds, earns its own
+paragraph near the end, where it gets answered or conceded. That paragraph makes the piece
+more credible, not less.
+
+The distinction is the source. An objection someone holds is reporting. An objection invented
+so the writer can defeat it is the same move as an invented statistic, and it fails the same
+way. When you cannot name who holds it, cut it.
 
 ### 1.7 Relentless balance
 
@@ -187,7 +197,7 @@ Thesis, elaboration, zinger. Paragraph after paragraph, the same arc.
 ```txt
 Fix: break the shape. Open on the example. Bury the point in the middle. Let a paragraph
      stop on a plain clause. No paragraph should end on a line built to be quoted, and this
-     one has no allowance: the single quotable line permitted in 2.9 may sit anywhere except
+     one has no allowance: the single quotable line permitted in 2.10 may sit anywhere except
      at a paragraph ending, where the shape is the tell.
 ```
 
@@ -252,7 +262,33 @@ Fix:       add a hinge sentence naming the relation, and keep it factual rather 
 | Level of detail | `The same object at three resolutions: A, B, C.` |
 | Carrier to claim | `Because the example is small and memorable, it can carry the claim.` |
 
-### 2.7 Meta-narration
+### 2.7 Broken unity
+
+A piece that switches its footing partway through, usually without the writer noticing.
+
+```txt
+Pronoun:  first person for three sections, then an impersonal observer, then back
+Tense:    past for the story, present for the analysis, sliding between them mid-paragraph
+Mood:     casual and joking early, formal and hedged later, as the writer got tired
+Distance: "I watched the deploy fail" beside "organizations often experience deployment
+          friction", in the same argument
+```
+
+```txt
+Why:   readers track footing below the level of attention, and a switch registers as
+       something being wrong without their being able to say what. Long generated drafts
+       drift this way by default, because each section is composed against its own local
+       context rather than the whole.
+Earned: a deliberate shift, signposted or obvious, such as dropping from narrative into a
+        short technical aside and back
+Fix:   pick the pronoun, the tense, and the register once, then enforce them across the
+       piece. When the draft has drifted, decide which footing the best sections use and
+       move the others to it. Do not average the two.
+```
+
+Check the seams first: section openings, and any paragraph written in a different sitting.
+
+### 2.8 Meta-narration
 
 ```txt
 Watch: the rest of this essay, let me walk you through, in this section we'll, as we'll see,
@@ -261,7 +297,7 @@ Why:   the piece announces its structure instead of moving
 Fix:   delete. The heading already did this job.
 ```
 
-### 2.8 The narrator from a distance
+### 2.9 The narrator from a distance
 
 Floating above the scene and reporting on humanity in general, instead of putting the reader
 in the room where the thing happens.
@@ -278,7 +314,7 @@ Fix:   put the reader in the seat. "You don't sit down one day and decide to ski
 
 "You", not "People". A scene, not a view from the clouds.
 
-### 2.9 The quotable line
+### 2.10 The quotable line
 
 A line built to be extracted: the aphorism, the pull-quote, the closing beat that would look
 good on a slide.

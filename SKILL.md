@@ -50,17 +50,37 @@ When the mode is ambiguous, ask once, in one sentence. Then commit.
 
 ## Gate 0: the substance gate
 
-Run this before any stylistic edit, in every mode. Three questions about the draft or the
+Run this before any stylistic edit, in every mode. Six questions about the draft or the
 brief:
 
 ```txt
-1. What does this say that is not the consensus view of anyone who has read three
+1. What is the one point? State it in a single sentence, in a form a reasonable colleague
+   could dispute. A topic is not a point. "Code review in the age of agents" is a subject
+   and will wander into completeness; "review should now start from what the diff was
+   trying to do, not from its lines" is a claim someone can argue with.
+2. What does this say that is not the consensus view of anyone who has read three
    articles on the topic?
-2. What in here could be wrong? Name the specific claim a reader could check and dispute.
-3. Which sentences could only have been written by this author?
+3. What in here could be wrong? Name the specific claim a reader could check and dispute.
+4. Which sentences could only have been written by this author?
+5. Who is the one reader? Name a person you can picture, not a segment. The engineer three
+   years in who keeps hitting this. The colleague who disagreed last week.
+6. What does that reader already carry, and what do they still need? These are two
+   separate questions and the gap between the answers is the piece. A draft that explains
+   what the reader knows insults them; a draft that assumes what they lack loses them.
+   Most drafts do both in different paragraphs, because nobody asked.
 ```
 
-If the honest answers are "nothing," "nothing," and "none," the problem is not the prose.
+Questions 5 and 6 decide scope, register, and how much to explain. Ask them before drafting and
+most later decisions answer themselves. If the author cannot name the reader, ask; do not pick
+one for them and proceed quietly.
+
+If question 1 produces two points, the piece is two pieces. Pick the one the author cares more
+about and offer to cut the other, or say plainly that the draft is carrying more than it can
+land. Everything after this, from tone through to the last sentence, is decided by that one
+point.
+
+If question 1 yields only a topic, or if questions 2 through 4 come back as "nothing,"
+"nothing," and "none," the problem is not the prose.
 
 **The failed-gate rule, which every mode in this skill defers to.** Report the diagnosis first,
 in two or three sentences, naming what the piece is missing. Offer the extraction interview in
@@ -181,7 +201,10 @@ all is not the rule, and never was.
 Ordered. Earlier items change what later items are looking at.
 
 ```txt
- 1. Delete the generic opening. Start at the first sentence that carries information.
+ 1. Fix the lead. Delete the generic opening and start at the first sentence that carries
+    information, then check that the sentence you landed on does the two jobs a first sentence
+    has: make the reader want the second one, and signal what the piece is for. A fact, a
+    number, a scene, or a claim will all do it. A definition of the topic will not.
  2. Replace claims of importance with the mechanism that earns them.
     "This underscores the importance of durable execution."
     → "When step 4 fails, the workflow retries step 4 alone and keeps what steps 1 to 3
@@ -227,6 +250,10 @@ Ordered. Earlier items change what later items are looking at.
     only restates its own heading.
 14. Re-read for the words. `references/tells.md` has the catalog. Treat every hit as a
     hypothesis, not a verdict.
+15. Read the result aloud, or subvocalize it end to end. This catches what no list catches:
+    the paragraph that plods, the clause you run out of breath in, the three sentences that
+    turn out to have the same shape. Where the reading stumbles, the sentence is wrong even
+    if every check above passed.
 ```
 
 **The once-per-piece budgets.** Three devices in this skill are capped rather than banned, and
@@ -236,7 +263,7 @@ together on the finished draft:
 ```txt
 one "not X but Y" frame, where the negation carries information         (edit pass 7, tells 3.1)
 one earned paratactic run, where sequence or speed is the point         (edit pass 9, tells 3.2)
-one quotable line, where it is the actual thesis and the piece paid    (tells 2.9)
+one quotable line, where it is the actual thesis and the piece paid    (tells 2.10)
 ```
 
 Three is the ceiling for a whole piece, not a quota to fill. Spending zero of them is normal

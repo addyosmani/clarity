@@ -42,15 +42,18 @@ Send this to the author close to verbatim. Adapt the bracketed parts to the topi
 >    thing you read, the bug, the meeting, the moment. The trigger, not the topic.
 > 2. **Who are you arguing with?** Who have you been talking to about this lately, and what
 >    are they getting wrong, or worried about, or repeating that annoys you?
-> 3. **Say the argument out loud.** Explain it the way you would to a colleague at lunch, in
+> 3. **Picture one reader.** Name someone specific you want to reach, not a category. What do
+>    they already know about this, what are they wrong about, and what should be different
+>    for them on Monday?
+> 4. **Say the argument out loud.** Explain it the way you would to a colleague at lunch, in
 >    the words you actually use when you talk about it, including the framework or the phrase
 >    you always reach for.
-> 4. **Two or three real examples from your own work.** With the real names, numbers, dates,
+> 5. **Two or three real examples from your own work.** With the real names, numbers, dates,
 >    and outcomes. [The repo, the incident, the customer, the migration.] If a detail is one
 >    you would not publish, skip the whole example rather than blurring it.
-> 5. **What would you concede under questioning?** Where you are unsure, the counterargument
+> 6. **What would you concede under questioning?** Where you are unsure, the counterargument
 >    you take seriously, the thing you have changed your mind about.
-> 6. **What do you believe here that most people in your field don't?** Even if you can only
+> 7. **What do you believe here that most people in your field don't?** Even if you can only
 >    half-defend it.
 >
 > **Don't summarize. Don't polish. Ramble.**
