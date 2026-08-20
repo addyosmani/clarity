@@ -5,10 +5,10 @@ Clear writing is a matter of understanding what your reader needs, and giving it
 `clarity` is also an Agent Skill that applies the rules below when you draft, rewrite, or review prose with a coding agent. To install it:
 
 ```bash
-git clone https://github.com/addyosmani/clarity ~/.claude/skills/clarity
+npx skills add addyosmani/clarity
 ```
 
-Then ask your agent to write or edit something, or invoke it by name. For a single project, clone it to `.claude/skills/clarity` instead. For Codex and other clients, put it wherever that client loads Agent Skills from.
+Then ask your agent to write or edit something, or invoke `clarity` by name.
 
 ## On writing that earns its reader
 
