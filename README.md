@@ -2,6 +2,14 @@
 
 Clear writing is a matter of understanding what your reader needs, and giving it to them in a way that they can understand.
 
+`clarity` is also an Agent Skill that applies the rules below when you draft, rewrite, or review prose with a coding agent. To install it:
+
+```bash
+git clone https://github.com/addyosmani/clarity ~/.claude/skills/clarity
+```
+
+Then ask your agent to write or edit something, or invoke it by name. For a single project, clone it to `.claude/skills/clarity` instead. For Codex and other clients, put it wherever that client loads Agent Skills from.
+
 ## On writing that earns its reader
 
 A reader gives you their attention one sentence at a time. They take it back the moment a
@@ -188,10 +196,9 @@ Your ear catches what a checklist misses: plodding paragraphs, breathless clause
 
 ## The skill in this repository
 
-`clarity` is an Agent Skill that applies the rules above when you draft, rewrite, or review
-prose with a coding agent. It asks the substance questions before any stylistic edit, keeps an
-author's own sentences intact instead of paraphrasing them, adjudicates each pattern instead of
-applying blanket bans, and refuses to invent specifics.
+The skill asks the substance questions before any stylistic edit, keeps an author's own
+sentences intact instead of paraphrasing them, adjudicates each pattern instead of applying
+blanket bans, and refuses to invent specifics.
 
 ```txt
 SKILL.md                     the operating manual
@@ -203,12 +210,7 @@ scripts/prose_stats.py       diagnostic linter, with no composite score by desig
 scripts/strip_markdown.py    reduces a markdown draft to the prose a reader reads
 ```
 
-```bash
-cp -r clarity ~/.claude/skills/clarity
-```
-
-For a single project use `.claude/skills/clarity`. For Codex and other clients, put it wherever
-that client loads Agent Skills from.
+To lint a draft against the measured targets:
 
 ```bash
 python3 scripts/strip_markdown.py draft.md | python3 scripts/prose_stats.py -
