@@ -118,6 +118,50 @@ Fix: take a position, or state precisely which way the author leans and what mak
      given you a position, ask for one rather than manufacturing it.
 ```
 
+### 1.8 Coin-and-define
+
+Naming your own concept and then defining it, often in italics on first use. "Let's call this
+answerability." "This is where back-pressure comes in. Back-pressure is..."
+
+```txt
+Why:   reads like a glossary entry, and the ceremony of naming stands in for the work of
+       showing the idea operating. The label is a claim that the idea is important enough to
+       need one.
+Earned: when the term already exists in the trade, in which case use it in passing and never
+        announce it; or when the piece genuinely returns to the coinage three or four times
+        and needs a handle
+Fix:   drop the label and let the idea work unnamed. If the piece survives without the term,
+       the term was decoration.
+```
+
+```txt
+Before: Let's call this answerability: the property that someone can be asked why the system
+        did what it did, and can answer.
+After:  Someone has to be able to say why the system did that, and be right.
+```
+
+### 1.9 Abstract-noun pile-ups and lazy extremes
+
+```txt
+Watch: correctness, maintainability, security, performance, cost efficiency, and
+       comprehensibility. Six things nobody can picture, in a row.
+Why:   the list gestures at completeness while giving the reader nothing to see. Length is
+       standing in for evidence.
+Fix:   one concrete thing a reader can picture beats six abstractions. Name the one that
+       actually bit you.
+```
+
+The same failure in miniature is the lazy extreme. "Every team", "always", "never",
+"everyone", "nobody" doing the work a real quantity should do.
+
+```txt
+Before: Every team struggles with this, and reviews never catch it.
+After:  Both teams I have watched try this missed it in review, twice.
+```
+
+If the real quantity is unknown, say the smaller true thing, or leave a `[TK: how many?]`.
+Do not swap one sweeping claim for another.
+
 ---
 
 ## 2. Structure tells
@@ -142,7 +186,9 @@ Thesis, elaboration, zinger. Paragraph after paragraph, the same arc.
 
 ```txt
 Fix: break the shape. Open on the example. Bury the point in the middle. Let a paragraph
-     stop on a plain clause. No paragraph should end on a line built to be quoted.
+     stop on a plain clause. No paragraph should end on a line built to be quoted, and this
+     one has no allowance: the single quotable line permitted in 2.9 may sit anywhere except
+     at a paragraph ending, where the shape is the tell.
 ```
 
 ### 2.3 Symmetrical paragraphs and parallel headings
@@ -214,6 +260,41 @@ Watch: the rest of this essay, let me walk you through, in this section we'll, a
 Why:   the piece announces its structure instead of moving
 Fix:   delete. The heading already did this job.
 ```
+
+### 2.8 The narrator from a distance
+
+Floating above the scene and reporting on humanity in general, instead of putting the reader
+in the room where the thing happens.
+
+```txt
+Watch: Nobody designed this. People tend to. This happens because. Teams often find
+       themselves. In many organizations.
+Why:   the armchair-sociologist voice. It costs nothing to write and commits to nothing.
+Earned: in genuinely general writing, where the claim really is about a population and the
+        evidence supports it
+Fix:   put the reader in the seat. "You don't sit down one day and decide to skip the
+       migration" beats "Nobody designed this."
+```
+
+"You", not "People". A scene, not a view from the clouds.
+
+### 2.9 The quotable line
+
+A line built to be extracted: the aphorism, the pull-quote, the closing beat that would look
+good on a slide.
+
+```txt
+Why:   a line engineered for quotation is a line engineered for cadence, and cadence is
+       usually what it is carrying instead of a claim. Run the flatten test on it. This is
+       also the shape a model produces when asked to end a paragraph well.
+Earned: once in a piece, when the line is the actual thesis and the piece has paid for it,
+        and never as a paragraph ending (see 2.2)
+Fix:   rewrite it flatter. State the same thing in a plain clause and see whether it still
+       lands. If it does, keep the plain version.
+```
+
+Test: if you can imagine it on a conference slide with the author's name underneath, flatten
+it.
 
 ---
 

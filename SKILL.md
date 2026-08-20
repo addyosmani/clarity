@@ -236,10 +236,12 @@ together on the finished draft:
 ```txt
 one "not X but Y" frame, where the negation carries information         (edit pass 7, tells 3.1)
 one earned paratactic run, where sequence or speed is the point         (edit pass 9, tells 3.2)
+one quotable line, where it is the actual thesis and the piece paid    (tells 2.9)
 ```
 
-Two is the ceiling for a whole piece, not a quota to fill. Spending zero of them is normal
-and reads fine.
+Three is the ceiling for a whole piece, not a quota to fill. Spending zero of them is normal
+and reads fine. And the quotable-line allowance never applies at a paragraph ending, where the
+shape is the tell.
 
 ---
 
@@ -309,6 +311,86 @@ Is there anything in here that only this author could have written?
 
 For high-stakes prose, add the bounded scoring pass in **Score before delivering** below.
 That table is the skill's only rubric; score once, fix the weakest dimension once, and stop.
+
+---
+
+## Quick pass before delivering
+
+Recall list. Run it top to bottom on the finished draft. Items marked with a target are
+measured; the rest are judgement calls.
+
+**Scope.** In co-write mode this list applies to your block, never to the author's spine. Their
+half-finished thought, wrong preposition, and repeated word are the point. Running the checklist
+over them is the one operation that reliably destroys the piece.
+
+```txt
+Substance
+  Any paragraph that could appear in someone else's piece on this topic? Cut or replace it.
+  Any load-bearing claim below Rung 2? Climb it, or leave a TK slot.
+  Any number, name, or date in the last 300 words? If none, find one. Do not invent one.
+  Any claim of importance without the mechanism beside it? Give the mechanism.
+  Any anecdote that could belong to anyone? Cut it.
+  Does the piece take a position, or report both sides and leave?
+
+Structure
+  Three of anything in a row? Make it two, or five, or a sentence with a subject.
+  Any "not X, it's Y"? State Y, unless you are spending the one frame from the budget block.
+  A coined term with a definition after it? Drop the ceremony.
+  A paragraph ending on a line built to be quoted? Flatten it.
+  Can you name the relation each paragraph has to the one before it?
+  Did the ending get polished into a summary or a send-off? Rough it up and return to the
+    concrete thing the piece was carrying.
+
+Sentences
+  An abstract noun doing a human act? Name the person, or use "you".
+  Narrating from the clouds ("nobody designed this", "teams tend to")? Put the reader in
+    the room.
+  A lazy extreme (every, always, never) standing in for a quantity? Give the quantity.
+  Six abstractions in a list? Replace with one thing the reader can picture.
+  Hedge and booster in the same sentence? Rewrite it.                          target zero
+  Sentence opening on a participial clause?                                    target zero
+  Any of: rather than, not simply, not merely, as opposed to, even as?         target zero
+  A "not X but Y" frame? One allowed per piece, and only if the negation informs.
+  Three sentences of the same length in a row? Break one.
+
+Measured
+  Body sentence-length CV, on sentences of 8+ words                            target > 0.60
+  Cadence masking (share of lines under 8 words)                               target < 0.05
+  Hedge and booster words per 100                                              target 3.5-4.5
+  Concrete anchors per 100                                                     target 3-4
+  Sentences opening on a connective                                            target < 30%
+
+Restraint
+  Did you cut every hedge and every aside? Put the real ones back. Real means already
+    present in the draft or in the author's own words. Inventing texture that was never
+    there is the performance banned two lines down, not the fix for over-trimming.
+  Did you ban a device rather than adjudicate it: adverbs, passives, dashes, Wh- openers,
+    semicolons, repetition? Reconsider each on the earned test.
+  Tempted to add typos, fake mess, or fragments to look human? Do not. It reads as evasion.
+  Did an edit make the prose worse in service of a score? Revert it.
+  Judging on a short excerpt? Judge at publish length.
+
+Provenance
+  In a co-written piece: what share is the author's own words, and is the model block still
+    a visible minority you could point at?
+  Any fabricated fact, name, number, date, quote, or memory? Remove it and leave a TK slot.
+```
+
+## Score before delivering
+
+Five dimensions, one to ten each. Below 35 out of 50, revise.
+
+| Dimension | Question |
+|---|---|
+| Substance | Does it say anything only this author could say? |
+| Directness | Statements, or announcements? |
+| Rhythm | Varied, or metronomic? |
+| Trust | Does it respect the reader? |
+| Restraint | Anything left to cut, and anything over-cut? |
+
+Treat this as a stop condition, not an optimizer. Score once, fix the weakest dimension once,
+and ship. Iterating a numeric score to convergence produces even prose, which is the thing you
+were trying to avoid.
 
 ---
 
