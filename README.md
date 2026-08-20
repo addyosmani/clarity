@@ -7,7 +7,7 @@ Clear writing is a matter of understanding what your reader needs, and giving it
 A reader gives you their attention one sentence at a time. They take it back the moment a
 sentence stops paying.
 
-Structure, grammar, word choice, and rhythm all serve it.
+That is the whole job. Structure, grammar, word choice, and rhythm all serve it.
 
 Most advice about writing is advice about how to stop wasting that attention. Cut the adverb.
 Use the short word. Name the actor. All of it is right, and all of it starts one step too late.
@@ -77,7 +77,7 @@ So cut both causes of padding and move that beautiful, short piece in front of y
 
 Vague writing can't be verified, so it can't be trusted.
 
-Try to be as specific as you can. The obvious course of action in the sentence above would be to name the package the woman is sending, to name the month in which she does this, and to specify the manner in which she detects the photographer's work. When a writer fails to do so, they often stop at an abstraction.
+Try to be as specific as you can. Take a sentence like "a dependency that made us vulnerable." It has the grammar of a specific and the content of an abstraction, and it tells the reader nothing that "supply chain risk is real" did not already tell them. The obvious course of action is to name the package, to name the month, and to say how you caught it. When a writer fails to do so, they have written the abstraction with more words.
 
 > Prefer the specific to the general, the definite to the vague, the concrete to the abstract.
 >
@@ -114,9 +114,11 @@ Strip qualifiers that hide a claim. Keep those that honestly represent genuine u
 
 ### 10. Say the relation, do not imply it
 
-Putting two sentences next to each other can create a sense of logical connection between them based only on rhythm.
+Putting two sentences next to each other can create a sense of logical connection between them based only on rhythm. "The benchmark is saturated. The model still fails in production." Is the second sentence the cause of the first, or the consequence? The rhythm implies an answer, and while you are reading it feels like reasoning.
 
-Adding an explicit connector, such as *although*, as we did here, turns a mere juxtaposition into a real claim.
+Try to supply the word: *because*, *although*, *once*, *where*, *so that*. If you cannot supply it without inventing the relation, then the relation was never there.
+
+*Although the benchmark is saturated, the model still fails in production, which means the benchmark has stopped measuring what ships.* Adding an explicit connector, such as *although*, as we did here, turns a mere juxtaposition into a real claim.
 
 ---
 
