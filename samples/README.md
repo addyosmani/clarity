@@ -25,7 +25,7 @@ python3 ../scripts/strip_markdown.py what-it-means-to-be-human.before.md | pytho
 | human, before | 491 | 0.358 | 2.04 | 2.44 | 2 | 5 | 3 |
 | human, after | 479 | 0.520 | 1.04 | 1.25 | 0 | 1 | 0 |
 | AI, before | 502 | 0.400 | 3.19 | 5.58 | 5 | 2 | 4 |
-| AI, after | 496 | 0.377 | 1.81 | 2.02 | 0 | 0 | 0 |
+| AI, after | 635 | 0.614 | 1.26 | 1.57 | 0 | 2 | 0 |
 | *BBC "Being Human", for reference* | *1008* | *0.515* | *0.79* | *2.48* | *2* | *5* | *0* |
 
 The must-be-zero column counts hedge-and-booster in one sentence, participial openers, and
@@ -63,14 +63,21 @@ the quotation is vivid, not because it is a source. The "Studies show" sentence 
 and longevity was cut. That is what the skill asks for when a citation cannot be named and the
 writer will not invent one.
 
-**The AI explainer** was more salvageable, because the subject has facts in it. The before
-draft says a neural network is "inspired by the structure of the human brain" and works "like
-a factory assembly line", which explains nothing and is the kind of analogy that survives
-because it sounds like teaching. The rewrite names the mechanism instead: the 2017 transformer
-paper, attention as a learned weighted blend over the context, the two training phases, and
-why neither of them optimises for truth. The single most useful addition is the tokenizer,
-which the before draft never mentions and which is the actual reason a model that writes
-working code miscounts the letters in "strawberry".
+**The AI explainer** is an explanation, so its one point is a mechanism and it owes the reader
+no thesis. The before draft says a neural network is "inspired by the structure of the human
+brain" and works "like a factory assembly line", which explains nothing and is the kind of
+analogy that survives because it sounds like teaching. The rewrite names the mechanism instead:
+the 2017 transformer paper, attention as a learned weighted blend over everything in front of
+it, the two training phases, and why neither of them optimises for truth. The most useful
+addition is the tokenizer, which the before draft never mentions and which is the actual reason
+a model that will write you a working red-black tree cannot count the r's in "strawberry".
+
+This one is also the clearest evidence that the numbers follow the craft rather than leading
+it. An earlier rewrite sat at 0.377 sentence variance and would not move, because every
+sentence was doing the same job at the same pace. The fix was one decision: describe the
+prediction loop in a single accelerating sentence whose form enacts the loop, then stop dead on
+"That is the entire mechanism. There is no second part." Variance went to 0.614. Nothing was
+tuned toward a target.
 
 ## What the pass could not fix
 
