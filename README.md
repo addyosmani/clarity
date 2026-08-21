@@ -212,11 +212,79 @@ scripts/prose_stats.py       diagnostic linter, with no composite score by desig
 scripts/strip_markdown.py    reduces a markdown draft to the prose a reader reads
 ```
 
-To lint a draft against the measured targets:
+### Three ways to use it
+
+**Ask it to review.** You want an opinion on a draft, and no new file.
+
+```txt
+Review this post with clarity. Don't rewrite it, just tell me what's weak.
+```
+
+It leads with the piece-level verdict, then goes line by line, marking each one
+`keep`, `revise`, `ask-author`, or `cut`. The `ask-author` verdict is the useful one: it means
+the line is fixable but the fix needs a fact only you have, so it asks instead of inventing.
+
+**Ask it to rewrite.** You have a draft and you want it better.
+
+```txt
+Rewrite this with clarity. Here's a piece of my old writing so you can match how I sound.
+```
+
+Give it a sample of your own writing whenever you can. A sample outranks every default in the
+skill, down to whether you use em dashes and how often you hedge. See `samples/` for two
+before-and-after pairs.
+
+### Being interviewed, which is the part people miss
+
+The skill's first move on an empty page is to ask you questions, not to start writing. This
+is where most of the value is, and it is easy to skip past.
+
+```txt
+I want to write about why our incident reviews stopped working. Use clarity.
+```
+
+Before drafting a word, it will ask you to talk. Not to type notes: to talk, in one take,
+without tidying, because it wants your sentences and not your summary. The questions run
+roughly:
+
+```txt
+What happened this week that made you want to write this? The trigger, not the topic.
+Who are you arguing with, and what are they getting wrong?
+Picture one reader. What do they already know, and what should change for them on Monday?
+Say the argument out loud, the way you'd say it to a colleague at lunch.
+Two or three real examples from your own work, with the real numbers and names.
+What would you concede under questioning?
+What do you believe here that most people in your field don't?
+```
+
+Then it builds the piece around what you said. It edits by cutting and reordering, never by
+rewording, because putting your material into its own words is what turns it back into
+anybody's writing. Its own contribution stays a labelled minority of the words, and anywhere it
+needs a detail only you have, it leaves a marked gap instead of inventing one:
+
+```txt
+[TK: how many reviews had you run before you noticed? Rough number is fine.]
+```
+
+**If a draft already exists but says nothing**, it runs a shorter version aimed at the hollow
+paragraphs:
+
+```txt
+Section 3 leans on "most teams". Which teams have you actually watched do this?
+The example in section 5 could be anyone's. Do you have your own version of it?
+The ending restates the thesis. What do you want the reader to do differently on Monday?
+```
+
+That last shape of question, *what would you cut from this that everyone else would keep*, tends
+to produce more usable material than any other single prompt in the file.
+
+### Linting
 
 ```bash
 python3 scripts/strip_markdown.py draft.md | python3 scripts/prose_stats.py -
 ```
+
+The output localizes habits and refuses to produce a score. Read it as a map of where to look.
 
 ---
 
