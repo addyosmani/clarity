@@ -1,6 +1,6 @@
 ---
 name: clarity
-description: Draft, rewrite, and review prose so it carries a real point of view and does not read like generic model output. Use when the user asks to make writing sound less AI-generated or less generic, to humanize or de-slop a draft, to write a blog post, essay, newsletter, README, talk intro, launch copy, or documentation that has to be good, or when a draft is technically correct but says nothing only its author could say. Runs a perspective interview before drafting, keeps the author's own sentences as the spine, edits by earned-or-unearned judgment instead of blanket bans, and refuses to fabricate specifics or perform humanness.
+description: Draft, rewrite, and review prose so it carries a real point of view and does not read like generic model output. Use when the user asks to make writing sound less AI-generated or less generic, to humanize or de-slop a draft, to write a blog post, essay, newsletter, README, talk intro, launch copy, or documentation that has to be good, or when a draft is technically correct but says nothing only its author could say. Invoke as /clarity with a mode word: interview to co-write from an interview, rewrite to edit an existing draft, review to critique without changing files. Runs a perspective interview before drafting, keeps the author's own sentences as the spine, edits by earned-or-unearned judgment instead of blanket bans, and refuses to fabricate specifics or perform humanness.
 license: MIT
 compatibility: Agent Skills clients including Claude Code, Codex, OpenCode, Gemini CLI, and Pi.
 metadata:
@@ -66,13 +66,29 @@ references/critique.md     — review output format and worked before/after exam
 
 ## Pick the mode
 
+**If the invocation carried an argument, the first word of it selects the mode. Obey it without
+asking.** Everything after that word is the topic, the file, or the pasted text.
+
+```txt
+interview | write | draft | new     Co-write. Interview first. Do not draft a word before it.
+rewrite | edit | fix | humanize     Rewrite. Substance gate, then the edit pass.
+review | critique | check           Review. references/critique.md format. Produce no new file.
+lint | stats                        Run the scripts and read the output. No prose changes.
+```
+
+So `/clarity interview why our incident reviews stopped working` goes straight to the
+interview about that topic, and `/clarity review draft.md` produces a critique of that file and
+nothing else. An unrecognised first word is part of the topic, not a mode.
+
+With no argument, infer:
+
 | Situation | Mode | Where to start |
 |---|---|---|
 | The piece does not exist yet | **Co-write** | Interview first. Do not draft. |
 | A draft exists and needs to be better | **Rewrite** | Substance gate, then the edit pass. |
 | The user wants feedback, not a new file | **Review** | `references/critique.md` format. |
 
-When the mode is ambiguous, ask once, in one sentence. Then commit.
+When the mode is still ambiguous, ask once, in one sentence. Then commit.
 
 ---
 

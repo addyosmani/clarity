@@ -10,7 +10,15 @@ Clear writing is a matter of understanding what your reader needs, and giving it
 npx skills add addyosmani/clarity
 ```
 
-Then ask your agent to write or edit something, or invoke `clarity` by name. [`samples/`](samples/) has two agent-written essays before and after a pass, with a note on what the pass could not fix.
+Then pick a mode:
+
+```txt
+/clarity interview <topic>    it interviews you, then co-writes from what you said
+/clarity rewrite draft.md     it edits a draft you already have
+/clarity review draft.md      it critiques and leaves your file alone
+```
+
+[Full walkthrough below.](#three-ways-to-use-it) [`samples/`](samples/) has two agent-written essays before and after a pass, with a note on what the pass could not fix.
 
 ## On writing that earns its reader
 
@@ -204,6 +212,7 @@ blanket bans, and refuses to invent specifics.
 
 ```txt
 SKILL.md                     the operating manual
+commands/                    optional /clarity-interview, -rewrite, -review wrappers
 references/interview.md      questions that get an author's own material onto the page
 references/tells.md          pattern catalog, with an earned/unearned test for each entry
 references/calibration.md    measured targets, and the traps on the overcorrection side
@@ -214,38 +223,42 @@ scripts/strip_markdown.py    reduces a markdown draft to the prose a reader read
 
 ### Three ways to use it
 
-**Ask it to review.** You want an opinion on a draft, and no new file.
+Once the skill is installed, `/clarity` takes the mode as its first word. Nothing else to set up.
 
 ```txt
-Review this post with clarity. Don't rewrite it, just tell me what's weak.
+/clarity interview why our incident reviews stopped working
+/clarity rewrite draft.md
+/clarity review draft.md
 ```
 
-It leads with the piece-level verdict, then goes line by line, marking each one
-`keep`, `revise`, `ask-author`, or `cut`. The `ask-author` verdict is the useful one: it means
-the line is fixable but the fix needs a fact only you have, so it asks instead of inventing.
+`interview` co-writes from nothing, `rewrite` edits a draft you already have, and `review`
+gives you a critique and leaves your file alone. Drop the mode word and it will work out which
+one you meant from what you gave it.
 
-**Ask it to rewrite.** You have a draft and you want it better.
+If you prefer the dedicated form, copy the wrappers in `commands/` and you get
+`/clarity-interview`, `/clarity-rewrite` and `/clarity-review`:
 
-```txt
-Rewrite this with clarity. Here's a piece of my old writing so you can match how I sound.
+```bash
+cp commands/*.md ~/.claude/commands/
 ```
 
-Give it a sample of your own writing whenever you can. A sample outranks every default in the
-skill, down to whether you use em dashes and how often you hedge. See `samples/` for two
-before-and-after pairs.
+### What each mode does
 
-### Being interviewed, which is the part people miss
+**`/clarity review draft.md`** leads with the piece-level verdict, then goes line by line,
+marking each one `keep`, `revise`, `ask-author`, or `cut`. The `ask-author` verdict is the
+useful one: the line is fixable, but the fix needs a fact only you have, so it asks instead of
+inventing.
 
-The skill's first move on an empty page is to ask you questions, not to start writing. This
-is where most of the value is, and it is easy to skip past.
+**`/clarity rewrite draft.md`** runs the substance gate first and tells you the verdict before
+touching the prose. Give it a sample of your own writing whenever you can. A sample outranks
+every default in the skill, down to whether you use em dashes and how often you hedge. See
+`samples/` for two before-and-after pairs.
 
-```txt
-I want to write about why our incident reviews stopped working. Use clarity.
-```
+**`/clarity interview <topic>`** is the part people miss, and it is where most of the value is.
+On an empty page the skill asks you questions, and does not start writing.
 
-Before drafting a word, it will ask you to talk. Not to type notes: to talk, in one take,
-without tidying, because it wants your sentences and not your summary. The questions run
-roughly:
+It wants you to talk, in one take, without tidying, because it is after your sentences and not
+your summary. The questions run roughly:
 
 ```txt
 What happened this week that made you want to write this? The trigger, not the topic.
@@ -266,8 +279,8 @@ needs a detail only you have, it leaves a marked gap instead of inventing one:
 [TK: how many reviews had you run before you noticed? Rough number is fine.]
 ```
 
-**If a draft already exists but says nothing**, it runs a shorter version aimed at the hollow
-paragraphs:
+If a draft already exists but says nothing, `/clarity rewrite` will fail the substance gate and
+switch to a shorter interview aimed at the hollow paragraphs:
 
 ```txt
 Section 3 leans on "most teams". Which teams have you actually watched do this?
