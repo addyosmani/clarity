@@ -10,7 +10,7 @@ Clear writing is a matter of understanding what your reader needs, and giving it
 npx skills add addyosmani/clarity
 ```
 
-Then ask your agent to write or edit something, or invoke `clarity` by name.
+Then ask your agent to write or edit something, or invoke `clarity` by name. [`samples/`](samples/) has two agent-written essays before and after a pass, with a note on what the pass could not fix.
 
 ## On writing that earns its reader
 
