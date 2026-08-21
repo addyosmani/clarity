@@ -93,6 +93,24 @@ These come from comparing model drafts against a human-written control on the sa
 Every one of them is a two-sided target. Overshooting is a failure in the same direction as
 undershooting.
 
+**Read this before using any number below.** The control was a single text: a conversational
+personal note. The targets describe that register and generalise badly outside it. Measured
+against the BBC Earth *Being Human* essay, a piece of confident broadcast prose that a
+classifier scored fully human, four of the five targets read "off":
+
+| | BBC essay | target | verdict |
+|---|---|---|---|
+| body sentence CV | 0.515 | > 0.60 | off |
+| hedge + booster / 100 | 0.79 | 3.5-4.5 | off by a factor of four |
+| anchors / 100 | 2.48 | 3-4 | off |
+| triads | 5 | low | off |
+| sentences past 40 words | 2 | 0 | off |
+
+That piece is good writing. So the numbers below are register-bound, not laws. Conversational
+and reflective prose hedges; declarative, broadcast, and promotional prose does not, and
+forcing hedges into it makes it worse. Use the targets to notice a habit in prose of the same
+register as the control. Never use them to grade a piece.
+
 ### 3.1 Sentence-length variance
 
 The one signal that tracked the classifier monotonically across five full-length drafts.
@@ -112,7 +130,8 @@ the paragraphs, between full-length sentences.
 ### 3.2 Hedge density
 
 ```txt
-Target: 3.5–4.5 hedge or booster words per 100 words.
+Target: 3.5–4.5 hedge or booster words per 100 words, in conversational or reflective prose.
+        Confident declarative prose runs far lower and is not wrong to.
 ```
 
 The human control ran at 4.29 per 100. Drafts written to "cut every hedge and every -ly word"

@@ -29,10 +29,10 @@ reasoning; the mechanics below are enough to work from. The mapping:
 ```txt
  1  write for one reader        Gate 0 q5; interview q3
  2  what they bring vs need     Gate 0 q6
- 3  one arguable point          Gate 0 q1
+ 3  one arguable point          Gate 0 q1, in the form its register asks for
  4  only you could say it       Gate 0 q2 and q4; the only-you test; the interview
  5  every sentence pays         tells 1.8 (padding); the only-you test
- 6  specific enough to be wrong the specificity ladder; tells 1.3
+ 6  specific enough to be wrong verifiable + sensory axes; tells 1.3; craft 1
  7  someone in the sentence     edit pass 3; tells 3.5, 3.6
  8  plain word, short sentence  tells 3.12 (overloaded), section 4; prose_stats
  9  cut, then stop              edit pass 5; calibration 3.2 and 4.1
@@ -44,7 +44,9 @@ reasoning; the mechanics below are enough to work from. The mapping:
 15  paragraphs earn the next    edit pass 10; tells 2.6
 16  stop where the thought does edit pass 12; tells 2.5
 17  rewrite, do not smooth      edit pass 14b; co-write mode; interview
-18  read it aloud               edit pass 15
+18  read it aloud               edit pass 16
+ -  register                    Gate 0 opens on it; only argument owes a thesis
+ -  warmth                      references/craft.md; edit pass 15; the affect check
 ```
 
 ## Load references on demand
@@ -54,6 +56,8 @@ references/interview.md    — the perspective extraction protocol. Read before 
                              substantial from scratch, or when a draft is fluent but hollow.
 references/tells.md        — the full pattern catalog with earned/unearned adjudication.
                              Read for any real edit pass or review.
+references/craft.md        — the positive half: images, stance, rhythm, and the affect check.
+                             Read after the edit pass, and always for evocation or narrative.
 references/calibration.md  — measured targets and the overcorrection traps. Read before you
                              start cutting hedges, adverbs, dashes, or passives at scale.
 references/critique.md     — review output format and worked before/after examples.
@@ -74,14 +78,37 @@ When the mode is ambiguous, ask once, in one sentence. Then commit.
 
 ## Gate 0: the substance gate
 
-Run this before any stylistic edit, in every mode. Six questions about the draft or the
-brief:
+Run this before any stylistic edit, in every mode.
+
+**First, name the register, because the rest of the gate depends on it.** Only one of these
+owes the reader an arguable thesis, and applying the argument rules to the other four is the
+most common way to wreck a good piece.
 
 ```txt
-1. What is the one point? State it in a single sentence, in a form a reasonable colleague
-   could dispute. A topic is not a point. "Code review in the age of agents" is a subject
-   and will wander into completeness; "review should now start from what the diff was
-   trying to do, not from its lines" is a claim someone can argue with.
+Argument     persuades toward a claim someone could dispute.        needs a thesis
+Explanation  makes a mechanism understandable.                      needs a mechanism
+Evocation    makes the reader feel the size or texture of a thing.  needs images
+Narrative    carries the reader through events.                     needs a scene
+Guide        gets the reader to a working outcome.                  needs steps
+```
+
+A celebration, a tour, an obituary, a launch announcement, and a piece about wonder are all
+evocation. Demanding a disputable thesis from one produces a contrarian debunking, which is
+the failure mode to watch for: if your rewrite has become an argument against something, check
+that the brief actually asked for an argument.
+
+Then the questions. Question 1 takes the form its register asks for:
+
+```txt
+1. What is the one point? State it in a single sentence. A topic is not a point: "Code
+   review in the age of agents" is a subject and will wander into completeness.
+   For an argument, the sentence must be disputable: "review should start from what the
+   change was trying to do, not from the lines it touched."
+   For an explanation, it is the mechanism: "a model predicts the next token, and every
+   surprising behaviour follows from that."
+   For an evocation, it is the feeling the reader should leave holding: "our existence is
+   improbable and worth being astonished by." That is not disputable and does not need
+   to be.
 2. What does this say that is not the consensus view of anyone who has read three
    articles on the topic?
 3. What in here could be wrong? Name the specific claim a reader could check and dispute.
@@ -119,9 +146,12 @@ Apply per paragraph. Could this paragraph appear, near-verbatim, in someone else
 the same subject? If yes, it is filler even when every word of it is true. Cut it, or replace
 it with the thing the author knows that the other writer does not.
 
-### The ladder of specificity
+### Two kinds of concrete
 
-Most "be specific" advice fails because writers climb one rung and stop. The rungs:
+"Be specific" hides two different operations, and a rewrite that only knows one of them turns
+into a bibliography.
+
+**Verifiable specificity** replaces a claim nobody can check with one they can.
 
 ```txt
 Rung 0  abstraction     "Teams struggle with dependency risk."
@@ -132,8 +162,28 @@ Rung 3  named instance  "event-stream, November 2018, eight million weekly
                          downloads, and the payload only fired inside Copay."
 ```
 
-Rung 1 is the trap. It has the grammar of a specific but the content of an abstraction, and
-it reads exactly like Rung 0. Anything load-bearing needs Rung 2 or better.
+Rung 1 is the trap. It has the grammar of a specific and the content of an abstraction, so it
+reads exactly like Rung 0. A load-bearing claim needs Rung 2 or better.
+
+**Sensory concreteness** replaces a word the reader processes with one they can picture, hear,
+or feel in the body. This is what Zinsser and Strunk actually mean by concrete, and it is the
+axis most rewrites miss.
+
+```txt
+abstract    "the profound emotional experience of music"
+sensory     "the deep stirring of the soul when we listen to Mozart's Requiem"
+
+abstract    "early tools conferred a hunting advantage"
+sensory     "these were primitive, but could tear through skin and muscle"
+
+abstract    "we want the piece to move you"
+sensory     "we want to make the hairs on the back of your neck stand up"
+```
+
+**The two axes are independent, and most pieces need the second more.** A date and a citation
+make a claim checkable. They do nothing to make a reader see anything. If your rewrite has
+added four references and no images, you have climbed one ladder and ignored the other. An
+evocation may need almost no verifiable specificity and a great deal of the sensory kind.
 
 **The honesty limit, which overrides the ladder.** Never invent a Rung 3. Do not manufacture a
 name, number, date, quote, benchmark, or remembered incident to satisfy a specificity target.
@@ -280,7 +330,11 @@ Ordered. Earlier items change what later items are looking at.
     It feels like improvement and it is how the only interesting line in a draft disappears.
     This applies to every mode, not only to co-writing: a sentence you did not understand is
     not the same as a sentence that is wrong.
-15. Read the result aloud, or subvocalize it end to end. This catches what no list catches:
+15. Put back what the pass took out. Run `references/craft.md`: at least one thing the
+    reader can see, a stance the writer actually holds, and a rhythm you chose. An edit pass
+    is subtraction, and a draft that has only been subtracted from is colder than the one you
+    started with. Not optional for evocation or narrative.
+16. Read the result aloud, or subvocalize it end to end. This catches what no list catches:
     the paragraph that plods, the clause you run out of breath in, the three sentences that
     turn out to have the same shape. Where the reading stumbles, the sentence is wrong even
     if every check above passed.
@@ -363,6 +417,10 @@ Does the ending return to something concrete, or does it widen into a thesis tha
 Did I flatten each of my best lines and check that the residual claim still names an actor,
   a mechanism, or a limit? If the flattened version collapses, the rhythm was carrying it.
 Did I overcorrect: zero hedges, zero dashes, zero passives, an anchor in every sentence?
+Can the reader see anything in this? Name the images. If I cannot name one, I have written
+  information and called it writing.
+Is this colder than the draft I was given? If the draft was alive and my version is correct,
+  my version is worse.
 Would I say each of these sentences to a colleague over lunch? Anything I would not say out
   loud does not go out. Contractions, a sentence opening on "But", and the first person all
   pass this test; the formal expansion of them usually does not.

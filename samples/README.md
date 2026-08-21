@@ -20,38 +20,48 @@ python3 ../scripts/strip_markdown.py what-it-means-to-be-human.before.md | pytho
 
 ## What the linter says
 
-| | words | sentence CV | hedge/100 | anchors/100 | must-be-zero | triads | stock phrases | false agency |
-|---|---|---|---|---|---|---|---|---|
-| human, before | 491 | 0.358 | 2.04 | 2.44 | 2 | 5 | 3 | 2 |
-| human, after | 439 | 0.441 | 2.05 | 4.33 | 0 | 2 | 0 | 0 |
-| AI, before | 502 | 0.400 | 3.19 | 5.58 | 5 | 2 | 4 | 2 |
-| AI, after | 496 | 0.377 | 1.81 | 2.02 | 0 | 0 | 0 | 0 |
+| | words | sentence CV | hedge/100 | anchors/100 | must-be-zero | triads | stock phrases |
+|---|---|---|---|---|---|---|---|
+| human, before | 491 | 0.358 | 2.04 | 2.44 | 2 | 5 | 3 |
+| human, after | 479 | 0.520 | 1.04 | 1.25 | 0 | 1 | 0 |
+| AI, before | 502 | 0.400 | 3.19 | 5.58 | 5 | 2 | 4 |
+| AI, after | 496 | 0.377 | 1.81 | 2.02 | 0 | 0 | 0 |
+| *BBC "Being Human", for reference* | *1008* | *0.515* | *0.79* | *2.48* | *2* | *5* | *0* |
 
 The must-be-zero column counts hedge-and-booster in one sentence, participial openers, and
 contrastive pivots. Both rewrites clear it. Both also lose the stock openers ("At its core",
 "In today's", "It's worth noting", "Let's dive into") and the abstract nouns performing human
 acts ("the conversation moves forward", "The data tells us").
 
-Two numbers went the wrong way, and they are worth more than the ones that went right.
-Sentence variance in the AI explainer fell slightly, and hedge density in both rewrites sits
-below the 3.5 to 4.5 band that real prose occupies. At 450 words these figures are noisy, and
-the skill's own calibration reference warns against tuning a draft until every box is green:
-a draft that hits every target can still be empty. They are reported here unfixed for that
-reason.
+The last row is the control that changed the skill. It is the BBC Earth *Being Human* essay,
+a piece of confident broadcast prose that a detection service scored fully human, and it misses
+four of the five targets: it hedges at a fifth of the "human" rate, carries five triads, and
+runs two sentences past forty words. It is also better writing than anything else in this
+table.
+
+An earlier version of the human essay scored better than this one on our own metrics, with
+hedging at 2.05 and four anchors per hundred words, and it read like a cold debunking. The
+numbers moved the right way and the prose moved the wrong way. Fixing that is what
+`references/craft.md` and the register gate exist for. Read these figures as a description of
+a register, never as a grade.
 
 ## What actually changed
 
 The before drafts fail in the same place, which is not the sentences.
 
-**The essay on being human** opens on "In today's rapidly evolving technological landscape".
+**The essay on being human** is an evocation, which the skill now establishes before anything
+else, because demanding a disputable thesis from a piece about wonder produces an argument
+against wonder. The before draft opens on "In today's rapidly evolving technological landscape".
 It attributes its central claim to "Experts argue" and supports its one empirical statement
 with "Studies show". It closes on "the future belongs to those who can hold both technological
 progress and human values in the same hand." Not one sentence in it could be checked or
-disputed. The rewrite gives it a position to defend and replaces every unsourced gesture with
-something a reader can look up: Goodall at Gombe in 1960, Kanzi and the lexigram board, Nagel's
-bat paper in 1974, Bronnie Ware's palliative-care notes. The "Studies show" sentence about
-purpose and longevity was cut. That is what the skill asks for when a citation cannot be
-named and the writer will not invent one.
+disputed. The rewrite trades those for things the reader can feel: the hair lifting on a
+forearm four minutes into a familiar piece of music, the arrector pili muscle that puffs a
+frightened cat and does nothing on us, a face flooding with blood over a thought occurring in
+somebody else's head. The one citation it keeps, Darwin on blushing in 1872, is there because
+the quotation is vivid, not because it is a source. The "Studies show" sentence about purpose
+and longevity was cut. That is what the skill asks for when a citation cannot be named and the
+writer will not invent one.
 
 **The AI explainer** was more salvageable, because the subject has facts in it. The before
 draft says a neural network is "inspired by the structure of the human brain" and works "like

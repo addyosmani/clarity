@@ -1,19 +1,17 @@
 # What it means to be human
 
-Every argument about human uniqueness has the same shape. Someone names a capability, machines or animals turn out to have it, and the definition retreats a step.
+Something happens about four minutes into a piece of music you have heard a hundred times. The hair on your forearms lifts. Your throat tightens and your eyes sting, and nothing at all has happened. Nobody has touched you, nothing in the room has changed, and a moving pattern of air pressure has brought you close to crying.
 
-Tool use was the line until Jane Goodall watched a chimpanzee at Gombe strip the leaves off a twig and fish termites out of a mound. That was 1960. Language was the line until Kanzi, a bonobo at the Language Research Center in Georgia, started using a lexigram board to ask for things nobody had trained him to ask for. Chess fell in 1997. Go fell in 2016, and the move that beat Lee Sedol was one professional players first called a mistake.
+The muscle doing that is the arrector pili, and it is the same one that puffs a frightened cat to twice its size. On us it lifts hair we no longer have. We kept the wiring and lost the fur, so the reflex fires uselessly, at cellos and at key changes and at the moment a chorus comes back in.
 
-So the capability list keeps shrinking, and each round of retreat makes the ledge narrower for whoever is standing on it. That is probably a clue that the question is badly formed.
+Charles Darwin spent a chapter of a book in 1872 on a stranger one. Blushing, he decided, is "the most peculiar and most human of all expressions". We are the animal that floods its own face with blood because of what someone else might be thinking. Not because of danger, not because of cold. Because of a thought, occurring in a head that is not ours, about us.
 
-Thomas Nagel asked a better one in 1974: what is it like to be a bat? His point, roughly, was that you could hold a complete physical account of echolocation, every neuron and every returning pulse, and still have nothing that tells you what the bat's afternoon feels like from inside the bat. David Chalmers later called the gap the hard problem of consciousness, and it has stayed hard.
+This is the shape of nearly everything about us. We are a primate that walked out of East Africa, upright, unarmoured, slower than almost everything that wanted to eat us, and carrying an expensive brain that burns a fifth of our calories while we sit still. We were not built for this. We are jury-rigged, running new software on old hardware, and the seams show everywhere: in the aching back, the vestigial goosebump, the terror of speaking to a room.
 
-I find the hard problem interesting and slightly beside the point. The mystery of experience does not tell you how to live on a Tuesday.
+And out of that unpromising equipment came all of it. We learned to make a sound that stood for a thing that was not there, then for a thing that had not happened yet, then for a thing that could never happen. We told each other about the dead. We put pigment on a cave wall and made a horse that outlived everyone who ever saw it painted. We worked out the mass of the sun.
 
-Here is what does not retreat. You have to decide what matters, you cannot check your answer, and you run out of time. A system optimising a stated objective does not really have this problem. It has been told what matters. You have to guess, commit years to the guess, and find out late whether you were right.
+Here is the part I keep coming back to. Every one of those was done by someone who knew they were going to die, who did not know whether the work was worth it, and who did it anyway, without ever finding out. There is no version of a human life in which you get to check. You spend the whole thing guessing what matters, on partial information, and then it stops.
 
-Bronnie Ware spent years in palliative care and wrote down what people said near the end. The regrets were mostly not about capabilities. Nobody wished they had been better at reasoning. They wished they had worked less, stayed in touch, and said the thing they never said. Those are not failures of processing. They are the accumulated cost of small decisions about what to care about, made without enough information, by someone who could not run the experiment twice.
+That should be unbearable and mostly it is not. Most days you get up and make coffee and answer email, and somewhere in the afternoon a piece of music catches you sideways and your arms go strange, and for about eight seconds you are astonished to be here at all.
 
-That is probably the more honest place to look. Not at the shrinking list of things only we can do, but at the fact that we are the ones who have to choose, and can be wrong.
-
-The chimpanzee at Gombe was solving a problem. It stripped the twig, got the termites, and ate. Nobody has to ask whether it spent the afternoon well.
+That is the reflex worth keeping. Not the fur.

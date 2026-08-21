@@ -205,9 +205,11 @@ Balanced triads and parallel stacks: "independent enough, cheap enough, difficul
 ```txt
 Why:   real enumeration is lumpy. Three is the shape a model reaches for when it wants
        completeness without commitment.
-Earned: when the three members are distinct, named, and concrete enough to picture, such as
-        three real mechanisms or three real events in sequence. Enumeration is not the tell.
-        The tell is the balanced abstract triad that exists to sound complete.
+Earned: judge the members, not the count. Three concrete nouns in a rhythmic series is a
+        figure with a long history and it works: "danger, hope, and love"; "the hours, days,
+        and months after we die"; "hunting, savagery, and brutishness". The tell is the
+        abstract triad reaching for completeness: "correctness, maintainability, and
+        scalability". If you can picture all three members, leave it alone.
 Fix:   cut to two, push to four, or turn the list into a sentence with a subject and a verb
 ```
 
@@ -217,9 +219,9 @@ Thesis, elaboration, zinger. Paragraph after paragraph, the same arc.
 
 ```txt
 Fix: break the shape. Open on the example. Bury the point in the middle. Let a paragraph
-     stop on a plain clause. No paragraph should end on a line built to be quoted, and this
-     one has no allowance: the single quotable line permitted in 2.10 may sit anywhere except
-     at a paragraph ending, where the shape is the tell.
+     stop on a plain clause. What makes this a tell is every paragraph ending the same way,
+     on a beat the paragraph did not earn. A single earned closer is a good sentence, not a
+     violation. See 2.10 for the earned test.
 ```
 
 ### 2.3 Symmetrical paragraphs and parallel headings
@@ -341,11 +343,15 @@ A line built to be extracted: the aphorism, the pull-quote, the closing beat tha
 good on a slide.
 
 ```txt
-Why:   a line engineered for quotation is a line engineered for cadence, and cadence is
-       usually what it is carrying instead of a claim. Run the flatten test on it. This is
-       also the shape a model produces when asked to end a paragraph well.
-Earned: once in a piece, when the line is the actual thesis and the piece has paid for it,
-        and never as a paragraph ending (see 2.2)
+Why:   a line engineered for quotation is sometimes carrying cadence where a claim should
+       be. Run the flatten test. This is also the shape a model produces when asked to end a
+       paragraph well and it has nothing to end it with.
+Earned: whenever the preceding paragraphs paid for it. This entry is not a rule against
+        memorable sentences, and reading it that way drains a piece of every beat it has.
+        "From this point on the pace of change was electrifying" lands because the paragraph
+        above it just showed the acceleration. "What makes us human is not what we are, it is
+        what we choose to become" does not, because nothing built it.
+        The budget applies only to the unearned kind.
 Fix:   rewrite it flatter. State the same thing in a plain clause and see whether it still
        lands. If it does, keep the plain version.
 ```
@@ -509,13 +515,26 @@ The mirror of 3.11. One sentence carrying three ideas where three sentences woul
 each, usually held together by commas and "and" until the reader loses the subject.
 
 ```txt
-Watch: sentences past ~40 words; three or more subordinate clauses; a subject and its verb
-       separated by more than a dozen words
+Watch: a subject and its verb separated by more than a dozen words; clauses that change
+       subject midway; a sentence you lose your place in when reading it aloud
 Why:   the reader has to hold the opening in memory while parsing the middle. Ornate
-       construction is usually a sign the writer had not finished deciding what they meant.
-Earned: a long sentence whose length enacts something, or a list the reader reads as a list
-Fix:   find the period. Most overloaded sentences have two or three already implied in them.
+       construction is often a sign the writer had not finished deciding what they meant.
+Fix:   find the period. Most overloaded sentences have one or two already implied in them.
 ```
+
+**Length alone is not the tell, and the linter's 40-word flag is a prompt to look, not a
+verdict.** The cumulative sentence, which keeps one subject and adds clause after clause,
+each opening the frame wider, is one of the best devices available and routinely runs past
+seventy words. It is earned when the subject stays in view and the sentence accelerates.
+
+> We will look deep into the mind at what drives our behaviour, meet extraordinary humans who
+> have unlocked the secrets of a long and healthy life, take a trip through 2000 years of
+> civilisation, journey into the human body on our path to adulthood, experience the drama of
+> extraordinary human rituals that hope to cheat death, and watch what happens to our bodies
+> in the hours, days, and months after we die.
+
+Seventy-seven words, one subject, and it gathers speed. Breaking that into six sentences would
+destroy it. Ask whether you lost the subject, not whether you passed a word count.
 
 Do not swap one uniform length for another. The goal is a mix, per 3.9 and the cadence
 targets in `calibration.md`.
