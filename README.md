@@ -25,7 +25,7 @@ Then pick a mode:
 A reader gives you their attention one sentence at a time. They take it back the moment a
 sentence stops paying.
 
-That is the whole job. Structure, grammar, word choice, and rhythm all serve it.
+Structure, grammar, word choice, and rhythm all serve it.
 
 Most advice about writing is advice about how to stop wasting that attention. Cut the adverb.
 Use the short word. Name the actor. All of it is right, and all of it starts one step too late.
@@ -130,7 +130,7 @@ Over-stripping qualifiers yields inhuman prose. True writing contains a certain 
 
 Strip qualifiers that hide a claim. Keep those that honestly represent genuine uncertainty.
 
-### 10. Say the relation, do not imply it
+### 10. Say the relation instead of implying it
 
 Putting two sentences next to each other can create a sense of logical connection between them based only on rhythm. "The benchmark is saturated. The model still fails in production." Is the second sentence the cause of the first, or the consequence? The rhythm implies an answer, and while you are reading it feels like reasoning.
 
