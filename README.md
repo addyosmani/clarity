@@ -1,7 +1,5 @@
 # Clarity
 
-[![skills.sh](https://skills.sh/b/addyosmani/clarity)](https://skills.sh/addyosmani/clarity)
-
 Clear writing is a matter of understanding what your reader needs, and giving it to them in a way that they can understand.
 
 `clarity` is also an Agent Skill that applies the rules below when you draft, rewrite, or review prose with a coding agent. To install it:
@@ -13,9 +11,9 @@ npx skills add addyosmani/clarity
 Then pick a mode:
 
 ```txt
-/clarity interview <topic>    it interviews you, then co-writes from what you said
 /clarity rewrite draft.md     it edits a draft you already have
 /clarity review draft.md      it critiques and leaves your file alone
+/clarity interview <topic>    it interviews you, then co-writes from what you said
 ```
 
 [Full walkthrough below.](#three-ways-to-use-it) [`samples/`](samples/) has two essays before and after a pass, plus one built from an interview with its transcript.
