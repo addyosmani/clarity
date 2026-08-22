@@ -3,14 +3,10 @@
  * time. The site is not allowed to hold its own copy: if the two ever disagree,
  * that is a bug, so there is only one source.
  */
-import fs from 'node:fs';
-import path from 'node:path';
-import { fileURLToPath } from 'node:url';
-
-// Resolved from this module, not the working directory, so the build works the
-// same whether it is run from site/ or from the repository root.
-const HERE = path.dirname(fileURLToPath(import.meta.url));
-const README = path.resolve(HERE, '../../../README.md');
+// Vite inlines the file at build time, resolved against this module's source
+// path. Reading it from disk instead would depend on the working directory and
+// on import.meta.url surviving bundling, neither of which holds on a CI builder.
+import raw from '../../../README.md?raw';
 
 export interface Rule {
   n: number;
@@ -43,7 +39,6 @@ function inline(s: string): string {
     .replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2">$1</a>');
 }
 
-const raw = fs.readFileSync(README, 'utf8');
 const lines = raw.split('\n');
 
 /** The essay that opens the piece, between its heading and the first rule section. */

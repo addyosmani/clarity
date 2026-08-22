@@ -1,0 +1,27 @@
+# Deploy config lives here rather than in the Netlify UI, so the settings are
+# reviewable and travel with the repo. File config takes precedence over the
+# UI, so clear the Build command, Base directory and Publish directory there.
+
+[build]
+  # The site is a subdirectory. Netlify installs dependencies here, so this is
+  # what was missing when the build reported "astro: not found".
+  base    = "site"
+  command = "npm run build"
+  # Relative to base, so this resolves to site/dist.
+  publish = "dist"
+
+[build.environment]
+  # Astro 5 needs 18.20.8+, 20.3+, or 22+. Pin it rather than inherit a default.
+  NODE_VERSION = "20"
+
+# Astro emits content-hashed filenames under _astro, so they can be cached hard.
+[[headers]]
+  for = "/_astro/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy        = "strict-origin-when-cross-origin"
