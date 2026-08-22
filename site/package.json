@@ -1,0 +1,18 @@
+{
+  "name": "clarity.addy.ie",
+  "type": "module",
+  "version": "1.0.0",
+  "private": true,
+  "description": "The site for clarity — an Agent Skill for writing that earns its reader.",
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@astrojs/sitemap": "^3.2.1",
+    "astro": "^5.13.0"
+  }
+}

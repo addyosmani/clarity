@@ -1,0 +1,156 @@
+---
+const cmd = 'npx skills add addyosmani/clarity';
+---
+<div class="install">
+  <button class="cmd" data-cmd={cmd} type="button" aria-label={`Copy ${cmd} to clipboard`}>
+    <span class="prompt" aria-hidden="true">$</span>
+    <code>{cmd}</code>
+    <span class="copy" aria-hidden="true">
+      <svg viewBox="0 0 16 16" width="15" height="15" fill="none"
+           stroke="currentColor" stroke-width="1.4"
+           stroke-linecap="round" stroke-linejoin="round">
+        <rect x="5.75" y="5.75" width="8.5" height="8.5" rx="1.75" />
+        <path d="M10.25 3.25v-.5A1 1 0 0 0 9.25 1.75h-6.5a1 1 0 0 0-1 1v6.5a1 1 0 0 0 1 1h.5" />
+      </svg>
+    </span>
+    <span class="done" aria-hidden="true">
+      <svg viewBox="0 0 16 16" width="15" height="15" fill="none"
+           stroke="currentColor" stroke-width="1.7"
+           stroke-linecap="round" stroke-linejoin="round">
+        <path d="M3 8.5 6.4 12 13 4.5" />
+      </svg>
+    </span>
+  </button>
+  <span class="status" role="status" aria-live="polite"></span>
+  <ul class="modes">
+    <li><code>/clarity interview</code> <span>it interviews you, then co-writes from what you said</span></li>
+    <li><code>/clarity rewrite</code> <span>it edits a draft you already have</span></li>
+    <li><code>/clarity review</code> <span>it critiques and leaves your file alone</span></li>
+  </ul>
+</div>
+
+<style>
+  .install { margin-top: 2rem; }
+
+  .cmd {
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+    width: 100%;
+    text-align: left;
+    background: var(--surface);
+    border: 1px solid var(--border-strong);
+    border-radius: var(--r-md);
+    padding: 0.85rem 1rem;
+    color: var(--fg);
+    cursor: pointer;
+    font: inherit;
+    transition: border-color 0.18s var(--ease), background 0.18s var(--ease);
+  }
+  .cmd:hover { border-color: var(--accent-dim); background: var(--surface-2); }
+
+  .prompt { color: var(--accent); font-family: var(--font-mono); font-size: 0.9rem; }
+
+  .cmd code {
+    font-family: var(--font-mono);
+    font-size: 0.9rem;
+    background: none;
+    border: 0;
+    padding: 0;
+    color: var(--fg-bright);
+    flex: 1;
+    min-width: 0;
+    overflow-x: auto;
+    white-space: nowrap;
+    scrollbar-width: none;
+  }
+  .cmd code::-webkit-scrollbar { display: none; }
+
+  .copy, .done {
+    flex: none;
+    display: grid;
+    place-items: center;
+    color: var(--fg-dim);
+    transition: color 0.18s var(--ease), opacity 0.18s var(--ease);
+  }
+  .done { display: none; color: var(--accent); }
+  .cmd:hover .copy { color: var(--fg); }
+  .cmd[data-copied] .copy { display: none; }
+  .cmd[data-copied] .done { display: grid; }
+  .cmd[data-copied] { border-color: var(--accent-dim); }
+
+  .status {
+    position: absolute;
+    width: 1px; height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+  }
+
+  .modes {
+    list-style: none;
+    margin: 1.15rem 0 0;
+    padding: 0;
+    display: grid;
+    gap: 0.5rem;
+  }
+  .modes li {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 0.2rem 0.7rem;
+    font-family: var(--font-sans);
+    font-size: 0.875rem;
+    color: var(--fg-muted);
+    line-height: 1.5;
+  }
+  .modes code {
+    font-size: 0.8125rem;
+    background: none;
+    border: 0;
+    padding: 0;
+    color: var(--accent);
+    white-space: nowrap;
+  }
+  .modes span { min-width: 0; }
+
+  /* The command is the one thing that must never be cut off: it is what the
+     visitor came for, and a truncated string reads as broken even though the
+     copy button still works. Shrink the type until all 34 characters fit. */
+  @media (max-width: 46rem) {
+    .cmd { padding: 0.8rem 0.85rem; gap: 0.5rem; }
+    .cmd code { font-size: 0.78rem; letter-spacing: -0.01em; }
+    .prompt { font-size: 0.78rem; }
+  }
+  @media (max-width: 22rem) {
+    .cmd code { font-size: 0.7rem; }
+  }
+</style>
+
+<script>
+  document.querySelectorAll<HTMLButtonElement>('.cmd').forEach((btn) => {
+    const status = btn.parentElement?.querySelector('.status');
+    let timer: number | undefined;
+    btn.addEventListener('click', async () => {
+      const text = btn.dataset.cmd ?? '';
+      try {
+        await navigator.clipboard.writeText(text);
+      } catch {
+        const ta = document.createElement('textarea');
+        ta.value = text;
+        ta.style.position = 'fixed';
+        ta.style.opacity = '0';
+        document.body.appendChild(ta);
+        ta.select();
+        try { document.execCommand('copy'); } catch { /* clipboard unavailable */ }
+        ta.remove();
+      }
+      btn.dataset.copied = 'true';
+      if (status) status.textContent = 'Copied to clipboard';
+      window.clearTimeout(timer);
+      timer = window.setTimeout(() => {
+        delete btn.dataset.copied;
+        if (status) status.textContent = '';
+      }, 1800);
+    });
+  });
+</script>

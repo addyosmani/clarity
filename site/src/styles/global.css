@@ -1,0 +1,173 @@
+/* ============================================================
+   clarity — design system
+   A reading surface. Sibling to skills.addy.ie, not a twin:
+   same Geist chrome and dark base, but the page belongs to the
+   prose, so a text face leads and the margin does the labelling.
+   ============================================================ */
+
+:root {
+  /* Ground. Warmer and one step off true black: this page is read,
+     not scanned, and #000 under a serif at 19px is punishing. */
+  --bg: #0c0c0e;
+  --bg-lift: #121215;
+  --surface: #17171b;
+  --surface-2: #1d1d22;
+
+  --border: #24242a;
+  --border-strong: #33333c;
+
+  /* Type colors, warmed a few degrees so the serif does not read blue. */
+  --fg: #e9e6e1;
+  --fg-bright: #fbfaf8;
+  --fg-muted: #a6a29b;
+  --fg-dim: #8b867f;   /* 5.41:1 — the smallest text still clears the floor */
+  --fg-faint: #7f7a73; /* 4.59:1 — margin labels and numerals are text, not decoration */
+  --hairline: #3a3730;  /* non-text rules and ticks only */
+
+  /* One accent: the mark an editor leaves in a margin. */
+  --accent: #e0a35c;
+  --accent-bright: #f0bd80;
+  --accent-dim: #8a6436;
+  --accent-wash: rgba(224, 163, 92, 0.1);
+
+  --font-text: 'Source Serif 4', ui-serif, Georgia, 'Times New Roman', serif;
+  --font-sans: 'Geist', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+    Helvetica, Arial, sans-serif;
+  --font-mono: 'Geist Mono', ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
+
+  /* Measure. 40rem is ~67ch in Source Serif 4 at 19px, measured not guessed. */
+  --measure: 40rem;
+  --margin-col: 5.5rem;
+  --gutter: 2.25rem;
+  --page: calc(var(--margin-col) + var(--gutter) + var(--measure));
+  --head-h: 3.25rem;
+
+  --r-sm: 5px;
+  --r-md: 9px;
+  --r-lg: 14px;
+
+  --ease: cubic-bezier(0.16, 1, 0.3, 1);
+
+  color-scheme: dark;
+}
+
+*,
+*::before,
+*::after { box-sizing: border-box; }
+
+html {
+  -webkit-text-size-adjust: 100%;
+  scroll-behavior: smooth;
+  scroll-padding-top: calc(var(--head-h) + 1.5rem);
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-text);
+  font-size: 1.1875rem;
+  line-height: 1.68;
+  font-synthesis-weight: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  font-variant-numeric: oldstyle-num;
+}
+
+/* ---------- Browser surfaces: these ship with the design ---------- */
+::selection { background: var(--accent-wash); color: var(--fg-bright); }
+:root { caret-color: var(--accent); accent-color: var(--accent); }
+* { scrollbar-color: var(--border-strong) transparent; scrollbar-width: thin; }
+::-webkit-scrollbar { width: 11px; height: 11px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb {
+  background: var(--border-strong);
+  border-radius: 99px;
+  border: 3px solid var(--bg);
+}
+::-webkit-scrollbar-thumb:hover { background: #45454f; }
+
+:where(a, button, summary, [tabindex]):focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+a {
+  color: inherit;
+  text-decoration-color: var(--accent-dim);
+  text-underline-offset: 0.16em;
+  text-decoration-thickness: from-font;
+  transition: text-decoration-color 0.15s var(--ease), color 0.15s var(--ease);
+}
+a:hover { text-decoration-color: var(--accent); color: var(--fg-bright); }
+
+code {
+  font-family: var(--font-mono);
+  font-size: 0.84em;
+  font-variant-numeric: tabular-nums;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r-sm);
+  padding: 0.1em 0.36em;
+}
+
+h1, h2, h3 {
+  font-weight: 600;
+  line-height: 1.14;
+  letter-spacing: -0.022em;
+  text-wrap: balance;
+  margin: 0;
+}
+
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  z-index: 100;
+  background: var(--accent);
+  color: #17120a;
+  font-family: var(--font-sans);
+  font-size: 0.875rem;
+  font-weight: 600;
+  padding: 0.6rem 1rem;
+  border-radius: 0 0 var(--r-md) 0;
+}
+.skip-link:focus { left: 0; }
+
+/* ---------- The page grid: margin column, gutter, measure ---------- */
+.sheet {
+  width: min(100% - 3rem, var(--page));
+  margin-inline: auto;
+}
+.row {
+  display: grid;
+  grid-template-columns: var(--margin-col) var(--measure);
+  column-gap: var(--gutter);
+  align-items: start;
+}
+.row > .col { grid-column: 2; min-width: 0; }
+.row > .margin {
+  grid-column: 1;
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--fg-faint);
+  padding-top: 0.55rem;
+}
+
+@media (max-width: 46rem) {
+  :root { --measure: 100%; }
+  .row { grid-template-columns: 1fr; row-gap: 0; }
+  .row > .col, .row > .margin { grid-column: 1; }
+  .row > .margin { padding-top: 0; }
+  body { font-size: 1.0625rem; }
+}

@@ -1,0 +1,292 @@
+---
+import Base from '../layouts/Base.astro';
+import Install from '../components/Install.astro';
+import { essay, sections, further } from '../data/rules';
+---
+
+<Base>
+  <header class="head" id="top">
+    <div class="sheet head-in">
+      <a class="brand" href="#top">clarity</a>
+      <span class="here" data-here aria-hidden="true"></span>
+      <a class="repo" href="https://github.com/addyosmani/clarity">Repository</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="sheet masthead">
+      <div class="row">
+        <div class="col">
+          <h1>Writing that earns its reader.</h1>
+          <p class="lede">
+            Clear writing is a matter of understanding what your reader needs, and giving it to
+            them in a way that they can understand. Eighteen rules, and an Agent Skill that
+            applies them when you draft, rewrite, or review prose with a coding agent.
+          </p>
+          <Install />
+        </div>
+      </div>
+    </section>
+
+    <section class="sheet essay">
+      <div class="row">
+        <p class="margin">Essay</p>
+        <div class="col prose">
+          {essay.map((b) =>
+            b.kind === 'p' ? (
+              <p set:html={b.html} />
+            ) : (
+              <blockquote><p set:html={b.html} />{b.cite && <cite set:html={b.cite} />}</blockquote>
+            ),
+          )}
+        </div>
+      </div>
+    </section>
+
+    <div id="rules">
+      {sections.map((s) => (
+        <section class="sheet part" id={s.slug} data-part={s.name}>
+          <div class="row">
+            <div class="col"><h2>{s.name}</h2></div>
+          </div>
+
+          {s.rules.map((r) => (
+            <article class="row rule" id={r.slug}>
+              <p class="margin num" aria-hidden="true">{String(r.n).padStart(2, '0')}</p>
+              <div class="col prose">
+                <h3>
+                  <span class="n" aria-hidden="true">{r.n}.</span>
+                  {r.title}
+                  <a class="anchor" href={`#${r.slug}`} aria-label={`Link to rule ${r.n}`}>#</a>
+                </h3>
+                {r.blocks.map((b) =>
+                  b.kind === 'p' ? (
+                    <p set:html={b.html} />
+                  ) : (
+                    <blockquote><p set:html={b.html} />{b.cite && <cite set:html={b.cite} />}</blockquote>
+                  ),
+                )}
+              </div>
+            </article>
+          ))}
+        </section>
+      ))}
+    </div>
+
+    <section class="sheet part" id="further" data-part="Further reading">
+      <div class="row">
+        <div class="col"><h2>Further reading</h2></div>
+      </div>
+      {further.map((g) => (
+        <div class="row">
+          <p class="margin">{g.label}</p>
+          <div class="col prose reading">
+            <ul>{g.items.map((it) => <li set:html={it} />)}</ul>
+          </div>
+        </div>
+      ))}
+      <div class="row">
+        <div class="col closing">
+          <Install />
+          <p class="fine">
+            MIT. Built by <a href="https://addyosmani.com">Addy Osmani</a>. Sibling site:
+            <a href="https://skills.addy.ie">skills.addy.ie</a>.
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+</Base>
+
+<style>
+  /* ---------- Running head ---------- */
+  .head {
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    height: var(--head-h);
+    background: color-mix(in srgb, var(--bg) 82%, transparent);
+    backdrop-filter: blur(14px) saturate(150%);
+    border-bottom: 1px solid var(--border);
+  }
+  .head-in {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-family: var(--font-sans);
+    font-size: 0.8125rem;
+  }
+  .brand {
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    color: var(--fg-bright);
+    text-decoration: none;
+  }
+  .here {
+    flex: 1;
+    min-width: 0;
+    color: var(--fg-dim);
+    font-size: 0.72rem;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    opacity: 0;
+    transform: translateY(0.3em);
+    transition: opacity 0.32s var(--ease), transform 0.32s var(--ease);
+  }
+  .here[data-on] { opacity: 1; transform: none; }
+  .here[data-on]::before { content: '/\00a0\00a0'; color: var(--fg-faint); }
+  .repo { color: var(--fg-muted); text-decoration: none; flex: none; }
+  .repo:hover { color: var(--fg-bright); }
+
+  /* ---------- Masthead ---------- */
+  .masthead { padding: clamp(3.5rem, 11vw, 7rem) 0 clamp(2.5rem, 7vw, 4rem); }
+  h1 {
+    font-family: var(--font-sans);
+    font-size: clamp(2.25rem, 6.4vw, 3.5rem);
+    font-weight: 600;
+    letter-spacing: -0.035em;
+    color: var(--fg-bright);
+  }
+  .lede {
+    margin: 1.5rem 0 0;
+    font-size: 1.1875rem;
+    color: var(--fg-muted);
+    max-width: 30rem;
+  }
+
+  /* ---------- Prose ---------- */
+  .essay { padding-bottom: clamp(2rem, 6vw, 3.5rem); }
+  .prose p { margin: 0 0 1.15em; }
+  .prose > :global(p:last-child) { margin-bottom: 0; }
+
+  .prose :global(blockquote) {
+    margin: 1.6em 0;
+    padding-left: 1.15rem;
+    border-left: 1px solid var(--accent-dim);
+  }
+  .prose :global(blockquote p) {
+    margin: 0;
+    font-style: italic;
+    color: var(--fg-muted);
+  }
+  .prose :global(cite) {
+    display: block;
+    margin-top: 0.5rem;
+    font-family: var(--font-sans);
+    font-style: normal;
+    font-size: 0.8125rem;
+    color: var(--fg-dim);
+  }
+  .prose :global(a) { color: var(--fg-bright); }
+
+  /* ---------- Sections and rules ---------- */
+  .part { padding-top: clamp(2.5rem, 7vw, 4.5rem); }
+  .part h2 {
+    font-family: var(--font-sans);
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--accent);
+    padding-bottom: 0.9rem;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .rule { padding-top: 2.6rem; scroll-margin-top: calc(var(--head-h) + 2rem); }
+  .rule .num {
+    font-family: var(--font-sans);
+    font-size: 0.9rem;
+    font-weight: 500;
+    font-variant-numeric: tabular-nums lining-nums;
+    letter-spacing: 0;
+    color: var(--fg-dim);
+    text-align: right;
+    padding-top: 0.42rem;
+    transition: color 0.3s var(--ease);
+  }
+  .rule:hover .num, .rule:target .num { color: var(--accent); }
+
+  .rule h3 {
+    font-family: var(--font-sans);
+    font-size: 1.3125rem;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    color: var(--fg-bright);
+    margin-bottom: 0.9rem;
+  }
+  .rule h3 .n { display: none; color: var(--accent); margin-right: 0.4em; }
+
+  .anchor {
+    font-family: var(--font-mono);
+    font-size: 0.8em;
+    font-weight: 400;
+    color: var(--fg-faint);
+    text-decoration: none;
+    margin-left: 0.5em;
+    opacity: 0;
+    transition: opacity 0.15s var(--ease), color 0.15s var(--ease);
+  }
+  .rule:hover .anchor, .anchor:focus-visible { opacity: 1; }
+  .anchor:hover { color: var(--accent); }
+
+  /* ---------- Further reading ---------- */
+  .reading ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 0.85rem; }
+  .reading li {
+    font-size: 1.0625rem;
+    line-height: 1.55;
+    color: var(--fg-muted);
+    padding-left: 1.1rem;
+    position: relative;
+  }
+  .reading li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.62em;
+    width: 5px;
+    height: 1px;
+    background: var(--accent-dim);
+  }
+  #further .row + .row { margin-top: 2.2rem; }
+
+  .closing { margin-top: 3.5rem; }
+  .fine {
+    margin: 2rem 0 0;
+    font-family: var(--font-sans);
+    font-size: 0.8125rem;
+    color: var(--fg-dim);
+  }
+  main { padding-bottom: clamp(4rem, 10vw, 7rem); }
+
+  @media (max-width: 46rem) {
+    .rule .num { display: none; }
+    .rule h3 .n { display: inline; }
+    .part .margin { display: none; }
+    .rule { padding-top: 2.1rem; }
+  }
+</style>
+
+<script>
+  // The authored moment: the running head names the part you are inside.
+  const label = document.querySelector<HTMLElement>('[data-here]');
+  const parts = [...document.querySelectorAll<HTMLElement>('[data-part]')];
+  if (label && parts.length && 'IntersectionObserver' in window) {
+    const seen = new Map<Element, boolean>();
+    const io = new IntersectionObserver(
+      (entries) => {
+        for (const e of entries) seen.set(e.target, e.isIntersecting);
+        const active = parts.filter((p) => seen.get(p));
+        const current = active.length ? active[active.length - 1] : null;
+        const name = current?.dataset.part ?? '';
+        if (label.textContent !== name) label.textContent = name;
+        label.toggleAttribute('data-on', Boolean(name));
+      },
+      { rootMargin: '-25% 0px -70% 0px' },
+    );
+    parts.forEach((p) => io.observe(p));
+  }
+</script>
