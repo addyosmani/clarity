@@ -291,6 +291,32 @@ The ending restates the thesis. What do you want the reader to do differently on
 That last shape of question, *what would you cut from this that everyone else would keep*, tends
 to produce more usable material than any other single prompt in the file.
 
+### What that actually buys you
+
+I ran the interviewed essay through Pangram, which scores text for whether a model wrote it. It
+came back 100% human.
+
+[![Pangram scoring the interviewed essay as 100% human written](samples/pangram-after-interview.png)](https://www.pangram.com/history/c14b5c31-6386-4e2e-b50f-52f1d6da4531?ucc=hhTApSdnbsM)
+
+**Read that narrowly.** It is one sample, and neither this skill nor the interview comes with any
+guarantee about a detector. What the result shows is where the humanness came from, and it was
+not the styling. Roughly 87% of the three-word sequences in that essay appear verbatim in my
+voice memo. The essay is mostly me, cut and reordered, which is the only reason it reads that
+way.
+
+The two model-written versions in `samples/` had the same rules applied and are worth comparing.
+Look at the hedge density in particular:
+
+| | hedge words per 100 |
+|---|---|
+| model-written, rewritten by the skill | 1.05 |
+| the original slop draft | 2.04 |
+| **the interviewed version** | **4.45** |
+
+Nobody was aiming at that number. It is simply how a person talks, and no amount of editing gets
+a model-written draft there. If you want prose that reads as yours, the lever is not the edit
+pass. It is doing the interview honestly and letting your own sentences carry the piece.
+
 ### Linting
 
 ```bash
