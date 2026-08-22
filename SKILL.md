@@ -4,7 +4,7 @@ description: Draft, rewrite, and review prose so it carries a real point of view
 license: MIT
 compatibility: Agent Skills clients including Claude Code, Codex, OpenCode, Gemini CLI, and Pi.
 metadata:
-  version: "1.0.0"
+  version: "0.1.0"
 ---
 
 # Clarity
