@@ -4,11 +4,13 @@ import '../styles/global.css';
 interface Props {
   title?: string;
   description?: string;
+  ogImage?: string;
 }
 const {
   title = 'clarity — writing that earns its reader',
   description =
     'Eighteen rules for writing that carries a point of view, and an Agent Skill that applies them when you draft, rewrite, or review prose with a coding agent.',
+  ogImage = '/og.png',
 } = Astro.props;
 
 const canonical = new URL(Astro.url.pathname, Astro.site ?? 'https://clarity.addy.ie');
@@ -20,6 +22,7 @@ const canonical = new URL(Astro.url.pathname, Astro.site ?? 'https://clarity.add
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <link rel="canonical" href={canonical} />
 
     <title>{title}</title>
@@ -31,10 +34,19 @@ const canonical = new URL(Astro.url.pathname, Astro.site ?? 'https://clarity.add
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonical} />
     <meta property="og:site_name" content="clarity" />
+    <meta property="og:locale" content="en_GB" />
+    <meta property="og:image" content={new URL(ogImage, canonical)} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="clarity — writing that earns its reader. Install with npx skills add addyosmani/clarity" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:creator" content="@addyosmani" />
+    <meta name="twitter:site" content="@addyosmani" />
+    <meta name="twitter:image" content={new URL(ogImage, canonical)} />
+    <meta name="twitter:image:alt" content="clarity — writing that earns its reader. Install with npx skills add addyosmani/clarity" />
+    <meta name="author" content="Addy Osmani" />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
