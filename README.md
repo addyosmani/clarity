@@ -18,7 +18,7 @@ Then pick a mode:
 /clarity review draft.md      it critiques and leaves your file alone
 ```
 
-[Full walkthrough below.](#three-ways-to-use-it) [`samples/`](samples/) has two agent-written essays before and after a pass, with a note on what the pass could not fix.
+[Full walkthrough below.](#three-ways-to-use-it) [`samples/`](samples/) has two essays before and after a pass, plus one built from an interview with its transcript.
 
 ## On writing that earns its reader
 
@@ -252,7 +252,7 @@ inventing.
 **`/clarity rewrite draft.md`** runs the substance gate first and tells you the verdict before
 touching the prose. Give it a sample of your own writing whenever you can. A sample outranks
 every default in the skill, down to whether you use em dashes and how often you hedge. See
-`samples/` for two before-and-after pairs.
+`samples/` for two before-and-after pairs, and `what-it-means-to-be-human.after-interview.md` for what the interview adds on top.
 
 **`/clarity interview <topic>`** is the part people miss, and it is where most of the value is.
 On an empty page the skill asks you questions, and does not start writing.
