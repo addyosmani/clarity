@@ -1,0 +1,359 @@
+---
+import Base from '../layouts/Base.astro';
+import { drafts, metrics } from '../data/samples';
+
+const title = 'One essay, three times — clarity';
+const description =
+  'The same brief written three ways: an unedited agent draft, the same brief after a pass with the skill, and a version built from an interview with the author.';
+---
+
+<Base title={title} description={description}>
+  <header class="head">
+    <div class="sheet head-in">
+      <a class="brand" href="/">clarity</a>
+      <span class="here" data-here aria-hidden="true"></span>
+      <a class="repo" href="/">The rules</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="sheet masthead">
+      <div class="row">
+        <div class="col">
+          <h1>One essay, three times.</h1>
+          <p class="lede">
+            The brief was the same each time: a short essay on what it means to be human. What
+            changed was how much of the author was in the room.
+          </p>
+          <p class="note">
+            Every draft below is in the repository, under
+            <a href="https://github.com/addyosmani/clarity/tree/main/samples">samples/</a>,
+            along with the transcript the third one was built from.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="sheet part" id="before" data-part="The draft">
+      <div class="row"><div class="col"><h2>1. The unedited draft</h2></div></div>
+      <div class="row">
+        <div class="col prose">
+          <p>
+            Asked for a short essay with no other instruction, an agent produces this. It is
+            fluent, well organised, and grammatical. It also contains nothing that anyone knew
+            before reading it: no claim you could check, no detail only this writer had.
+          </p>
+          <p>
+            The tells are the recognisable ones. It opens on <q>In today's rapidly evolving
+            technological landscape</q>, attributes its central claim to <q>Experts argue</q>,
+            supports its one empirical statement with <q>Studies show</q>, and closes on a
+            sentence about the future belonging to those who can hold progress and human values
+            in the same hand.
+          </p>
+        </div>
+      </div>
+      <div class="row">
+        <p class="margin">Draft</p>
+        <div class="col">
+          <div class="specimen">
+            {drafts.before.blocks.map((b) =>
+              b.kind === 'p' ? (
+                <p set:html={b.html} />
+              ) : (
+                <ul>{b.items.map((it) => <li set:html={it} />)}</ul>
+              ),
+            )}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="sheet part" id="after" data-part="The rewrite">
+      <div class="row"><div class="col"><h2>2. After a pass with the skill</h2></div></div>
+      <div class="row">
+        <div class="col prose">
+          <p>
+            The skill establishes the register first. This is an evocation, so it owes the
+            reader images rather than a thesis. That step matters: an earlier attempt demanded
+            a disputable claim from a piece about wonder and produced an argument against
+            wonder, which was correct, cold, and worse than what it replaced.
+          </p>
+          <p>
+            What the pass can do is trade unsourced gesture for things a reader can feel and
+            check. The unnamed experts become Darwin on blushing in 1872. The vague appeal to
+            consciousness becomes the arrector pili, the muscle that puffs a frightened cat and
+            does nothing on us. The <q>Studies show</q> sentence was cut rather than sourced,
+            which is what the skill asks for when a citation cannot be named.
+          </p>
+          <p>
+            What it cannot do is supply an author. Every specific here is public. Anyone could
+            look them up, which means anyone could have written this.
+          </p>
+        </div>
+      </div>
+      <div class="row">
+        <p class="margin">Rewrite</p>
+        <div class="col">
+          <div class="specimen">
+            {drafts.after.blocks.map((b) =>
+              b.kind === 'p' ? (
+                <p set:html={b.html} />
+              ) : (
+                <ul>{b.items.map((it) => <li set:html={it} />)}</ul>
+              ),
+            )}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="sheet part" id="interview" data-part="The interview">
+      <div class="row"><div class="col"><h2>3. After the interview</h2></div></div>
+      <div class="row">
+        <div class="col prose">
+          <p>
+            For the third version the skill refused to edit and ran its interview instead. Addy
+            answered into a voice memo for about six minutes. The essay was then assembled from
+            the transcript by cutting and reordering, never by rewording, because putting his
+            material into the model's words is the operation that turns it back into anybody's
+            writing.
+          </p>
+          <p>
+            Roughly 87% of the three-word sequences in what follows appear verbatim in that
+            recording. The linter flags three contrastive pivots in it. All three are his, and
+            they are left alone.
+          </p>
+        </div>
+      </div>
+      <div class="row">
+        <p class="margin">Interview</p>
+        <div class="col">
+          <div class="specimen">
+            {drafts.interviewed.blocks.map((b) =>
+              b.kind === 'p' ? (
+                <p set:html={b.html} />
+              ) : (
+                <ul>{b.items.map((it) => <li set:html={it} />)}</ul>
+              ),
+            )}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="sheet part" id="measured" data-part="Measured">
+      <div class="row"><div class="col"><h2>What the linter says</h2></div></div>
+      <div class="row">
+        <div class="col">
+          <div class="tablewrap">
+            <table>
+              <thead>
+                <tr><th>Stage</th><th>Words</th><th>Sentence CV</th><th>Hedges /100</th><th>Anchors /100</th></tr>
+              </thead>
+              <tbody>
+                {metrics.map((m) => (
+                  <tr>
+                    <th scope="row">{m.stage}</th>
+                    <td>{m.words}</td><td>{m.cv}</td><td>{m.hedge}</td><td>{m.anchors}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+          <div class="prose">
+            <p>
+              The hedge column is the one worth looking at. Real prose hedges at roughly 3.5 to
+              4.5 words per hundred. Neither model-written version gets near that, and the
+              rewrite is the furthest away: stripped of hedges it reads cleaner than any person
+              writes. The interviewed version lands at 4.45 with nobody aiming at it, because
+              that is simply how someone talks. You cannot edit your way to that number.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="sheet part" id="detector" data-part="A detector">
+      <div class="row"><div class="col"><h2>One detector run</h2></div></div>
+      <div class="row">
+        <div class="col">
+          <div class="prose">
+            <p>
+              Out of curiosity the interviewed version went through Pangram, which scores text
+              for whether a model wrote it. It came back as fully human.
+            </p>
+          </div>
+          <figure class="shot">
+            <a href="https://www.pangram.com/history/c14b5c31-6386-4e2e-b50f-52f1d6da4531?ucc=hhTApSdnbsM">
+              <img
+                src="/detector-result.png"
+                alt="A detection tool reporting the interviewed essay as 100% human written."
+                width="1600"
+                height="842"
+                loading="lazy"
+                decoding="async"
+              />
+            </a>
+          </figure>
+          <aside class="caveat">
+            <p>
+              <strong>This is illustrative and nothing more.</strong> It is a single run of one
+              tool on one essay. Neither this skill nor the interview offers any guarantee about
+              a detector score, and none of them is built to chase one. Detectors carry false
+              positives and false negatives, they change without notice, and optimising prose
+              against them makes the writing worse.
+            </p>
+            <p>
+              The result is here for what it says about provenance rather than about scoring:
+              the humanness came from the material being his, not from anything the edit pass
+              did. The two model-written versions had the same rules applied.
+            </p>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <section class="sheet part" id="end">
+      <div class="row">
+        <div class="col prose">
+          <h2 class="plain">What this is meant to show</h2>
+          <p>
+            An edit pass is worth having. It removed the stock openers, the unnamed experts, and
+            the ending that would have fitted any essay in the category, and it put images where
+            abstractions had been. None of that is nothing.
+          </p>
+          <p>
+            But the difference between the second and third versions is not craft. It is that
+            somebody talked for six minutes about what they actually think, and the sentences
+            they used survived into the piece. That is the part no rewrite can manufacture, and
+            it is why the skill asks questions before it writes.
+          </p>
+          <p class="back"><a href="/">Read the eighteen rules</a></p>
+        </div>
+      </div>
+    </section>
+  </main>
+</Base>
+
+<style>
+  .head {
+    position: sticky; top: 0; z-index: 20; height: var(--head-h);
+    background: color-mix(in srgb, var(--bg) 82%, transparent);
+    backdrop-filter: blur(14px) saturate(150%);
+    border-bottom: 1px solid var(--border);
+  }
+  .head-in {
+    height: 100%; display: flex; align-items: center; gap: 0.75rem;
+    font-family: var(--font-sans); font-size: 0.8125rem;
+  }
+  .brand { font-weight: 600; letter-spacing: -0.01em; color: var(--fg-bright); text-decoration: none; }
+  .here {
+    flex: 1; min-width: 0; color: var(--fg-dim); font-size: 0.72rem; letter-spacing: 0.09em;
+    text-transform: uppercase; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    opacity: 0; transform: translateY(0.3em);
+    transition: opacity 0.32s var(--ease), transform 0.32s var(--ease);
+  }
+  .here[data-on] { opacity: 1; transform: none; }
+  .here[data-on]::before { content: '/\00a0\00a0'; color: var(--fg-faint); }
+  .repo { color: var(--fg-muted); text-decoration: none; flex: none; }
+  .repo:hover { color: var(--fg-bright); }
+
+  .masthead { padding: clamp(3.5rem, 10vw, 6rem) 0 clamp(1.5rem, 4vw, 2.5rem); }
+  h1 {
+    font-family: var(--font-sans); font-size: clamp(2.1rem, 5.6vw, 3.1rem);
+    font-weight: 600; letter-spacing: -0.035em; color: var(--fg-bright);
+  }
+  .lede { margin: 1.4rem 0 0; font-size: 1.1875rem; color: var(--fg-muted); }
+  .note { margin: 1rem 0 0; font-family: var(--font-sans); font-size: 0.875rem; color: var(--fg-dim); }
+  .note :global(a), .back :global(a) { color: var(--fg-muted); }
+
+  .part { padding-top: clamp(2.5rem, 7vw, 4.5rem); }
+  .part h2 {
+    font-family: var(--font-sans); font-size: 0.78rem; font-weight: 600;
+    letter-spacing: 0.16em; text-transform: uppercase; color: var(--accent);
+    padding-bottom: 0.9rem; border-bottom: 1px solid var(--border);
+  }
+  .part h2.plain {
+    font-size: 1.3125rem; letter-spacing: -0.02em; text-transform: none;
+    color: var(--fg-bright); border: 0; padding: 0 0 0.6rem;
+  }
+  .row + .row { margin-top: 1.6rem; }
+
+  .prose p { margin: 0 0 1.15em; }
+  .prose p:last-child { margin-bottom: 0; }
+  .prose :global(q) { font-style: italic; color: var(--fg-muted); quotes: '“' '”'; }
+
+  /* Specimens are exhibits, not the site's own voice. */
+  .specimen {
+    border-left: 1px solid var(--border-strong);
+    padding: 0.2rem 0 0.2rem 1.4rem;
+    font-size: 1.0625rem;
+    line-height: 1.62;
+    color: var(--fg-muted);
+  }
+  .specimen p { margin: 0 0 1em; }
+  .specimen p:last-child { margin-bottom: 0; }
+  .specimen ul { margin: 0 0 1em; padding-left: 1.1rem; }
+  .specimen li { margin-bottom: 0.4em; }
+  .specimen li::marker { color: var(--fg-faint); }
+
+  .tablewrap { overflow-x: auto; margin-bottom: 1.6rem; }
+  table {
+    width: 100%; border-collapse: collapse;
+    font-family: var(--font-sans); font-size: 0.875rem;
+    font-variant-numeric: tabular-nums lining-nums;
+  }
+  th, td { text-align: right; padding: 0.6rem 0.5rem; border-bottom: 1px solid var(--border); }
+  thead th { color: var(--fg-dim); font-weight: 500; font-size: 0.75rem; letter-spacing: 0.04em; }
+  th:first-child, tbody th { text-align: left; color: var(--fg); font-weight: 500; white-space: nowrap; }
+  tbody tr:last-child th, tbody tr:last-child td { color: var(--fg-bright); }
+
+  .shot { margin: 1.6rem 0 0; }
+  .shot img {
+    width: 100%; height: auto; display: block;
+    border: 1px solid var(--border-strong); border-radius: var(--r-md);
+  }
+
+  .caveat {
+    margin-top: 1.6rem;
+    border: 1px solid var(--border-strong);
+    border-radius: var(--r-md);
+    background: var(--bg-lift);
+    padding: 1.15rem 1.25rem;
+    font-family: var(--font-sans);
+    font-size: 0.875rem;
+    line-height: 1.6;
+    color: var(--fg-muted);
+  }
+  .caveat p { margin: 0 0 0.8em; }
+  .caveat p:last-child { margin-bottom: 0; }
+  .caveat strong { color: var(--fg-bright); font-weight: 600; }
+
+  .back { margin-top: 2rem; font-family: var(--font-sans); font-size: 0.9375rem; }
+  main { padding-bottom: clamp(4rem, 10vw, 7rem); }
+
+  @media (max-width: 46rem) {
+    .part .margin { display: none; }
+    .specimen { padding-left: 1rem; }
+  }
+</style>
+
+<script>
+  const label = document.querySelector<HTMLElement>('[data-here]');
+  const parts = [...document.querySelectorAll<HTMLElement>('[data-part]')];
+  if (label && parts.length && 'IntersectionObserver' in window) {
+    const seen = new Map<Element, boolean>();
+    const io = new IntersectionObserver(
+      (entries) => {
+        for (const e of entries) seen.set(e.target, e.isIntersecting);
+        const active = parts.filter((p) => seen.get(p));
+        const current = active.length ? active[active.length - 1] : null;
+        const name = current?.dataset.part ?? '';
+        if (label.textContent !== name) label.textContent = name;
+        label.toggleAttribute('data-on', Boolean(name));
+      },
+      { rootMargin: '-25% 0px -70% 0px' },
+    );
+    parts.forEach((p) => io.observe(p));
+  }
+</script>

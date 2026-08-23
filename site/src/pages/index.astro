@@ -10,6 +10,7 @@ import { essay, sections, further } from '../data/rules';
     <div class="sheet head-in">
       <a class="brand" href="#top">clarity</a>
       <span class="here" data-here aria-hidden="true"></span>
+      <a class="navlink" href="/example/">Example</a>
       <a class="repo" href="https://github.com/addyosmani/clarity">GitHub Repo</a>
     </div>
   </header>
@@ -26,6 +27,10 @@ import { essay, sections, further } from '../data/rules';
             applies them when you draft, rewrite, or review prose.
           </p>
           <Install />
+          <p class="seealso">
+            <a href="/example/">See it work: one essay, three times</a> — the same brief as an
+            unedited draft, after a pass with the skill, and after it interviewed the author.
+          </p>
         </div>
       </div>
     </section>
@@ -155,8 +160,8 @@ import { essay, sections, further } from '../data/rules';
   }
   .here[data-on] { opacity: 1; transform: none; }
   .here[data-on]::before { content: '/\00a0\00a0'; color: var(--fg-faint); }
-  .repo { color: var(--fg-muted); text-decoration: none; flex: none; }
-  .repo:hover { color: var(--fg-bright); }
+  .repo, .navlink { color: var(--fg-muted); text-decoration: none; flex: none; }
+  .repo:hover, .navlink:hover { color: var(--fg-bright); }
 
   /* ---------- Masthead ---------- */
   .masthead { padding: clamp(1.5rem, 3vw, 7rem) 0 clamp(2.5rem, 7vw, 4rem); }
@@ -172,6 +177,18 @@ import { essay, sections, further } from '../data/rules';
     font-size: 1.1875rem;
     color: var(--fg-muted);
     max-width: 30rem;
+  }
+
+  .seealso {
+    margin: 1.5rem 0 0;
+    font-family: var(--font-sans);
+    font-size: 0.875rem;
+    line-height: 1.6;
+    color: var(--fg-dim);
+  }
+  .seealso :global(a) {
+    color: var(--fg-bright);
+    text-decoration-color: var(--accent);
   }
 
   /* ---------- Prose ---------- */
