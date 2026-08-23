@@ -19,7 +19,7 @@ import { essay, sections, further } from '../data/rules';
       <div class="row">
         <div class="col">
           <img src="clarity-logo-yellow.png" alt="Clarity logo" width="300" style="height: auto;" />
-          <h1>Clarity is writing that earns its reader.</h1>
+          <h1>Clarity is writing that <span class="squiggle">earns</span> its reader.</h1>
           <p class="lede">
             Clear writing is a matter of understanding what your reader needs, and giving it to
             them in a way that they can understand. Eighteen rules, and an Agent Skill that
@@ -248,6 +248,14 @@ import { essay, sections, further } from '../data/rules';
   }
   .rule:hover .anchor, .anchor:focus-visible { opacity: 1; }
   .anchor:hover { color: var(--accent); }
+
+  .squiggle {
+    text-decoration-line: underline;
+  text-decoration-style: wavy;
+  text-decoration-color: #E0A35C; /* Any color */
+  text-decoration-thickness: 2px; /* Controls wave size */
+  text-underline-offset: 4px;      /* Gap between text and wave */
+  }
 
   /* ---------- Further reading ---------- */
   .reading ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 0.85rem; }
