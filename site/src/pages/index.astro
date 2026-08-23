@@ -9,7 +9,7 @@ import { essay, sections, further } from '../data/rules';
     <div class="sheet head-in">
       <a class="brand" href="#top">clarity</a>
       <span class="here" data-here aria-hidden="true"></span>
-      <a class="repo" href="https://github.com/addyosmani/clarity">Repository</a>
+      <a class="repo" href="https://github.com/addyosmani/clarity">GitHub Repo</a>
     </div>
   </header>
 
@@ -17,11 +17,12 @@ import { essay, sections, further } from '../data/rules';
     <section class="sheet masthead">
       <div class="row">
         <div class="col">
+          <img src="clarity-logo-site.png" alt="Clarity logo" width="300" style="height: auto;" />
           <h1>Clarity is writing that earns its reader.</h1>
           <p class="lede">
             Clear writing is a matter of understanding what your reader needs, and giving it to
             them in a way that they can understand. Eighteen rules, and an Agent Skill that
-            applies them when you draft, rewrite, or review prose with a coding agent.
+            applies them when you draft, rewrite, or review prose.
           </p>
           <Install />
         </div>
@@ -32,6 +33,8 @@ import { essay, sections, further } from '../data/rules';
       <div class="row">
         <p class="margin">Essay</p>
         <div class="col prose">
+          <h2>18 rules for better writing.</h2>
+          <p>&nbsp;</p>
           {essay.map((b) =>
             b.kind === 'p' ? (
               <p set:html={b.html} />
@@ -143,7 +146,7 @@ import { essay, sections, further } from '../data/rules';
   .repo:hover { color: var(--fg-bright); }
 
   /* ---------- Masthead ---------- */
-  .masthead { padding: clamp(3.5rem, 11vw, 7rem) 0 clamp(2.5rem, 7vw, 4rem); }
+  .masthead { padding: clamp(1.5rem, 3vw, 7rem) 0 clamp(2.5rem, 7vw, 4rem); }
   h1 {
     font-family: var(--font-sans);
     font-size: clamp(2.25rem, 6.4vw, 3.5rem);
