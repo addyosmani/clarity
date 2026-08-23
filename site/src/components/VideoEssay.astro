@@ -1,0 +1,125 @@
+---
+const id = 'FOE2dn1MLm0';
+const title = '18 rules for better writing.';
+const watchUrl = `https://www.youtube.com/watch?v=${id}`;
+---
+<figure class="video">
+  <!-- A facade. The poster is served from this origin, so nothing is requested
+       from YouTube until someone actually asks for the video. Without JS this
+       stays an ordinary link to the video, which is why it is an anchor. -->
+  <a
+    class="frame"
+    href={watchUrl}
+    data-embed={id}
+    aria-label={`Play the video: ${title}`}
+  >
+    <img
+      src="/video-poster.jpg"
+      width="1280"
+      height="720"
+      alt=""
+      loading="lazy"
+      decoding="async"
+    />
+    <span class="play" aria-hidden="true">
+      <svg viewBox="0 0 24 24" width="26" height="26" fill="currentColor">
+        <path d="M8.2 5.4a.9.9 0 0 1 1.36-.78l8.2 6.6a.9.9 0 0 1 0 1.56l-8.2 6.6A.9.9 0 0 1 8.2 18.6z" />
+      </svg>
+    </span>
+  </a>
+  <figcaption>
+    <strong>{title}</strong>
+    <span>Addy Osmani on YouTube. The poster loads from this site; the player only
+    loads when you press play.</span>
+  </figcaption>
+</figure>
+
+<style>
+  .video { margin: 0; }
+
+  .frame {
+    position: relative;
+    display: block;
+    aspect-ratio: 16 / 9;
+    border: 1px solid var(--border-strong);
+    border-radius: var(--r-lg);
+    overflow: hidden;
+    background: var(--surface);
+    text-decoration: none;
+    transition: border-color 0.2s var(--ease);
+  }
+  .frame:hover { border-color: var(--accent-dim); }
+
+  .frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    opacity: 0.82;
+    transition: opacity 0.3s var(--ease), transform 0.4s var(--ease);
+  }
+  .frame:hover img { opacity: 1; transform: scale(1.012); }
+
+  .play {
+    position: absolute;
+    inset: 0;
+    margin: auto;
+    width: 66px;
+    height: 66px;
+    display: grid;
+    place-items: center;
+    border-radius: 50%;
+    background: var(--accent);
+    color: #17120a;
+    padding-left: 4px;
+    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.5);
+    transition: transform 0.25s var(--ease), background 0.2s var(--ease);
+  }
+  .frame:hover .play { transform: scale(1.06); background: var(--accent-bright); }
+
+  .frame :global(iframe) {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+  }
+
+  figcaption {
+    margin-top: 0.95rem;
+    display: grid;
+    gap: 0.28rem;
+    font-family: var(--font-sans);
+    font-size: 0.8125rem;
+    line-height: 1.5;
+    color: var(--fg-dim);
+  }
+  figcaption strong { font-weight: 500; color: var(--fg-muted); }
+
+  @media (max-width: 46rem) {
+    .play { width: 54px; height: 54px; }
+    .play svg { width: 22px; height: 22px; }
+  }
+</style>
+
+<script>
+  document.querySelectorAll<HTMLAnchorElement>('.frame[data-embed]').forEach((el) => {
+    el.addEventListener('click', (ev) => {
+      // Let modified clicks open YouTube in the usual way.
+      if (ev.metaKey || ev.ctrlKey || ev.shiftKey || ev.button !== 0) return;
+      ev.preventDefault();
+      const id = el.dataset.embed;
+      const frame = document.createElement('iframe');
+      frame.src =
+        `https://www.youtube-nocookie.com/embed/${id}?autoplay=1&rel=0&modestbranding=1`;
+      frame.title = el.getAttribute('aria-label')?.replace(/^Play the video: /, '') ?? '';
+      frame.allow =
+        'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
+      frame.referrerPolicy = 'strict-origin-when-cross-origin';
+      frame.allowFullscreen = true;
+      el.replaceChildren(frame);
+      el.removeAttribute('href');
+      el.removeAttribute('aria-label');
+    });
+  });
+</script>

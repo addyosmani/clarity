@@ -1,6 +1,7 @@
 ---
 import Base from '../layouts/Base.astro';
 import Install from '../components/Install.astro';
+import VideoEssay from '../components/VideoEssay.astro';
 import { essay, sections, further } from '../data/rules';
 ---
 
@@ -17,7 +18,7 @@ import { essay, sections, further } from '../data/rules';
     <section class="sheet masthead">
       <div class="row">
         <div class="col">
-          <img src="clarity-logo-site.png" alt="Clarity logo" width="300" style="height: auto;" />
+          <img src="clarity-logo-yellow.png" alt="Clarity logo" width="300" style="height: auto;" />
           <h1>Clarity is writing that earns its reader.</h1>
           <p class="lede">
             Clear writing is a matter of understanding what your reader needs, and giving it to
@@ -75,6 +76,18 @@ import { essay, sections, further } from '../data/rules';
         </section>
       ))}
     </div>
+
+    <section class="sheet part" id="watch" data-part="Watch">
+      <div class="row">
+        <div class="col"><h2>Watch</h2></div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <p class="watch-lede">The same eighteen rules, read aloud.</p>
+          <VideoEssay />
+        </div>
+      </div>
+    </section>
 
     <section class="sheet part" id="further" data-part="Further reading">
       <div class="row">
@@ -255,6 +268,11 @@ import { essay, sections, further } from '../data/rules';
     background: var(--accent-dim);
   }
   #further .row + .row { margin-top: 2.2rem; }
+
+  .watch-lede {
+    margin: 0 0 1.4rem;
+    color: var(--fg-muted);
+  }
 
   .closing { margin-top: 3.5rem; }
   .fine {

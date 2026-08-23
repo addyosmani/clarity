@@ -133,7 +133,9 @@ function readFurther(): { label: string; items: string[] }[] {
   for (const line of chunk) {
     const t = line.trim();
     if (t.startsWith('MIT')) break;
-    const head = t.match(/^\*\*(.+?)\.\*\*\s*(.*)$/);
+    // Accept both heading forms the README uses: "**Books.**" with the period
+    // inside the bold, and "**Essays and books**" without one.
+    const head = t.match(/^\*\*(.+?)\.?\*\*\s*(.*)$/);
     if (head) {
       cur = { label: head[1], items: [] };
       groups.push(cur);
