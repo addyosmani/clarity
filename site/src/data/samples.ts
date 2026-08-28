@@ -53,10 +53,3 @@ export const drafts: Record<string, Draft> = {
   after: { id: 'after', blocks: body(after) },
   interviewed: { id: 'interviewed', blocks: body(interviewed) },
 };
-
-// Measured with scripts/prose_stats.py against these exact files.
-export const metrics = [
-  { stage: 'Before', words: 491, cv: '0.358', hedge: '2.04', anchors: '2.44' },
-  { stage: 'After the rewrite', words: 478, cv: '0.522', hedge: '1.05', anchors: '1.26' },
-  { stage: 'After the interview', words: 696, cv: '0.440', hedge: '4.45', anchors: '1.44' },
-];

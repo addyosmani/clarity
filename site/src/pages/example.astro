@@ -1,6 +1,6 @@
 ---
 import Base from '../layouts/Base.astro';
-import { drafts, metrics } from '../data/samples';
+import { drafts } from '../data/samples';
 
 const title = 'One essay, three times — clarity';
 const description =
@@ -79,11 +79,11 @@ const description =
             wonder, which was correct, cold, and worse than what it replaced.
           </p>
           <p>
-            What the pass can do is trade unsourced gesture for things a reader can feel and
-            check. The unnamed experts become Darwin on blushing in 1872. The vague appeal to
-            consciousness becomes the arrector pili, the muscle that puffs a frightened cat and
-            does nothing on us. The <q>Studies show</q> sentence was cut rather than sourced,
-            which is what the skill asks for when a citation cannot be named.
+            What the pass can do is remove unsourced gestures, narrow the claim, and make the
+            limits visible. The unnamed experts and <q>Studies show</q> disappear rather than
+            being replaced with research the source never supplied. The rewrite keeps the
+            source's contrast between capability and experience, then says plainly that it
+            cannot settle whether machine consciousness is possible.
           </p>
           <p>
             What it cannot do is supply an author. Every specific here is public. Anyone could
@@ -112,16 +112,15 @@ const description =
       <div class="row">
         <div class="col prose">
           <p>
-            For the third version the skill refused to edit and ran its interview instead. Addy
-            answered into a voice memo for about six minutes. The essay was then assembled from
-            the transcript by cutting and reordering, never by rewording, because putting his
-            material into the model's words is the operation that turns it back into anybody's
-            writing.
+            For the third version the skill ran its interview first. Addy answered into a voice
+            memo for about six minutes. The essay was assembled from the transcript by cutting,
+            reordering, and lightly editing while preserving the phrases and turns of thought
+            that made the material his.
           </p>
           <p>
-            Roughly 87% of the three-word sequences in what follows appear verbatim in that
-            recording. The linter flags three contrastive pivots in it. All three are his, and
-            they are left alone.
+            The transcript ships beside the result. That makes the useful claim inspectable:
+            readers can see which examples, qualifications, and sentences came from the author
+            instead of taking a similarity percentage or detector result on trust.
           </p>
         </div>
       </div>
@@ -139,76 +138,15 @@ const description =
           </div>
         </div>
       </div>
-    </section>
-
-    <section class="sheet part" id="measured" data-part="Measured">
-      <div class="row"><div class="col"><h2>What the linter says</h2></div></div>
       <div class="row">
+        <p class="margin">Result</p>
         <div class="col">
-          <div class="tablewrap">
-            <table>
-              <thead>
-                <tr><th>Stage</th><th>Words</th><th>Sentence CV</th><th>Hedges /100</th><th>Anchors /100</th></tr>
-              </thead>
-              <tbody>
-                {metrics.map((m) => (
-                  <tr>
-                    <th scope="row">{m.stage}</th>
-                    <td>{m.words}</td><td>{m.cv}</td><td>{m.hedge}</td><td>{m.anchors}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-          <div class="prose">
-            <p>
-              The hedge column is the one worth looking at. Real prose hedges at roughly 3.5 to
-              4.5 words per hundred. Neither model-written version gets near that, and the
-              rewrite is the furthest away: stripped of hedges it reads cleaner than any person
-              writes. The interviewed version lands at 4.45 with nobody aiming at it, because
-              that is simply how someone talks. You cannot edit your way to that number.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="sheet part" id="detector" data-part="A detector">
-      <div class="row"><div class="col"><h2>One detector run</h2></div></div>
-      <div class="row">
-        <div class="col">
-          <div class="prose">
-            <p>
-              Out of curiosity the interviewed version went through Pangram, which scores text
-              for whether a model wrote it. It came back as fully human.
-            </p>
-          </div>
-          <figure class="shot">
-            <a href="https://www.pangram.com/history/c14b5c31-6386-4e2e-b50f-52f1d6da4531?ucc=hhTApSdnbsM">
-              <img
-                src="/detector-result.png"
-                alt="A detection tool reporting the interviewed essay as 100% human written."
-                width="1600"
-                height="842"
-                loading="lazy"
-                decoding="async"
-              />
+          <p class="pangram-result">
+            <a href="https://www.pangram.com/history/a211e4fd-4b3f-4d2f-a2d2-726a96323949?ucc=NTu9jwxRrgn">
+              Pangram classified this version as 100% human-written.
             </a>
-          </figure>
-          <aside class="caveat">
-            <p>
-              <strong>This is illustrative and nothing more.</strong> It is a single run of one
-              tool on one essay. Neither this skill nor the interview offers any guarantee about
-              a detector score, and none of them is built to chase one. Detectors carry false
-              positives and false negatives, they change without notice, and optimising prose
-              against them makes the writing worse.
-            </p>
-            <p>
-              The result is here for what it says about provenance rather than about scoring:
-              the humanness came from the material being his, not from anything the edit pass
-              did. The two model-written versions had the same rules applied.
-            </p>
-          </aside>
+            <span>One result, shared as a point of comparison rather than a guarantee.</span>
+          </p>
         </div>
       </div>
     </section>
@@ -219,8 +157,8 @@ const description =
           <h2 class="plain">What this is meant to show</h2>
           <p>
             An edit pass is worth having. It removed the stock openers, the unnamed experts, and
-            the ending that would have fitted any essay in the category, and it put images where
-            abstractions had been. None of that is nothing.
+            the ending that would have fitted any essay in the category. It narrowed the piece
+            to claims its source could support. None of that is nothing.
           </p>
           <p>
             But the difference between the second and third versions is not craft. It is that
@@ -297,37 +235,12 @@ const description =
   .specimen li { margin-bottom: 0.4em; }
   .specimen li::marker { color: var(--fg-faint); }
 
-  .tablewrap { overflow-x: auto; margin-bottom: 1.6rem; }
-  table {
-    width: 100%; border-collapse: collapse;
-    font-family: var(--font-sans); font-size: 0.875rem;
-    font-variant-numeric: tabular-nums lining-nums;
+  .pangram-result {
+    display: grid; gap: 0.3rem;
+    font-family: var(--font-sans); font-size: 0.875rem; line-height: 1.55;
+    color: var(--fg-dim);
   }
-  th, td { text-align: right; padding: 0.6rem 0.5rem; border-bottom: 1px solid var(--border); }
-  thead th { color: var(--fg-dim); font-weight: 500; font-size: 0.75rem; letter-spacing: 0.04em; }
-  th:first-child, tbody th { text-align: left; color: var(--fg); font-weight: 500; white-space: nowrap; }
-  tbody tr:last-child th, tbody tr:last-child td { color: var(--fg-bright); }
-
-  .shot { margin: 1.6rem 0 0; }
-  .shot img {
-    width: 100%; height: auto; display: block;
-    border: 1px solid var(--border-strong); border-radius: var(--r-md);
-  }
-
-  .caveat {
-    margin-top: 1.6rem;
-    border: 1px solid var(--border-strong);
-    border-radius: var(--r-md);
-    background: var(--bg-lift);
-    padding: 1.15rem 1.25rem;
-    font-family: var(--font-sans);
-    font-size: 0.875rem;
-    line-height: 1.6;
-    color: var(--fg-muted);
-  }
-  .caveat p { margin: 0 0 0.8em; }
-  .caveat p:last-child { margin-bottom: 0; }
-  .caveat strong { color: var(--fg-bright); font-weight: 600; }
+  .pangram-result a { color: var(--fg-bright); text-underline-offset: 0.2em; }
 
   .back { margin-top: 2rem; font-family: var(--font-sans); font-size: 0.9375rem; }
   main { padding-bottom: clamp(4rem, 10vw, 7rem); }

@@ -4,12 +4,13 @@ prose_stats.py — locate writing habits. Diagnostic only.
 
 This script deliberately reports no composite score and no verdict. A stylometric
 composite run over texts with classifier verdicts attached came out inverted: the
-genuinely human control scored "riskiest" in the corpus. See references/calibration.md
-section 4.2. A single number invites optimizing toward the machine register, so there
-is not one here.
+genuinely human control scored "riskiest" in the original exploratory corpus. The
+runtime skill therefore treats these measurements as diagnostics, not targets.
+A single number invites optimizing toward the machine register, so there is not one
+here.
 
 Read the output as a map of where to look. Every hit is a hypothesis. Open the
-paragraph and decide, using the earned/unearned tests in references/tells.md.
+paragraph and decide, using the contextual tests in references/edit.md.
 
 Usage:
     python3 prose_stats.py draft.txt
@@ -23,8 +24,8 @@ import statistics
 import sys
 
 # ---------------------------------------------------------------- lexicons
-# Time-dated detectors. These drift with model generations; re-profile before
-# treating an absence as a pass.
+# Time-dated search lexicons. These drift with language and model generations; an
+# absence is not a pass, and a match is not a defect without context.
 
 HEDGES = {
     "may", "might", "could", "perhaps", "possibly", "likely", "generally",
@@ -262,7 +263,7 @@ def analyze(text):
             "signpost_opener_share": round(
                 len(signpost_openers) / len(sents), 3) if sents else 0.0,
         },
-        "drive_to_zero": {
+        "high_signal_clusters": {
             "hedge_booster_same_sentence": co_occur,
             "participial_openers": participial_openers,
             "contrastive_pivots": regex_hits(text, CONTRASTIVE),
@@ -287,15 +288,6 @@ def analyze(text):
     }
 
 
-TARGETS = [
-    ("cadence", "body_sentence_cv", "above 0.60", lambda v: v > 0.60),
-    ("cadence", "cadence_masking", "under 0.05", lambda v: v < 0.05),
-    ("density", "hedge_booster_per_100", "3.5 to 4.5", lambda v: 3.5 <= v <= 4.5),
-    ("density", "anchors_per_100", "3 to 4", lambda v: 3.0 <= v <= 4.0),
-    ("density", "signpost_opener_share", "under 0.30", lambda v: v < 0.30),
-]
-
-
 def report(stats):
     lines = []
     s = stats["size"]
@@ -308,15 +300,16 @@ def report(stats):
             "length, and so is any judgement made from a short excerpt."
         )
     lines.append("")
-    lines.append("TARGETS")
+    lines.append("MEASUREMENTS (descriptive, not targets)")
+    lines.append(f"  body_sentence_cv           {stats['cadence']['body_sentence_cv']}")
+    lines.append(f"  short_line_share           {stats['cadence']['cadence_masking']}")
+    lines.append(f"  hedge_per_100              {stats['density']['hedge_per_100']}")
+    lines.append(f"  booster_per_100            {stats['density']['booster_per_100']}")
+    lines.append(f"  anchors_per_100            {stats['density']['anchors_per_100']}")
     lines.append(
-        "  Calibrated on flowing prose. Notes, docs, and heavily bulleted drafts will read"
+        f"  signpost_opener_share      {stats['density']['signpost_opener_share']}"
     )
-    lines.append("  off on cadence and density for structural reasons, not stylistic ones.")
-    for group, key, target, ok in TARGETS:
-        val = stats[group][key]
-        mark = "ok " if ok(val) else "off"
-        lines.append(f"  [{mark}] {key:<26} {val:<8} target {target}")
+    lines.append("  Compare versions of the same piece; do not compare a draft to a universal norm.")
     if stats["cadence"]["cadence_masking"] > 0.15:
         lines.append(
             "  note: a third or more of the lines are under 8 words. If those are headings,"
@@ -326,8 +319,8 @@ def report(stats):
         )
 
     lines.append("")
-    lines.append("DRIVE TO ZERO")
-    for key, items in stats["drive_to_zero"].items():
+    lines.append("HIGH-SIGNAL CLUSTERS (inspect in context)")
+    for key, items in stats["high_signal_clusters"].items():
         lines.append(f"  {key} ({len(items)})")
         for item in items[:8]:
             lines.append(f"      {item}")
@@ -349,9 +342,9 @@ def report(stats):
             lines.append(f"      ... {len(items) - 8} more")
 
     lines.append("")
-    lines.append("No composite score, by design. See references/calibration.md 4.2.")
+    lines.append("No composite score, by design. Counts locate passages; they do not grade prose.")
     lines.append("These numbers find habits. They do not tell you whether the piece is good,")
-    lines.append("and they cannot tell you whether it says anything. That is Gate 0's job.")
+    lines.append("and they cannot tell you whether it says anything. Read the passage to decide.")
     return "\n".join(lines)
 
 
