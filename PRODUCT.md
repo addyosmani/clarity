@@ -35,13 +35,16 @@ the rules and disagreed with at least one on purpose.
 
 Most anti-slop tooling treats the symptom: em dashes, triads, stock phrases. Clarity's claim is
 that the failure is emptiness with good posture, and that the fix is substance before surface.
-Two things a neighbouring project could not truthfully copy:
+Three things distinguish the approach:
 
-- The skill interviews the author before drafting, because context re-worded by a model reads
-  as generated while the author's own sentences do not. A sample essay built this way, and its
-  transcript, ship in the repo.
-- Its calibration is measured and two-sided, including where popular advice is wrong: prose
-  stripped of every hedge reads cleaner than any person writes.
+- The skill interviews the author before drafting and records what came from the author, what
+  the model supplied, and what remains unresolved. A sample essay and its source transcript ship
+  together so that claim is inspectable.
+- It treats common patterns as contextual diagnoses rather than universal defects. Useful
+  qualification, concrete lists of three, predictable documentation headings, and passive voice
+  can all be right for the job.
+- It ships behavioral cases for fact preservation, mode boundaries, medium fit, authorship, and
+  false positives, plus a blinded comparison protocol that reports token cost and failures.
 
 ## Constraints and facts to preserve
 

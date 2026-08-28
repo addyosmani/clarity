@@ -204,19 +204,23 @@ Your ear catches what a checklist misses: plodding paragraphs, breathless clause
 
 ## The skill in this repository
 
-The skill asks the substance questions before any stylistic edit, keeps an author's own
-sentences intact instead of paraphrasing them, adjudicates each pattern instead of applying
-blanket bans, and refuses to invent specifics.
+The skill asks substance questions before stylistic edits, treats the author's supplied
+language as source material, adjudicates patterns in context instead of applying blanket bans,
+and refuses to invent specifics.
 
 ```txt
 SKILL.md                     the operating manual
 commands/                    optional /clarity-interview, -rewrite, -review wrappers
 references/interview.md      questions that get an author's own material onto the page
-references/tells.md          pattern catalog, with an earned/unearned test for each entry
-references/calibration.md    measured targets, and the traps on the overcorrection side
-references/critique.md       review format and worked examples
+references/edit.md           editing diagnoses and fidelity safeguards
+references/longform.md       positive craft for essays, articles, talks, and narrative
+references/medium.md         exceptions for docs, academic, messages, UI, and other media
+references/review.md         review format and verdicts
+evals/cases.json             shared behavioral cases and preservation requirements
+evals/JUDGE.md               blinded comparison protocol
 scripts/prose_stats.py       diagnostic linter, with no composite score by design
 scripts/strip_markdown.py    reduces a markdown draft to the prose a reader reads
+scripts/validate_package.py  package, routing, sample, and eval validation
 ```
 
 ### Three ways to use it
@@ -247,10 +251,11 @@ marking each one `keep`, `revise`, `ask-author`, or `cut`. The `ask-author` verd
 useful one: the line is fixable, but the fix needs a fact only you have, so it asks instead of
 inventing.
 
-**`/clarity rewrite draft.md`** runs the substance gate first and tells you the verdict before
-touching the prose. Give it a sample of your own writing whenever you can. A sample outranks
-every default in the skill, down to whether you use em dashes and how often you hedge. See
-`samples/` for two before-and-after pairs, and `what-it-means-to-be-human.after-interview.md` for what the interview adds on top.
+**`/clarity rewrite draft.md`** diagnoses missing substance, wrong register, weak development,
+and surface patterning in that order. Give it a sample of your own writing whenever you can. A
+sample outranks every default in the skill, down to punctuation and degree of formality, but it
+is never a source of facts for the new piece. See `samples/` for two fact-preserving
+before-and-after pairs, plus an interview-built draft and its transcript.
 
 **`/clarity interview <topic>`** is the part people miss, and it is where most of the value is.
 On an empty page the skill asks you questions, and does not start writing.
@@ -268,17 +273,17 @@ What would you concede under questioning?
 What do you believe here that most people in your field don't?
 ```
 
-Then it builds the piece around what you said. It edits by cutting and reordering, never by
-rewording, because putting your material into its own words is what turns it back into
-anybody's writing. Its own contribution stays a labelled minority of the words, and anywhere it
-needs a detail only you have, it leaves a marked gap instead of inventing one:
+Then it builds the piece around what you said. It protects distinctive phrases, mixed feelings,
+and the order in which you discovered the idea. It may cut, reorder, and lightly edit for
+comprehension; larger changes that would erase the thought stay visible for your judgment.
+Anywhere it needs a detail only you have, it leaves a marked gap instead of inventing one:
 
 ```txt
 [TK: how many reviews had you run before you noticed? Rough number is fine.]
 ```
 
-If a draft already exists but says nothing, `/clarity rewrite` will fail the substance gate and
-switch to a shorter interview aimed at the hollow paragraphs:
+If a draft already exists but says nothing, `/clarity rewrite` will explain the substance gap
+and offer a shorter interview aimed at the hollow paragraphs:
 
 ```txt
 Section 3 leans on "most teams". Which teams have you actually watched do this?
@@ -291,29 +296,19 @@ to produce more usable material than any other single prompt in the file.
 
 ### What that actually buys you
 
-I ran the interviewed essay through Pangram, which scores text for whether a model wrote it. It
-came back 100% human.
+The interview gives the draft a source a model cannot supply on its own: your examples,
+language, uncertainty, and editorial judgment. It does not guarantee a detector result, and a
+detector result would not prove authorship or quality.
 
-[![Pangram scoring the interviewed essay as 100% human written](samples/pangram-after-interview.png)](https://www.pangram.com/history/c14b5c31-6386-4e2e-b50f-52f1d6da4531?ucc=hhTApSdnbsM)
+The sample directory includes the transcript beside the interview-built draft so the provenance
+claim is inspectable. It also labels two model rewrites as such. The details are in
+[`samples/README.md`](samples/README.md).
 
-**Read that narrowly.** It is one sample, and neither this skill nor the interview comes with any
-guarantee about a detector. What the result shows is where the humanness came from, and it was
-not the styling. Roughly 87% of the three-word sequences in that essay appear verbatim in my
-voice memo. The essay is mostly me, cut and reordered, which is the only reason it reads that
-way.
-
-The two model-written versions in `samples/` had the same rules applied and are worth comparing.
-Look at the hedge density in particular:
-
-| | hedge words per 100 |
-|---|---|
-| model-written, rewritten by the skill | 1.05 |
-| the original slop draft | 2.04 |
-| **the interviewed version** | **4.45** |
-
-Nobody was aiming at that number. It is simply how a person talks, and no amount of editing gets
-a model-written draft there. If you want prose that reads as yours, the lever is not the edit
-pass. It is doing the interview honestly and letting your own sentences carry the piece.
+The skill's behavioral claims can be tested separately from its prose examples.
+`evals/cases.json` defines factual-preservation, mode-boundary, medium-fit, false-positive, and
+authorship cases. `evals/JUDGE.md` defines a blinded comparison against a baseline or competing
+skill. Results should be published with model versions, prompts, outputs, judge identities, and
+failures; the repository does not claim a benchmark win before those results exist.
 
 ### Linting
 
