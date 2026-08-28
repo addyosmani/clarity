@@ -138,6 +138,17 @@ const description =
           </div>
         </div>
       </div>
+      <div class="row">
+        <p class="margin">Result</p>
+        <div class="col">
+          <p class="pangram-result">
+            <a href="https://www.pangram.com/history/a211e4fd-4b3f-4d2f-a2d2-726a96323949?ucc=NTu9jwxRrgn">
+              Pangram classified this version as 100% human-written.
+            </a>
+            <span>One result, shared as a point of comparison rather than a guarantee.</span>
+          </p>
+        </div>
+      </div>
     </section>
 
     <section class="sheet part" id="end">
@@ -223,6 +234,13 @@ const description =
   .specimen ul { margin: 0 0 1em; padding-left: 1.1rem; }
   .specimen li { margin-bottom: 0.4em; }
   .specimen li::marker { color: var(--fg-faint); }
+
+  .pangram-result {
+    display: grid; gap: 0.3rem;
+    font-family: var(--font-sans); font-size: 0.875rem; line-height: 1.55;
+    color: var(--fg-dim);
+  }
+  .pangram-result a { color: var(--fg-bright); text-underline-offset: 0.2em; }
 
   .back { margin-top: 2rem; font-family: var(--font-sans); font-size: 0.9375rem; }
   main { padding-bottom: clamp(4rem, 10vw, 7rem); }
