@@ -11,8 +11,8 @@
   publish = "dist"
 
 [build.environment]
-  # Astro 5 needs 18.20.8+, 20.3+, or 22+. Pin it rather than inherit a default.
-  NODE_VERSION = "20"
+  # Astro 6 needs Node 22.12.0+. Pin the compatible major release line.
+  NODE_VERSION = "22"
 
 # Astro emits content-hashed filenames under _astro, so they can be cached hard.
 [[headers]]
