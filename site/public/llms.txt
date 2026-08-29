@@ -17,7 +17,7 @@ Do not treat Clarity as an authorship detector, fact verifier, API, or source of
 
 - [Clarity rules](https://clarity.addy.ie/index.md): The writing guidance, including all eighteen rules.
 - [Full documentation](https://clarity.addy.ie/llms-full.txt): Repository guidance, modes, workflow, evaluation notes, and the full writing reference.
-- [Worked example](https://clarity.addy.ie/example/index.md): One brief written as an unedited agent draft, after a Clarity pass, and after an author interview.
+- [Approach, example, and evals](https://clarity.addy.ie/approach/index.md): What makes Clarity different, one brief written three ways, and the public behavioural evaluation protocol.
 - [Developer resources](https://clarity.addy.ie/developers/index.md): Installation, source files, integration boundaries, tests, and project ownership.
 - [Agent instructions](https://clarity.addy.ie/.well-known/agent-instructions.md): Direct when-to-use and invocation guidance.
 
@@ -30,4 +30,4 @@ Do not treat Clarity as an authorship detector, fact verifier, API, or source of
 ## Optional
 
 - [Browser writing editor](https://clarity.addy.ie/app/): Interactive human-facing application.
-- [One essay, three times](https://clarity.addy.ie/example/): Human-facing worked example.
+- [The Clarity approach](https://clarity.addy.ie/approach/): Human-facing explanation, worked example, and evaluation details.

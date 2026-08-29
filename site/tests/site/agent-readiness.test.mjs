@@ -82,7 +82,7 @@ test("known pages negotiate Markdown at the same URL", async () => {
 test("HTML remains the default and advertises its Markdown alternate", async () => {
   const context = contextFor();
   const response = await contentNegotiation(
-    new Request("https://clarity.addy.ie/example/", {
+    new Request("https://clarity.addy.ie/approach/", {
       headers: { Accept: "text/html, text/markdown;q=0.5" },
     }),
     context,
@@ -91,7 +91,7 @@ test("HTML remains the default and advertises its Markdown alternate", async () 
   assert.equal(response.status, 200);
   assert.equal(response.headers.get("Content-Type"), "text/html; charset=utf-8");
   assert.match(response.headers.get("Vary"), /Accept/);
-  assert.match(response.headers.get("Link"), /<\/example\/index\.md>/);
+  assert.match(response.headers.get("Link"), /<\/approach\/index\.md>/);
   assert.deepEqual(context.calls, ["origin"]);
 });
 
@@ -148,11 +148,13 @@ test("all human and machine-readable endpoints are emitted", async () => {
   const expected = [
     "index.html",
     "example/index.html",
+    "approach/index.html",
     "app/index.html",
     "developers/index.html",
     "404.html",
     "index.md",
     "example/index.md",
+    "approach/index.md",
     "app/index.md",
     "developers/index.md",
     "404.md",
@@ -203,4 +205,34 @@ test("custom 404 and developer page give agents honest recovery paths", async ()
   assert.match(notFound, /noindex, follow/);
   assert.match(developers, /Clarity by Addy Osmani: developer resources/);
   assert.match(developers, /does not currently expose an HTTP API/);
+});
+
+test("approach page explains differentiation and eval limits with public evidence", async () => {
+  const approach = await readDist("approach/index.html");
+  const approachMarkdown = await read("public/approach/index.md");
+  assert.match(approach, /What makes it different/);
+  assert.match(approach, /eleven public evaluation cases/i);
+  assert.match(approach, /do not yet claim a benchmark win/i);
+  assert.match(approach, /evals\/cases\.json/);
+  assert.match(approach, /evals\/JUDGE\.md/);
+  assert.match(approachMarkdown, /## One essay, three times/);
+  assert.match(approachMarkdown, /## What the evals cover/);
+});
+
+test("old example URLs retain a permanent path to the approach", async () => {
+  const config = await read("../netlify.toml");
+  const legacyPage = await readDist("example/index.html");
+  const sitemap = await readDist("sitemap-0.xml");
+  assert.match(config, /from = "\/example\/"[\s\S]*?to = "\/approach\/#example"[\s\S]*?status = 301/);
+  assert.match(legacyPage, /\/approach\/#example/);
+  assert.match(legacyPage, /noindex, follow/);
+  assert.match(sitemap, /https:\/\/clarity\.addy\.ie\/approach\//);
+  assert.doesNotMatch(sitemap, /https:\/\/clarity\.addy\.ie\/example\//);
+});
+
+test("homepage leads visitors to the approach page", async () => {
+  const homepage = await readDist("index.html");
+  assert.match(homepage, /href="\/approach\/"[^>]*>Approach<\/a>/);
+  assert.match(homepage, /href="\/approach\/#example"[^>]*>See the approach/);
+  assert.doesNotMatch(homepage, /href="\/example\/"[^>]*>Example<\/a>/);
 });

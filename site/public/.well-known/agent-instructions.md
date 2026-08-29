@@ -26,5 +26,6 @@ Read the installed `SKILL.md` before acting. Preserve the source's claims, uncer
 
 - Agent index: https://clarity.addy.ie/llms.txt
 - Full documentation: https://clarity.addy.ie/llms-full.txt
+- Approach, example, and evals: https://clarity.addy.ie/approach/
 - Developer resources: https://clarity.addy.ie/developers/
 - Source: https://github.com/addyosmani/clarity

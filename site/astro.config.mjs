@@ -6,7 +6,11 @@ import sitemap from '@astrojs/sitemap';
 export default defineConfig({
   site: 'https://clarity.addy.ie',
   trailingSlash: 'always',
-  integrations: [sitemap()],
+  integrations: [
+    sitemap({
+      filter: (page) => page !== 'https://clarity.addy.ie/example/',
+    }),
+  ],
   build: { inlineStylesheets: 'auto' },
   devToolbar: { enabled: false },
 });

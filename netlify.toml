@@ -14,6 +14,20 @@
   # Astro 5 needs 18.20.8+, 20.3+, or 22+. Pin it rather than inherit a default.
   NODE_VERSION = "20"
 
+# Keep old links to the standalone example working after it became part of
+# the fuller approach page.
+[[redirects]]
+  from = "/example"
+  to = "/approach/#example"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/example/"
+  to = "/approach/#example"
+  status = 301
+  force = true
+
 # Astro emits content-hashed filenames under _astro, so they can be cached hard.
 [[headers]]
   for = "/_astro/*"
