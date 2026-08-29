@@ -163,6 +163,8 @@ test("all human and machine-readable endpoints are emitted", async () => {
     ".well-known/agent-instructions.md",
     "robots.txt",
     "sitemap-index.xml",
+    "og.png",
+    "og-editor.png",
   ];
   for (const relativePath of expected) {
     const info = await stat(new URL(relativePath, distRoot));
@@ -195,6 +197,37 @@ test("homepage exposes identity JSON-LD and agent discovery links", async () => 
   const types = structuredData["@graph"].map((entry) => entry["@type"]);
   assert.deepEqual(types, ["Person", "SoftwareApplication", "WebSite"]);
   assert.equal(structuredData["@graph"][1].name, "Clarity by Addy Osmani");
+});
+
+test("the site and editor publish complete large-image sharing metadata", async () => {
+  const homepage = await readDist("index.html");
+  const editor = await readDist("app/index.html");
+
+  for (const [html, image, title] of [
+    [homepage, "https://clarity.addy.ie/og.png", "Clarity by Addy Osmani"],
+    [editor, "https://clarity.addy.ie/og-editor.png", "Clarity Writing Editor"],
+  ]) {
+    assert.match(html, new RegExp(`<meta property="og:title" content="${title}`));
+    assert.match(html, new RegExp(`<meta property="og:image" content="${image.replaceAll(".", "\\.")}"`));
+    assert.match(html, new RegExp(`<meta property="og:image:secure_url" content="${image.replaceAll(".", "\\.")}"`));
+    assert.match(html, /<meta property="og:image:type" content="image\/png"/);
+    assert.match(html, /<meta property="og:image:width" content="1200"/);
+    assert.match(html, /<meta property="og:image:height" content="630"/);
+    assert.match(html, /<meta property="og:image:alt" content="[^"].+"/);
+    assert.match(html, /<meta name="twitter:card" content="summary_large_image"/);
+    assert.match(html, new RegExp(`<meta name="twitter:image" content="${image.replaceAll(".", "\\.")}"`));
+    assert.match(html, /<meta name="twitter:image:alt" content="[^"].+"/);
+    assert.match(html, /<meta name="twitter:creator" content="@addyosmani"/);
+  }
+});
+
+test("both sharing images are valid 1200 by 630 PNG files", async () => {
+  for (const relativePath of ["og.png", "og-editor.png"]) {
+    const image = await readFile(new URL(relativePath, distRoot));
+    assert.equal(image.subarray(1, 4).toString(), "PNG", `${relativePath} should be a PNG`);
+    assert.equal(image.readUInt32BE(16), 1200, `${relativePath} should be 1200 pixels wide`);
+    assert.equal(image.readUInt32BE(20), 630, `${relativePath} should be 630 pixels tall`);
+  }
 });
 
 test("custom 404 and developer page give agents honest recovery paths", async () => {

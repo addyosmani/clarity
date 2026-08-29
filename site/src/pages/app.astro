@@ -1,6 +1,12 @@
 ---
 import EditorApp from "@/components/editor/EditorApp"
 import "@/styles/editor.css"
+
+const title = "Clarity Writing Editor - review AI tells, readability, and clarity"
+const description = "A private browser editor that highlights AI writing tells, readability issues, and broader Clarity review questions."
+const canonical = new URL("/app/", Astro.site ?? "https://clarity.addy.ie")
+const ogImage = new URL("/og-editor.png", canonical)
+const ogImageAlt = "Clarity Writing Editor with a document editor, pattern score, highlighted prose, and review findings."
 ---
 
 <!doctype html>
@@ -8,17 +14,39 @@ import "@/styles/editor.css"
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Clarity Writing Editor - clarity.addy.ie</title>
-    <meta
-      name="description"
-      content="A private writing editor for AI writing tells, readability, and Clarity review."
-    />
+    <title>{title}</title>
+    <meta name="description" content={description} />
     <meta name="application-name" content="Clarity by Addy Osmani" />
+    <meta name="author" content="Addy Osmani" />
     <meta name="theme-color" content="#fafafa" />
-    <link rel="canonical" href="https://clarity.addy.ie/app/" />
+    <link rel="canonical" href={canonical} />
     <link rel="alternate" type="text/markdown" href="/app/index.md" />
     <link rel="describedby" href="/llms.txt" />
     <link rel="icon" href="/favicon.svg" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:site_name" content="Clarity by Addy Osmani" />
+    <meta property="og:locale" content="en_GB" />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:secure_url" content={ogImage} />
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content={ogImageAlt} />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:domain" content="clarity.addy.ie" />
+    <meta name="twitter:url" content={canonical} />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:creator" content="@addyosmani" />
+    <meta name="twitter:site" content="@addyosmani" />
+    <meta name="twitter:image" content={ogImage} />
+    <meta name="twitter:image:alt" content={ogImageAlt} />
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link

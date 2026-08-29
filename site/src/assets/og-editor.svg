@@ -1,0 +1,97 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title description">
+  <title id="title">Clarity Writing Editor</title>
+  <desc id="description">A private browser editor for AI writing tells, readability, and Clarity review.</desc>
+
+  <rect width="1200" height="630" fill="#fafafa"/>
+  <path d="M0 1H1200M0 629H1200" stroke="#e5e5e5"/>
+
+  <g transform="translate(72 48)">
+    <rect width="32" height="32" rx="7" fill="#171717"/>
+    <path d="M16 7.5l1.55 5.2a3.2 3.2 0 0 0 2.15 2.15L25 16.4l-5.3 1.55a3.2 3.2 0 0 0-2.15 2.15L16 25.4l-1.55-5.3a3.2 3.2 0 0 0-2.15-2.15L7 16.4l5.3-1.55a3.2 3.2 0 0 0 2.15-2.15L16 7.5Z" fill="none" stroke="#fff" stroke-width="1.6" stroke-linejoin="round"/>
+    <text x="46" y="22" fill="#171717" font-family="Arial, Helvetica, sans-serif" font-size="17" font-weight="700" letter-spacing="-0.3">Clarity</text>
+    <path d="M112 7v18" stroke="#dedede"/>
+    <text x="127" y="22" fill="#737373" font-family="Arial, Helvetica, sans-serif" font-size="16">Writing Editor</text>
+  </g>
+
+  <g transform="translate(72 164)">
+    <text fill="#171717" font-family="Arial, Helvetica, sans-serif" font-size="68" font-weight="700" letter-spacing="-3.2">
+      <tspan x="0" y="0">Write with</tspan>
+      <tspan x="0" y="76">clarity.</tspan>
+    </text>
+    <text x="2" y="300" fill="#525252" font-family="Arial, Helvetica, sans-serif" font-size="22">
+      <tspan x="2" dy="0">Review AI writing tells, readability, and the</tspan>
+      <tspan x="2" dy="31">questions pattern matching cannot settle.</tspan>
+    </text>
+    <g transform="translate(2 380)">
+      <rect width="356" height="40" rx="7" fill="#fff" stroke="#e5e5e5"/>
+      <circle cx="21" cy="20" r="4" fill="#16a34a"/>
+      <text x="35" y="25" fill="#525252" font-family="Arial, Helvetica, sans-serif" font-size="14">Private in your browser</text>
+      <path d="M210 10v20" stroke="#e5e5e5"/>
+      <text x="225" y="25" fill="#737373" font-family="Arial, Helvetica, sans-serif" font-size="13">clarity.addy.ie/app</text>
+    </g>
+  </g>
+
+  <g transform="translate(684 112)">
+    <rect width="444" height="444" rx="13" fill="#fff" stroke="#dedede"/>
+    <rect x="0.5" y="0.5" width="443" height="47" rx="12.5" fill="#f7f7f7"/>
+    <path d="M0 47.5h444" stroke="#e5e5e5"/>
+    <rect x="17" y="14" width="20" height="20" rx="5" fill="#171717"/>
+    <path d="M27 18.7l.8 2.8a1.8 1.8 0 0 0 1.2 1.2l2.8.8-2.8.8a1.8 1.8 0 0 0-1.2 1.2l-.8 2.8-.8-2.8a1.8 1.8 0 0 0-1.2-1.2l-2.8-.8 2.8-.8a1.8 1.8 0 0 0 1.2-1.2l.8-2.8Z" fill="none" stroke="#fff" stroke-width="1"/>
+    <text x="47" y="28" fill="#171717" font-family="Arial, Helvetica, sans-serif" font-size="11" font-weight="700">Clarity</text>
+    <text x="87" y="28" fill="#8f8f8f" font-family="Arial, Helvetica, sans-serif" font-size="10">Writing Editor</text>
+    <circle cx="354" cy="24" r="3" fill="#16a34a"/>
+    <text x="363" y="28" fill="#737373" font-family="Arial, Helvetica, sans-serif" font-size="9">Private</text>
+
+    <rect x="0.5" y="48" width="99" height="395" fill="#f7f7f7"/>
+    <path d="M99.5 48v395M334.5 48v395" stroke="#e5e5e5"/>
+    <text x="15" y="70" fill="#737373" font-family="Arial, Helvetica, sans-serif" font-size="8" font-weight="700" letter-spacing="1">OVERVIEW</text>
+    <rect x="14" y="84" width="71" height="75" rx="7" fill="#fff" stroke="#e5e5e5"/>
+    <text x="24" y="116" fill="#171717" font-family="Arial, Helvetica, sans-serif" font-size="25" font-weight="700">18</text>
+    <text x="24" y="134" fill="#737373" font-family="Arial, Helvetica, sans-serif" font-size="7">Surface score</text>
+    <rect x="24" y="144" width="51" height="3" rx="1.5" fill="#ededed"/>
+    <rect x="24" y="144" width="15" height="3" rx="1.5" fill="#ca8a04"/>
+    <rect x="14" y="171" width="33" height="57" rx="7" fill="#fff" stroke="#e5e5e5"/>
+    <rect x="52" y="171" width="33" height="57" rx="7" fill="#fff" stroke="#e5e5e5"/>
+    <text x="22" y="196" fill="#171717" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="700">7</text>
+    <text x="60" y="196" fill="#171717" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="700">9</text>
+    <text x="20" y="215" fill="#737373" font-family="Arial, Helvetica, sans-serif" font-size="6">Tells</text>
+    <text x="58" y="215" fill="#737373" font-family="Arial, Helvetica, sans-serif" font-size="6">Grade</text>
+
+    <rect x="114" y="67" width="206" height="348" rx="8" fill="#fff" stroke="#e5e5e5"/>
+    <text x="128" y="89" fill="#525252" font-family="Arial, Helvetica, sans-serif" font-size="7">Saved locally</text>
+    <text x="280" y="89" fill="#8f8f8f" font-family="Arial, Helvetica, sans-serif" font-size="7">124 words</text>
+    <path d="M114 99h206" stroke="#ededed"/>
+    <g fill="#404040" font-family="Arial, Helvetica, sans-serif" font-size="8.5">
+      <text x="137" y="132">A clear sentence gives the reader</text>
+      <text x="137" y="149">something concrete to work with.</text>
+      <text x="137" y="184">The report was carefully written by</text>
+      <text x="137" y="201">the committee under pressure.</text>
+      <text x="137" y="236">Name the source. Explain why the</text>
+      <text x="137" y="253">result matters and what changed.</text>
+      <text x="137" y="288">Keep the useful detail. Cut the filler.</text>
+    </g>
+    <rect x="193" y="139" width="44" height="4" rx="2" fill="#ea580c" opacity=".45"/>
+    <rect x="198" y="191" width="50" height="4" rx="2" fill="#0d9488" opacity=".45"/>
+    <rect x="137" y="243" width="60" height="4" rx="2" fill="#e11d48" opacity=".42"/>
+    <rect x="137" y="298" width="86" height="5" rx="2.5" fill="#facc15" opacity=".28"/>
+
+    <g transform="translate(346 63)">
+      <rect width="82" height="25" rx="5" fill="#ededed" stroke="#e5e5e5"/>
+      <rect x="2" y="2" width="28" height="21" rx="4" fill="#fff"/>
+      <text x="9" y="16" fill="#171717" font-family="Arial, Helvetica, sans-serif" font-size="7">Tells</text>
+      <text x="36" y="16" fill="#737373" font-family="Arial, Helvetica, sans-serif" font-size="7">Clarity</text>
+      <text x="64" y="16" fill="#737373" font-family="Arial, Helvetica, sans-serif" font-size="7">Stats</text>
+    </g>
+    <text x="348" y="112" fill="#737373" font-family="Arial, Helvetica, sans-serif" font-size="7" font-weight="700" letter-spacing=".7">AI TELLS</text>
+    <g font-family="Arial, Helvetica, sans-serif" font-size="7" fill="#525252">
+      <circle cx="352" cy="130" r="3" fill="#c026d3"/><text x="361" y="133">AI phrases</text><text x="418" y="133" fill="#8f8f8f">2</text>
+      <circle cx="352" cy="151" r="3" fill="#ea580c"/><text x="361" y="154">AI words</text><text x="418" y="154" fill="#8f8f8f">3</text>
+      <circle cx="352" cy="172" r="3" fill="#e11d48"/><text x="361" y="175">Structures</text><text x="418" y="175" fill="#8f8f8f">2</text>
+    </g>
+    <text x="348" y="208" fill="#737373" font-family="Arial, Helvetica, sans-serif" font-size="7" font-weight="700" letter-spacing=".7">FINDINGS</text>
+    <rect x="346" y="221" width="82" height="55" rx="6" fill="#fff" stroke="#e5e5e5"/>
+    <rect x="346" y="221" width="3" height="55" rx="1.5" fill="#ea580c"/>
+    <text x="356" y="240" fill="#171717" font-family="Arial, Helvetica, sans-serif" font-size="7">“carefully”</text>
+    <text x="356" y="256" fill="#737373" font-family="Arial, Helvetica, sans-serif" font-size="6">Check the modifier.</text>
+  </g>
+</svg>
