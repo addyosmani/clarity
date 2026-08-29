@@ -6,17 +6,19 @@ interface Props {
   description?: string;
   ogImage?: string;
   ogImageAlt?: string;
+  faqItems?: Array<{ question: string; answer: string }>;
   markdownPath?: string;
   skipHref?: string;
   skipLabel?: string;
   noindex?: boolean;
 }
 const {
-  title = 'Clarity by Addy Osmani - writing that earns its reader',
+  title = 'Clarity: AI writing skill and editor | Addy Osmani',
   description =
-    'Eighteen rules for writing that carries a point of view, and an Agent Skill that applies them when you draft, rewrite, or review prose with a coding agent.',
+    'An open-source writing skill for AI agents and a private browser editor for clearer, more human prose without invented facts or flattened voice.',
   ogImage = '/og.png',
   ogImageAlt = 'Clarity - writing that earns its reader. Eighteen rules and an Agent Skill for stronger prose.',
+  faqItems = [],
   markdownPath,
   skipHref = '#rules',
   skipLabel = 'Skip to the rules',
@@ -29,6 +31,7 @@ const resolvedMarkdownPath = markdownPath ??
   (Astro.url.pathname === '/' ? '/index.md' : `${Astro.url.pathname.replace(/\/$/, '')}/index.md`);
 const productDescription =
   'An open-source Agent Skill and private browser editor for writing that is useful, clear, and recognisably the author\'s own.';
+const pageId = `${canonical.href}#webpage`;
 const structuredData = {
   '@context': 'https://schema.org',
   '@graph': [
@@ -49,6 +52,12 @@ const structuredData = {
       applicationCategory: 'DeveloperApplication',
       operatingSystem: 'Any',
       isAccessibleForFree: true,
+      featureList: [
+        'Draft, rewrite, review, and interview modes for AI agents',
+        'Source-fidelity and authorship safeguards',
+        'Medium-aware writing guidance',
+        'Private in-browser writing review',
+      ],
       license: 'https://opensource.org/license/mit',
       author: { '@id': 'https://addyosmani.com/#person' },
       offers: {
@@ -62,10 +71,45 @@ const structuredData = {
       '@type': 'WebSite',
       '@id': 'https://clarity.addy.ie/#website',
       name: 'Clarity by Addy Osmani',
+      alternateName: 'Clarity',
       url: 'https://clarity.addy.ie/',
       description: productDescription,
       publisher: { '@id': 'https://addyosmani.com/#person' },
+      inLanguage: 'en',
     },
+    {
+      '@type': 'WebPage',
+      '@id': pageId,
+      name: title,
+      description,
+      url: canonical.href,
+      isPartOf: { '@id': 'https://clarity.addy.ie/#website' },
+      about: { '@id': 'https://clarity.addy.ie/#software' },
+      primaryImageOfPage: {
+        '@type': 'ImageObject',
+        url: ogImageUrl.href,
+        width: 1200,
+        height: 630,
+      },
+      inLanguage: 'en',
+    },
+    ...(faqItems.length
+      ? [
+          {
+            '@type': 'FAQPage',
+            '@id': `${canonical.href}#faq`,
+            isPartOf: { '@id': pageId },
+            mainEntity: faqItems.map((item) => ({
+              '@type': 'Question',
+              name: item.question,
+              acceptedAnswer: {
+                '@type': 'Answer',
+                text: item.answer,
+              },
+            })),
+          },
+        ]
+      : []),
   ],
 };
 ---
@@ -84,7 +128,12 @@ const structuredData = {
     <title>{title}</title>
     <meta name="description" content={description} />
     <meta name="application-name" content="Clarity by Addy Osmani" />
-    {noindex && <meta name="robots" content="noindex, follow" />}
+    <meta
+      name="robots"
+      content={noindex
+        ? 'noindex, follow'
+        : 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1'}
+    />
     <meta name="theme-color" content="#0c0c0e" />
 
     <meta property="og:type" content="website" />

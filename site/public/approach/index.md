@@ -8,6 +8,12 @@ Clarity checks familiar AI-shaped phrases and structures, but treats them as pro
 
 Source discipline is a hard boundary. Clarity marks a gap or asks the author rather than inventing a vivid detail. A writing sample can control cadence, vocabulary, and formality, but cannot supply facts or experiences for a new piece. Its small core routes to focused references only when the task needs them.
 
+## When to use Clarity
+
+Use Clarity when an AI agent needs to draft from an interview, rewrite an existing piece without inventing facts, or review a draft without changing it. It is designed for essays, articles, newsletters, documentation, talks, launch copy, and other reader-facing work where meaning and voice need to survive the edit.
+
+Clarity covers the familiar territory of AI humanizers, anti-slop prompts, and Claude Code writing skills, but sets a broader target. It catches stock phrases and repetitive structures, then asks whether the draft has a real source, a useful claim, the right register, and something only this author could say. It never treats a detector score as proof of good writing.
+
 ## One essay, three times
 
 The same brief, a short essay about what it means to be human, was written three ways.
@@ -35,5 +41,31 @@ The protocol freezes the model and settings, uses fresh randomized contexts, bli
 
 - [Evaluation cases](https://github.com/addyosmani/clarity/blob/main/evals/cases.json)
 - [Blinded judging protocol](https://github.com/addyosmani/clarity/blob/main/evals/JUDGE.md)
+
+## Questions people ask
+
+### What is the Clarity AI writing skill?
+
+Clarity is an open-source Agent Skill that helps an AI agent draft, rewrite, review, or co-write prose. It starts with reader needs, source material, and the job of the piece before polishing sentences.
+
+### Is Clarity an AI humanizer or AI detector?
+
+Clarity can find and revise familiar AI writing patterns, but it is not an authorship detector and does not promise undetectable text. Its goal is clearer, more specific writing that preserves facts, uncertainty, medium, and the author's voice.
+
+### Which AI agents can use Clarity?
+
+Clarity can be installed in Claude Code, Codex, and other agents that support skill instructions. The repository also includes optional command wrappers for its interview, rewrite, and review modes.
+
+### What kinds of writing can Clarity help with?
+
+Clarity supports essays, articles, newsletters, documentation, talks, launch copy, email, UI text, academic prose, and other reader-facing writing. Its advice changes with the medium instead of forcing every draft into one house style.
+
+### Does Clarity have evals?
+
+Yes. The public suite has eleven behavioural cases covering factual fidelity, medium fit, authorship boundaries, false positives, mode boundaries, and resistance to instructions hidden in source text. Clarity does not yet claim a benchmark win.
+
+### Is the Clarity Writing Editor private?
+
+Yes. The browser editor runs its checks locally and does not upload the draft. It reviews AI writing tells, readability, repetition, passive voice, and broader Clarity questions.
 
 Return to the [Clarity agent index](https://clarity.addy.ie/llms.txt).

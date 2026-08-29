@@ -3,9 +3,13 @@ import Base from '../layouts/Base.astro';
 import Install from '../components/Install.astro';
 import VideoEssay from '../components/VideoEssay.astro';
 import { essay, sections, further } from '../data/rules';
+
+const title = 'Clarity: AI writing skill and editor | Addy Osmani';
+const description =
+  'An open-source writing skill for AI agents and a private browser editor for clearer, more human prose without invented facts or flattened voice.';
 ---
 
-<Base>
+<Base title={title} description={description}>
   <header class="head" id="top">
     <div class="sheet head-in">
       <a class="brand" href="#top">clarity</a>
@@ -21,16 +25,23 @@ import { essay, sections, further } from '../data/rules';
       <div class="row">
         <div class="col">
           <img src="clarity-logo-yellow.png" alt="Clarity by Addy Osmani logo" width="300" style="height: auto;" />
+          <p class="kicker">Open-source AI writing skill and private editor</p>
           <h1>Clarity is writing that <span class="squiggle">earns</span> its reader.</h1>
           <p class="lede">
             Clear writing is a matter of understanding what your reader needs, and giving it to
-            them in a way that they can understand. Eighteen rules, and an Agent Skill that
-            applies them when you draft, rewrite, or review prose.
+            them in a way that they can understand. Clarity turns eighteen rules into an Agent
+            Skill for drafting, rewriting, or reviewing prose.
           </p>
           <Install />
           <p class="seealso">
             <a href="/approach/#example">See the approach: one essay, three times</a> - the same brief as an
             unedited draft, after a pass with the skill, and after it interviewed the author.
+          </p>
+          <p class="product-note">
+            Use Clarity with Claude Code, Codex, and other agents that can load skill
+            instructions. Or use the <a href="/app/">private browser editor</a> to review AI
+            writing tells, readability, and gaps in substance. The goal is better writing that
+            remains recognisably yours, not prose engineered to fool an AI detector.
           </p>
         </div>
       </div>
@@ -166,6 +177,15 @@ MIT. Built by <a href="https://addyosmani.com">Addy Osmani</a>. Sibling site:
 
   /* ---------- Masthead ---------- */
   .masthead { padding: clamp(1.5rem, 3vw, 7rem) 0 clamp(2.5rem, 7vw, 4rem); }
+  .kicker {
+    margin: 1.4rem 0 0.75rem;
+    font-family: var(--font-sans);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+  }
   h1 {
     font-family: var(--font-sans);
     font-size: clamp(2.25rem, 6.4vw, 3.5rem);
@@ -190,6 +210,18 @@ MIT. Built by <a href="https://addyosmani.com">Addy Osmani</a>. Sibling site:
   .seealso :global(a) {
     color: var(--fg-bright);
     text-decoration-color: var(--accent);
+  }
+  .product-note {
+    margin: 1.15rem 0 0;
+    max-width: 36rem;
+    font-family: var(--font-sans);
+    font-size: 0.875rem;
+    line-height: 1.65;
+    color: var(--fg-dim);
+  }
+  .product-note :global(a) {
+    color: var(--fg-muted);
+    text-decoration-color: var(--accent-dim);
   }
 
   /* ---------- Prose ---------- */

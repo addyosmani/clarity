@@ -187,7 +187,7 @@ test("homepage exposes identity JSON-LD and agent discovery links", async () => 
   const homepage = await readDist("index.html");
   assert.match(homepage, /rel="alternate" type="text\/markdown" href="\/index\.md"/);
   assert.match(homepage, /rel="describedby" href="\/llms\.txt"/);
-  assert.match(homepage, /<title>Clarity by Addy Osmani/);
+  assert.match(homepage, /<title>Clarity: AI writing skill and editor \| Addy Osmani<\/title>/);
 
   const scriptMatch = homepage.match(
     /<script type="application\/ld\+json">([\s\S]*?)<\/script>/,
@@ -195,8 +195,88 @@ test("homepage exposes identity JSON-LD and agent discovery links", async () => 
   assert.ok(scriptMatch, "homepage should contain JSON-LD");
   const structuredData = JSON.parse(scriptMatch[1]);
   const types = structuredData["@graph"].map((entry) => entry["@type"]);
-  assert.deepEqual(types, ["Person", "SoftwareApplication", "WebSite"]);
+  assert.deepEqual(types, ["Person", "SoftwareApplication", "WebSite", "WebPage"]);
   assert.equal(structuredData["@graph"][1].name, "Clarity by Addy Osmani");
+  assert.equal(structuredData["@graph"][3].url, "https://clarity.addy.ie/");
+});
+
+test("public pages use distinct search metadata and generous preview directives", async () => {
+  const pages = [
+    {
+      path: "index.html",
+      title: "Clarity: AI writing skill and editor | Addy Osmani",
+      phrase: "Open-source AI writing skill and private editor",
+    },
+    {
+      path: "approach/index.html",
+      title: "AI writing skill approach, examples, and evals | Clarity",
+      phrase: "AI humanizer",
+    },
+    {
+      path: "app/index.html",
+      title: "Clarity AI Writing Editor: AI tells and readability",
+      phrase: "Clarity Writing Editor",
+    },
+    {
+      path: "developers/index.html",
+      title: "Clarity developer resources | Addy Osmani",
+      phrase: "Clarity by Addy Osmani: developer resources",
+    },
+  ];
+
+  const titles = new Set();
+  const descriptions = new Set();
+  for (const page of pages) {
+    const html = await readDist(page.path);
+    assert.match(html, new RegExp(`<title>${page.title.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}<\\/title>`));
+    assert.match(html, new RegExp(page.phrase));
+    assert.match(
+      html,
+      /<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"/,
+    );
+
+    const title = html.match(/<title>(.*?)<\/title>/)?.[1];
+    const description = html.match(/<meta name="description" content="([^"]+)"/)?.[1];
+    assert.ok(title && title.length <= 60, `${page.path} should have a concise title`);
+    assert.ok(description && description.length >= 100 && description.length <= 165);
+    titles.add(title);
+    descriptions.add(description);
+  }
+  assert.equal(titles.size, pages.length);
+  assert.equal(descriptions.size, pages.length);
+});
+
+test("approach page pairs visible search-intent answers with FAQ structured data", async () => {
+  const approach = await readDist("approach/index.html");
+  assert.match(approach, /anti-slop prompt/);
+  assert.match(approach, /Claude Code writing\s+skill/);
+  assert.match(approach, /It never treats a detector score as proof of good writing/);
+
+  const scriptMatch = approach.match(
+    /<script type="application\/ld\+json">([\s\S]*?)<\/script>/,
+  );
+  assert.ok(scriptMatch, "approach should contain JSON-LD");
+  const structuredData = JSON.parse(scriptMatch[1]);
+  const faq = structuredData["@graph"].find((entry) => entry["@type"] === "FAQPage");
+  assert.ok(faq, "approach should describe its visible FAQ");
+  assert.equal(faq.mainEntity.length, 6);
+  for (const item of faq.mainEntity) {
+    assert.match(approach, new RegExp(item.name.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")));
+    assert.ok(item.acceptedAnswer.text.length > 80);
+  }
+});
+
+test("editor identifies itself as a free private WebApplication", async () => {
+  const editor = await readDist("app/index.html");
+  const scriptMatch = editor.match(
+    /<script type="application\/ld\+json">([\s\S]*?)<\/script>/,
+  );
+  assert.ok(scriptMatch, "editor should contain JSON-LD");
+  const structuredData = JSON.parse(scriptMatch[1]);
+  assert.equal(structuredData["@type"], "WebApplication");
+  assert.equal(structuredData.url, "https://clarity.addy.ie/app/");
+  assert.equal(structuredData.isAccessibleForFree, true);
+  assert.match(structuredData.featureList.join(" "), /AI writing tell review/);
 });
 
 test("the site and editor publish complete large-image sharing metadata", async () => {
@@ -204,8 +284,8 @@ test("the site and editor publish complete large-image sharing metadata", async 
   const editor = await readDist("app/index.html");
 
   for (const [html, image, title] of [
-    [homepage, "https://clarity.addy.ie/og.png", "Clarity by Addy Osmani"],
-    [editor, "https://clarity.addy.ie/og-editor.png", "Clarity Writing Editor"],
+    [homepage, "https://clarity.addy.ie/og.png", "Clarity: AI writing skill"],
+    [editor, "https://clarity.addy.ie/og-editor.png", "Clarity AI Writing Editor"],
   ]) {
     assert.match(html, new RegExp(`<meta property="og:title" content="${title}`));
     assert.match(html, new RegExp(`<meta property="og:image" content="${image.replaceAll(".", "\\.")}"`));
@@ -249,7 +329,16 @@ test("approach page explains differentiation and eval limits with public evidenc
   assert.match(approach, /evals\/cases\.json/);
   assert.match(approach, /evals\/JUDGE\.md/);
   assert.match(approachMarkdown, /## One essay, three times/);
+  assert.match(approachMarkdown, /## When to use Clarity/);
   assert.match(approachMarkdown, /## What the evals cover/);
+  assert.match(approachMarkdown, /## Questions people ask/);
+});
+
+test("the core guidance remains complete and duplicate Markdown URLs are not indexed", async () => {
+  const homepage = await readDist("index.html");
+  const config = await read("../netlify.toml");
+  assert.equal((homepage.match(/<article class="row rule"/g) ?? []).length, 18);
+  assert.match(config, /for = "\/\*\.md"[\s\S]*?X-Robots-Tag\s*= "noindex"/);
 });
 
 test("old example URLs retain a permanent path to the approach", async () => {

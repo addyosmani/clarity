@@ -2,11 +2,44 @@
 import EditorApp from "@/components/editor/EditorApp"
 import "@/styles/editor.css"
 
-const title = "Clarity Writing Editor - review AI tells, readability, and clarity"
-const description = "A private browser editor that highlights AI writing tells, readability issues, and broader Clarity review questions."
+const title = "Clarity AI Writing Editor: AI tells and readability"
+const description = "Review AI writing tells, readability, repetition, passive voice, and deeper clarity issues in a free private editor that runs in your browser."
 const canonical = new URL("/app/", Astro.site ?? "https://clarity.addy.ie")
 const ogImage = new URL("/og-editor.png", canonical)
 const ogImageAlt = "Clarity Writing Editor with a document editor, pattern score, highlighted prose, and review findings."
+const structuredData = {
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "@id": "https://clarity.addy.ie/app/#application",
+  name: "Clarity Writing Editor",
+  alternateName: "Clarity AI Writing Editor",
+  url: canonical.href,
+  description,
+  applicationCategory: "UtilitiesApplication",
+  operatingSystem: "Any",
+  browserRequirements: "Requires JavaScript and a modern web browser.",
+  isAccessibleForFree: true,
+  featureList: [
+    "AI writing tell review",
+    "Readability and sentence-level analysis",
+    "Clarity review prompts",
+    "Local draft persistence",
+    "Agent editing prompt export",
+  ],
+  image: ogImage.href,
+  author: {
+    "@type": "Person",
+    name: "Addy Osmani",
+    url: "https://addyosmani.com",
+  },
+  offers: {
+    "@type": "Offer",
+    price: "0",
+    priceCurrency: "USD",
+  },
+  sameAs: "https://github.com/addyosmani/clarity",
+  inLanguage: "en",
+}
 ---
 
 <!doctype html>
@@ -18,11 +51,14 @@ const ogImageAlt = "Clarity Writing Editor with a document editor, pattern score
     <meta name="description" content={description} />
     <meta name="application-name" content="Clarity by Addy Osmani" />
     <meta name="author" content="Addy Osmani" />
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
     <meta name="theme-color" content="#fafafa" />
     <link rel="canonical" href={canonical} />
     <link rel="alternate" type="text/markdown" href="/app/index.md" />
     <link rel="describedby" href="/llms.txt" />
     <link rel="icon" href="/favicon.svg" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="sitemap" href="/sitemap-index.xml" />
 
     <meta property="og:type" content="website" />
     <meta property="og:title" content={title} />
@@ -46,6 +82,7 @@ const ogImageAlt = "Clarity Writing Editor with a document editor, pattern score
     <meta name="twitter:site" content="@addyosmani" />
     <meta name="twitter:image" content={ogImage} />
     <meta name="twitter:image:alt" content={ogImageAlt} />
+    <script type="application/ld+json" set:html={JSON.stringify(structuredData)} />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />

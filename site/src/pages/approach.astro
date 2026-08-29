@@ -3,12 +3,50 @@ import Base from '../layouts/Base.astro';
 import Install from '../components/Install.astro';
 import { drafts } from '../data/samples';
 
-const title = 'The Clarity approach - examples and evals';
+const title = 'AI writing skill approach, examples, and evals | Clarity';
 const description =
-  'How Clarity approaches writing, what makes the skill different, a worked example, and the public evaluation protocol behind its claims.';
+  'See how Clarity improves AI-assisted writing beyond banned-word lists, with source fidelity, medium-aware guidance, worked examples, and public evals.';
+const faqItems = [
+  {
+    question: 'What is the Clarity AI writing skill?',
+    answer:
+      'Clarity is an open-source Agent Skill that helps an AI agent draft, rewrite, review, or co-write prose. It starts with reader needs, source material, and the job of the piece before polishing sentences.',
+  },
+  {
+    question: 'Is Clarity an AI humanizer or AI detector?',
+    answer:
+      'Clarity can find and revise familiar AI writing patterns, but it is not an authorship detector and does not promise undetectable text. Its goal is clearer, more specific writing that preserves facts, uncertainty, medium, and the author\'s voice.',
+  },
+  {
+    question: 'Which AI agents can use Clarity?',
+    answer:
+      'Clarity can be installed in Claude Code, Codex, and other agents that support skill instructions. The repository also includes optional command wrappers for its interview, rewrite, and review modes.',
+  },
+  {
+    question: 'What kinds of writing can Clarity help with?',
+    answer:
+      'Clarity supports essays, articles, newsletters, documentation, talks, launch copy, email, UI text, academic prose, and other reader-facing writing. Its advice changes with the medium instead of forcing every draft into one house style.',
+  },
+  {
+    question: 'Does Clarity have evals?',
+    answer:
+      'Yes. The public suite has eleven behavioural cases covering factual fidelity, medium fit, authorship boundaries, false positives, mode boundaries, and resistance to instructions hidden in source text. Clarity does not yet claim a benchmark win.',
+  },
+  {
+    question: 'Is the Clarity Writing Editor private?',
+    answer:
+      'Yes. The browser editor runs its checks locally and does not upload the draft. It reviews AI writing tells, readability, repetition, passive voice, and broader Clarity questions.',
+  },
+];
 ---
 
-<Base title={title} description={description} skipHref="#summary" skipLabel="Skip to the approach summary">
+<Base
+  title={title}
+  description={description}
+  faqItems={faqItems}
+  skipHref="#summary"
+  skipLabel="Skip to the approach summary"
+>
   <header class="head">
     <div class="sheet head-in">
       <a class="brand" href="/">clarity</a>
@@ -21,6 +59,7 @@ const description =
     <section class="sheet masthead" id="summary" data-part="The approach">
       <div class="row">
         <div class="col">
+          <p class="kicker">AI writing skill, worked examples, and evals</p>
           <h1>The approach.</h1>
           <p class="lede">
             Clarity works on the source of a piece before polishing its surface. It asks what the
@@ -54,6 +93,28 @@ const description =
             eval suite; we do not yet claim a benchmark win.
           </p>
           <Install />
+        </div>
+      </div>
+    </section>
+
+    <section class="sheet part" id="when-to-use" data-part="When to use it">
+      <div class="row"><div class="col"><h2 class="plain">When to use Clarity</h2></div></div>
+      <div class="row">
+        <p class="margin">Use cases</p>
+        <div class="col prose">
+          <p>
+            Use Clarity when you want an AI agent to draft from an interview, rewrite an existing
+            piece without inventing facts, or review a draft without changing it. It is designed
+            for consequential reader-facing work: essays, articles, newsletters, documentation,
+            talks, launch copy, and messages where meaning and voice need to survive the edit.
+          </p>
+          <p>
+            If you came looking for an AI humanizer, an anti-slop prompt, or a Claude Code writing
+            skill, Clarity addresses the same recognisable problem but sets a broader target. It
+            catches stock phrases and repetitive structures, then asks whether the draft has a
+            real source, a useful claim, the right register, and something only this author could
+            say. It never treats a detector score as proof of good writing.
+          </p>
         </div>
       </div>
     </section>
@@ -289,6 +350,21 @@ const description =
         </div>
       </div>
     </section>
+
+    <section class="sheet part faq" id="faq" data-part="Questions">
+      <div class="row"><div class="col"><h2 class="plain">Questions people ask</h2></div></div>
+      <div class="row">
+        <p class="margin">FAQ</p>
+        <div class="col faq-list">
+          {faqItems.map((item) => (
+            <details>
+              <summary>{item.question}</summary>
+              <p>{item.answer}</p>
+            </details>
+          ))}
+        </div>
+      </div>
+    </section>
   </main>
 </Base>
 
@@ -316,6 +392,15 @@ const description =
   .repo:hover { color: var(--fg-bright); }
 
   .masthead { padding: clamp(3.5rem, 10vw, 6rem) 0 clamp(1.5rem, 4vw, 2.5rem); }
+  .kicker {
+    margin: 0 0 0.8rem;
+    font-family: var(--font-sans);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+  }
   h1 {
     font-family: var(--font-sans); font-size: clamp(2.1rem, 5.6vw, 3.1rem);
     font-weight: 600; letter-spacing: -0.035em; color: var(--fg-bright);
@@ -378,6 +463,23 @@ const description =
   .pangram-result a { color: var(--fg-bright); text-underline-offset: 0.2em; }
 
   .back { margin-top: 2rem; font-family: var(--font-sans); font-size: 0.9375rem; }
+  .faq { padding-bottom: clamp(1rem, 4vw, 2.5rem); }
+  .faq-list { border-top: 1px solid var(--border); }
+  .faq-list details { border-bottom: 1px solid var(--border); }
+  .faq-list summary {
+    cursor: pointer;
+    padding: 1rem 2rem 1rem 0;
+    font-family: var(--font-sans);
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--fg-bright);
+  }
+  .faq-list p {
+    margin: 0;
+    padding: 0 0 1.1rem;
+    max-width: 39rem;
+    color: var(--fg-muted);
+  }
   main { padding-bottom: clamp(4rem, 10vw, 7rem); }
 
   @media (max-width: 46rem) {
