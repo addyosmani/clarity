@@ -19,6 +19,8 @@ Then pick a mode:
 [Full walkthrough below.](#three-ways-to-use-it) [`samples/`](samples/) has two essays before and after a pass, plus one built from an interview with its transcript.
 
 The site has a fuller explanation of the [approach, worked example, and evaluation protocol](https://clarity.addy.ie/approach/).
+It also has step-by-step [tutorials for review, rewrite, and interview mode](https://clarity.addy.ie/tutorials/)
+in Claude Code and Codex.
 
 Prefer working in the browser? The [Clarity Writing Editor](https://clarity.addy.ie/app/)
 reviews AI writing tells, readability, and the broader Clarity questions without uploading your draft.

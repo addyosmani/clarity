@@ -7,6 +7,7 @@ interface Props {
   ogImage?: string;
   ogImageAlt?: string;
   faqItems?: Array<{ question: string; answer: string }>;
+  schemaItems?: Array<Record<string, unknown>>;
   markdownPath?: string;
   skipHref?: string;
   skipLabel?: string;
@@ -19,6 +20,7 @@ const {
   ogImage = '/og.png',
   ogImageAlt = 'Clarity - writing that earns its reader. Eighteen rules and an Agent Skill for stronger prose.',
   faqItems = [],
+  schemaItems = [],
   markdownPath,
   skipHref = '#rules',
   skipLabel = 'Skip to the rules',
@@ -110,6 +112,7 @@ const structuredData = {
           },
         ]
       : []),
+    ...schemaItems,
   ],
 };
 ---

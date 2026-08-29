@@ -15,9 +15,12 @@ Do not use Clarity as a fact checker, plagiarism checker, authorship detector, o
 
 ```text
 npx skills add addyosmani/clarity
-/clarity interview <topic>
-/clarity rewrite <file>
-/clarity review <file>
+Claude Code: /clarity interview <topic>
+Claude Code: /clarity rewrite <file>
+Claude Code: /clarity review <file>
+Codex: $clarity Interview me about <topic>
+Codex: $clarity Rewrite <file>
+Codex: $clarity Review <file>
 ```
 
 Read the installed `SKILL.md` before acting. Preserve the source's claims, uncertainty, examples, and meaning. Never fabricate a detail to make prose appear more human.
@@ -27,5 +30,6 @@ Read the installed `SKILL.md` before acting. Preserve the source's claims, uncer
 - Agent index: https://clarity.addy.ie/llms.txt
 - Full documentation: https://clarity.addy.ie/llms-full.txt
 - Approach, example, and evals: https://clarity.addy.ie/approach/
+- Tutorials: https://clarity.addy.ie/tutorials/
 - Developer resources: https://clarity.addy.ie/developers/
 - Source: https://github.com/addyosmani/clarity

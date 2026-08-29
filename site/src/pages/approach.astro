@@ -51,6 +51,7 @@ const faqItems = [
     <div class="sheet head-in">
       <a class="brand" href="/">clarity</a>
       <span class="here" data-here aria-hidden="true"></span>
+      <a class="navlink" href="/tutorials/">Tutorials</a>
       <a class="repo" href="/">The rules</a>
     </div>
   </header>
@@ -388,8 +389,8 @@ const faqItems = [
   }
   .here[data-on] { opacity: 1; transform: none; }
   .here[data-on]::before { content: '/\00a0\00a0'; color: var(--fg-faint); }
-  .repo { color: var(--fg-muted); text-decoration: none; flex: none; }
-  .repo:hover { color: var(--fg-bright); }
+  .repo, .navlink { color: var(--fg-muted); text-decoration: none; flex: none; }
+  .repo:hover, .navlink:hover { color: var(--fg-bright); }
 
   .masthead { padding: clamp(3.5rem, 10vw, 6rem) 0 clamp(1.5rem, 4vw, 2.5rem); }
   .kicker {

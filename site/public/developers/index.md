@@ -18,6 +18,7 @@ The installed package exposes `SKILL.md`, optional command wrappers, editing and
 - Agent instructions: https://clarity.addy.ie/.well-known/agent-instructions.md
 - Behavioural evaluations: https://github.com/addyosmani/clarity/tree/main/evals
 - Approach, worked example, and eval details: https://clarity.addy.ie/approach/
+- Review, rewrite, and interview tutorials: https://clarity.addy.ie/tutorials/
 
 Clarity does not currently expose an HTTP API, OpenAPI specification, authentication flow, or MCP server. The supported interfaces are the installable Agent Skill and the client-side browser editor.
 

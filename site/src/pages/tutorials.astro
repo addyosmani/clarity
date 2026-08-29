@@ -1,0 +1,500 @@
+---
+import Base from '../layouts/Base.astro';
+import Install from '../components/Install.astro';
+
+const title = 'Clarity tutorials: review, rewrite, and interview';
+const description =
+  'Three concrete tutorials for using the Clarity AI writing skill in Claude Code or Codex to review, rewrite, or rebuild an existing draft with the author in control.';
+
+const tutorialSchema = {
+  '@type': 'ItemList',
+  '@id': 'https://clarity.addy.ie/tutorials/#tutorials',
+  name: 'Clarity skill tutorials',
+  description,
+  numberOfItems: 3,
+  itemListElement: [
+    {
+      '@type': 'ListItem',
+      position: 1,
+      item: {
+        '@type': 'HowTo',
+        name: 'Review an existing draft without changing it',
+        url: 'https://clarity.addy.ie/tutorials/#review',
+        tool: ['Claude Code or Codex', 'Clarity Agent Skill'],
+        step: [
+          'Open the project that contains the draft.',
+          'Ask Clarity to review the named file.',
+          'Read the piece-level diagnosis and passage-level findings.',
+          'Answer any ask-author questions, then choose which suggestions to apply.',
+        ],
+      },
+    },
+    {
+      '@type': 'ListItem',
+      position: 2,
+      item: {
+        '@type': 'HowTo',
+        name: 'Rewrite an existing draft with source safeguards',
+        url: 'https://clarity.addy.ie/tutorials/#rewrite',
+        tool: ['Claude Code or Codex', 'Clarity Agent Skill', 'Git'],
+        step: [
+          'Save a recoverable copy of the draft.',
+          'Tell Clarity what must survive the edit.',
+          'Run the rewrite on the named file.',
+          'Inspect the diff and answer only the open author questions.',
+        ],
+      },
+    },
+    {
+      '@type': 'ListItem',
+      position: 3,
+      item: {
+        '@type': 'HowTo',
+        name: 'Interview the author to rebuild a hollow draft',
+        url: 'https://clarity.addy.ie/tutorials/#interview',
+        tool: ['Claude Code or Codex', 'Clarity Agent Skill'],
+        step: [
+          'Give Clarity the topic and existing draft as background.',
+          'Answer the interview in one untidied take.',
+          'Answer up to three targeted follow-up questions.',
+          'Ask for a new draft and inspect its provenance note and open items.',
+        ],
+      },
+    },
+  ],
+};
+---
+
+<Base
+  title={title}
+  description={description}
+  schemaItems={[tutorialSchema]}
+  markdownPath="/tutorials/index.md"
+  skipHref="#start"
+  skipLabel="Skip to the tutorials"
+>
+  <header class="head">
+    <div class="sheet head-in">
+      <a class="brand" href="/">clarity</a>
+      <span class="here" data-here aria-hidden="true">Tutorials</span>
+      <a class="navlink" href="/approach/">Approach</a>
+      <a class="navlink" href="/app/">Editor</a>
+      <a class="navlink rules-link" href="/#rules">The rules</a>
+    </div>
+  </header>
+
+  <main id="start">
+    <section class="sheet masthead" data-part="Tutorials">
+      <div class="row">
+        <div class="col">
+          <p class="kicker">Hands-on guides for Claude Code and Codex</p>
+          <h1>Three ways to use Clarity.</h1>
+          <p class="lede">
+            Start with a draft you care about. Clarity can review it without touching the file,
+            rewrite it while protecting the source, or interview you when the draft needs material
+            only you can supply. These tutorials use the same small example so you can see where
+            the agent works and where you make the call.
+          </p>
+          <nav class="tutorial-jumps" aria-label="Tutorials on this page">
+            <a href="#review">Review</a>
+            <a href="#rewrite">Rewrite</a>
+            <a href="#interview">Interview</a>
+          </nav>
+        </div>
+      </div>
+    </section>
+
+    <section class="sheet setup" id="install" aria-labelledby="install-title">
+      <div class="row">
+        <p class="margin">Setup</p>
+        <div class="col prose">
+          <h2 id="install-title">Install the skill once</h2>
+          <p>
+            Run the installer in a terminal, then open Claude Code or Codex in the directory that
+            contains your draft.
+          </p>
+          <Install />
+          <p>
+            The examples use <code>/clarity</code> in Claude Code and <code>$clarity</code> in
+            Codex. If your agent does not expose a command shortcut, ask it in plain language to
+            <q>use the clarity skill in review mode</q>. The mode and file path matter more than
+            the shortcut.
+          </p>
+
+          <h3>Our starting draft</h3>
+          <p>
+            Save this as <code>incident-reviews.md</code>, or use one of your own drafts. This
+            example is grammatical and empty in a familiar way. It gives the skill something real
+            to diagnose without pretending that a list of banned words is the whole problem.
+          </p>
+          <pre><code># Why incident reviews matter
+
+Incident reviews play a crucial role in modern engineering teams.
+They provide valuable insights and help organisations learn from failure.
+By fostering a culture of continuous improvement, teams can leverage
+these reviews to build more resilient systems.
+
+Ultimately, incident reviews are not just about looking back. They are
+about creating a stronger and more collaborative future.</code></pre>
+        </div>
+      </div>
+    </section>
+
+    <section class="sheet tutorial" id="review" data-part="Review">
+      <div class="row tutorial-title">
+        <p class="margin num">01</p>
+        <div class="col">
+          <p class="mode">Review</p>
+          <h2>Find the real problems without changing the draft</h2>
+          <p class="lede compact">
+            Use review mode when you want a diagnosis before deciding what should change. The
+            source file stays untouched.
+          </p>
+        </div>
+      </div>
+
+      <div class="row">
+        <p class="margin">Run it</p>
+        <div class="col prose">
+          <p>In Claude Code:</p>
+          <pre><code>/clarity review incident-reviews.md</code></pre>
+          <p>In Codex:</p>
+          <pre><code>$clarity Review incident-reviews.md. Do not modify the file.</code></pre>
+          <p>
+            Clarity first identifies the job of the piece, its reader, and the largest material
+            problem. It then reports only the passages worth your attention. An illustrative part
+            of the response might look like this:
+          </p>
+          <pre class="output"><code>Job:          Short article for engineering managers
+Substance:    The draft says reviews help, but contains no incident,
+              mechanism, or decision that changed because of one.
+Top fixes:    1. Add the event that triggered the piece.
+              2. Replace the generic benefit with what changed afterward.
+
+Passage:      "Incident reviews play a crucial role..."
+Verdict:      ask-author
+Pattern:      Importance without mechanism
+Suggestion:   Which review changed a decision, owner, or system?
+Safety check: Needs author evidence. Do not invent the incident.</code></pre>
+        </div>
+      </div>
+
+      <div class="row">
+        <p class="margin">Your turn</p>
+        <div class="col prose decision">
+          <h3>The human decision happens before the edit</h3>
+          <p>
+            <code>ask-author</code> means the model has reached the edge of the source. Answer with
+            the detail you are comfortable publishing, reject the question, or choose the plain
+            fallback. For example:
+          </p>
+          <pre><code>The trigger was three incident reviews in one quarter that all ended
+with "improve monitoring." The third review changed when Priya asked
+who would be paged if the same cache failed again. Keep this as a
+review. Update the findings, but do not edit the file.</code></pre>
+          <p>
+            Review mode remains a conversation. You can ask why a passage was marked
+            <code>revise</code>, keep a sentence the skill questioned, or stop after the first two
+            fixes. Nothing is applied until you ask for a separate rewrite.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="sheet tutorial" id="rewrite" data-part="Rewrite">
+      <div class="row tutorial-title">
+        <p class="margin num">02</p>
+        <div class="col">
+          <p class="mode">Rewrite</p>
+          <h2>Improve the draft while keeping its claims intact</h2>
+          <p class="lede compact">
+            Use rewrite mode when the source has enough material and you want the agent to edit the
+            named file. Give it the facts and phrases that must survive.
+          </p>
+        </div>
+      </div>
+
+      <div class="row">
+        <p class="margin">Prepare</p>
+        <div class="col prose">
+          <p>
+            Put the draft in version control or make a copy first. A diff is the quickest way to
+            catch a stronger claim, a lost qualifier, or a sentence that no longer sounds like you.
+          </p>
+          <pre><code>git status --short
+git diff -- incident-reviews.md</code></pre>
+          <p>
+            Add the specific material from the review to the draft, or include it in your request.
+            Then name the constraints:
+          </p>
+          <pre><code>/clarity rewrite incident-reviews.md
+
+The reader is an engineering manager. Preserve the phrase "the review
+became a status meeting," the date, Priya's quoted question, and every
+link. If a stronger claim needs information outside the draft, ask me.</code></pre>
+          <p>In Codex, the same request begins with <code>$clarity Rewrite</code>.</p>
+        </div>
+      </div>
+
+      <div class="row">
+        <p class="margin">Inspect</p>
+        <div class="col prose">
+          <h3>Read the diff as an editor</h3>
+          <p>
+            For a named file, Clarity writes the finished prose to the file and reports a short
+            change note in chat. It may leave a question where the honest edit needs a number,
+            example, or decision that the source does not contain.
+          </p>
+          <pre><code>git diff --word-diff -- incident-reviews.md</code></pre>
+          <p>Check four things before accepting the pass:</p>
+          <ul>
+            <li>Dates, numbers, quotations, links, and attribution kept the same force.</li>
+            <li>A possible result did not become a guaranteed one.</li>
+            <li>The useful line you would have kept was not polished flat.</li>
+            <li>The ending stops when the concrete consequence ends.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="row">
+        <p class="margin">Your turn</p>
+        <div class="col prose decision">
+          <h3>Make the final corrections narrow</h3>
+          <p>
+            Answer open questions and protect any sentence the diff weakened. A useful follow-up
+            names exactly what the agent may change:
+          </p>
+          <pre><code>The number was 11 reviews, not 12. Restore "the review became a status
+meeting" exactly as written. Apply only those two changes, then stop.</code></pre>
+          <p>
+            Repeated polishing passes tend to converge on the same smooth voice. One rewrite, one
+            source check, and one small correction pass is usually enough.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="sheet tutorial" id="interview" data-part="Interview">
+      <div class="row tutorial-title">
+        <p class="margin num">03</p>
+        <div class="col">
+          <p class="mode">Interview</p>
+          <h2>Put the missing author back into a hollow draft</h2>
+          <p class="lede compact">
+            Use interview mode when surface editing would produce cleaner emptiness. The agent
+            waits for your material before it writes.
+          </p>
+        </div>
+      </div>
+
+      <div class="row">
+        <p class="margin">Begin</p>
+        <div class="col prose">
+          <p>
+            Give Clarity the topic and tell it that the existing file is background, not a set of
+            instructions. Ask it to wait:
+          </p>
+          <pre><code>/clarity interview Why our incident reviews stopped working
+
+Use incident-reviews.md as background. Interview me before drafting.
+Keep the existing file unchanged.</code></pre>
+          <p>In Codex:</p>
+          <pre><code>$clarity Interview me about why our incident reviews stopped working.
+Read incident-reviews.md as background, but do not rewrite it yet.</code></pre>
+          <p>
+            The first response should invite one untidied answer. Talk for three to five minutes,
+            paste a rough transcript, or stream-type without organising it first. You do not need
+            to answer a polished questionnaire.
+          </p>
+          <pre class="output"><code>We ran 11 reviews before I noticed the pattern. The meeting had become
+a status update for leadership. Priya interrupted the third cache
+incident and asked, "Who gets paged next time?" Nobody could answer.
+That was the moment the review became useful again...</code></pre>
+        </div>
+      </div>
+
+      <div class="row">
+        <p class="margin">Follow up</p>
+        <div class="col prose">
+          <h3>Expect a few questions, not a substitute autobiography</h3>
+          <p>
+            Clarity may ask up to three questions about unsupported parts of the draft. Good
+            questions locate a specific gap: what changed after Priya's question, what you would
+            concede to someone who prefers status reviews, or what the reader should do on Monday.
+          </p>
+          <p>
+            Skip anything private. A plain omission is better than a blurred anecdote. The skill
+            should leave <code>[TK: precise question]</code> when the piece still needs a fact only
+            you have.
+          </p>
+          <pre><code>Use my answers to draft incident-reviews.interview.md. Keep the original
+file. Preserve Priya's question verbatim. Show me any larger rewording
+that changes the thought instead of silently applying it.</code></pre>
+        </div>
+      </div>
+
+      <div class="row">
+        <p class="margin">Your turn</p>
+        <div class="col prose decision">
+          <h3>The provenance note is part of the handoff</h3>
+          <p>
+            The draft should be followed in chat by a short account of where its material came
+            from. This is more useful than a detector percentage because you can inspect the
+            process it describes.
+          </p>
+          <pre class="output"><code>Author material: The 11 reviews, the cache incident, Priya's question,
+and the distinction between a review and a status meeting.
+Model contribution: Organisation and connective prose.
+Open items: [TK: what changed in the on-call runbook afterward?]</code></pre>
+          <p>
+            Read the new draft beside your transcript. Keep the phrases that still sound like the
+            moment you described. Answer the open item if it matters, or cut the sentence that
+            needs it.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="sheet choose" id="choose" data-part="Choose a mode">
+      <div class="row">
+        <p class="margin">Next</p>
+        <div class="col prose">
+          <h2>Which mode should you start with?</h2>
+          <ul>
+            <li>Start with <a href="#review">review</a> when you want to understand the draft before changing it.</li>
+            <li>Use <a href="#rewrite">rewrite</a> when the source is sound and you are ready to inspect an edit.</li>
+            <li>Choose <a href="#interview">interview</a> when the draft lacks your examples, judgment, or language.</li>
+          </ul>
+          <p>
+            You can move between them. A review may reveal that the draft needs an interview. An
+            interview-built draft can go through one rewrite after you have checked its source.
+            Keep the mode explicit and the next decision stays easy to see.
+          </p>
+          <p class="back"><a href="/approach/">Read why Clarity works this way</a></p>
+        </div>
+      </div>
+    </section>
+  </main>
+</Base>
+
+<style>
+  .head {
+    position: sticky; top: 0; z-index: 20; height: var(--head-h);
+    background: color-mix(in srgb, var(--bg) 82%, transparent);
+    backdrop-filter: blur(14px) saturate(150%);
+    border-bottom: 1px solid var(--border);
+  }
+  .head-in {
+    height: 100%; display: flex; align-items: center; gap: 0.75rem;
+    font-family: var(--font-sans); font-size: 0.8125rem;
+  }
+  .brand { font-weight: 600; color: var(--fg-bright); text-decoration: none; }
+  .here {
+    flex: 1; min-width: 0; color: var(--fg-dim); font-size: 0.72rem;
+    letter-spacing: 0.09em; text-transform: uppercase; white-space: nowrap;
+    overflow: hidden; text-overflow: ellipsis;
+  }
+  .here::before { content: '/\00a0\00a0'; color: var(--fg-faint); }
+  .navlink { color: var(--fg-muted); text-decoration: none; flex: none; }
+  .navlink:hover { color: var(--fg-bright); }
+
+  .masthead { padding: clamp(3.5rem, 10vw, 6rem) 0 clamp(2.5rem, 7vw, 4rem); }
+  .kicker, .mode {
+    margin: 0 0 0.8rem; font-family: var(--font-sans); font-size: 0.75rem;
+    font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent);
+  }
+  h1 {
+    font-family: var(--font-sans); font-size: clamp(2.2rem, 5.8vw, 3.25rem);
+    font-weight: 600; letter-spacing: -0.035em; color: var(--fg-bright);
+  }
+  .lede { margin: 1.3rem 0 0; font-size: 1.1875rem; color: var(--fg-muted); }
+  .compact { margin-top: 0.8rem; }
+  .tutorial-jumps {
+    display: flex; flex-wrap: wrap; gap: 0.55rem; margin-top: 1.6rem;
+    font-family: var(--font-sans); font-size: 0.8125rem;
+  }
+  .tutorial-jumps a {
+    padding: 0.4rem 0.7rem; color: var(--fg-muted); text-decoration: none;
+    border: 1px solid var(--border-strong); border-radius: var(--r-md);
+  }
+  .tutorial-jumps a:hover { color: var(--fg-bright); border-color: var(--accent-dim); }
+
+  .setup { padding: 0 0 clamp(3rem, 8vw, 5rem); }
+  .setup h2, .choose h2 {
+    margin-bottom: 1rem; font-family: var(--font-sans); font-size: 1.4rem;
+    letter-spacing: -0.02em; color: var(--fg-bright);
+  }
+  .prose p { margin: 0 0 1.15em; }
+  .prose p:last-child { margin-bottom: 0; }
+  .prose h3 {
+    margin: 2rem 0 0.7rem; font-family: var(--font-sans); font-size: 1.05rem;
+    letter-spacing: -0.012em; color: var(--fg-bright);
+  }
+  .prose ul { padding-left: 1.2rem; }
+  .prose li { margin: 0.5rem 0; }
+  .prose li::marker { color: var(--accent); }
+  .prose :global(q) { quotes: '“' '”'; color: var(--fg-muted); }
+  .prose :global(a), .back :global(a) { color: var(--fg-bright); }
+
+  pre {
+    margin: 1.1rem 0 1.5rem; padding: 1rem 1.1rem; overflow-x: auto;
+    background: var(--surface); border: 1px solid var(--border); border-radius: var(--r-md);
+    font-size: 0.82rem; line-height: 1.6; color: var(--fg);
+  }
+  pre code { padding: 0; border: 0; background: transparent; font-size: inherit; }
+  pre.output { border-left: 2px solid var(--accent-dim); color: var(--fg-muted); }
+
+  .tutorial {
+    padding: clamp(3.5rem, 9vw, 6rem) 0;
+    border-top: 1px solid var(--border);
+    scroll-margin-top: calc(var(--head-h) + 1rem);
+  }
+  .tutorial .row + .row { margin-top: 2.7rem; }
+  .tutorial-title h2 {
+    font-family: var(--font-sans); font-size: clamp(1.75rem, 4.5vw, 2.35rem);
+    letter-spacing: -0.03em; color: var(--fg-bright);
+  }
+  .num {
+    padding-top: 0.35rem; text-align: right; font-family: var(--font-mono);
+    font-size: 0.85rem; color: var(--fg-dim);
+  }
+  .decision {
+    padding: 1.3rem 1.4rem 1.5rem; background: var(--accent-wash);
+    border: 1px solid var(--accent-dim); border-radius: var(--r-lg);
+  }
+  .decision h3 { margin-top: 0; }
+  .decision pre { background: color-mix(in srgb, var(--surface) 80%, transparent); }
+
+  .choose {
+    padding: clamp(3.5rem, 9vw, 6rem) 0 clamp(5rem, 12vw, 8rem);
+    border-top: 1px solid var(--border);
+  }
+  .back { margin-top: 2rem; font-family: var(--font-sans); font-size: 0.9rem; }
+
+  @media (max-width: 46rem) {
+    .rules-link { display: none; }
+    .margin { display: none; }
+    .tutorial .row + .row { margin-top: 2.2rem; }
+    .decision { padding: 1.15rem; }
+    pre { margin-inline: -0.2rem; padding: 0.9rem; font-size: 0.76rem; }
+  }
+</style>
+
+<script>
+  const label = document.querySelector<HTMLElement>('[data-here]');
+  const parts = [...document.querySelectorAll<HTMLElement>('[data-part]')];
+  if (label && parts.length && 'IntersectionObserver' in window) {
+    const seen = new Map<Element, boolean>();
+    const io = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) seen.set(entry.target, entry.isIntersecting);
+        const active = parts.filter((part) => seen.get(part));
+        const current = active.length ? active[active.length - 1] : null;
+        const name = current?.dataset.part ?? 'Tutorials';
+        if (label.textContent !== name) label.textContent = name;
+      },
+      { rootMargin: '-25% 0px -70% 0px' },
+    );
+    parts.forEach((part) => io.observe(part));
+  }
+</script>

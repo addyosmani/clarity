@@ -10,6 +10,8 @@ const MARKDOWN_ROUTES = new Map([
   ["/example/index.html", "/example/index.md"],
   ["/approach", "/approach/index.md"],
   ["/approach/index.html", "/approach/index.md"],
+  ["/tutorials", "/tutorials/index.md"],
+  ["/tutorials/index.html", "/tutorials/index.md"],
   ["/app", "/app/index.md"],
   ["/app/index.html", "/app/index.md"],
   ["/developers", "/developers/index.md"],
@@ -22,6 +24,7 @@ The requested path does not exist.
 
 - [Clarity home](https://clarity.addy.ie/)
 - [Approach, example, and evals](https://clarity.addy.ie/approach/)
+- [Tutorials](https://clarity.addy.ie/tutorials/)
 - [Agent index](https://clarity.addy.ie/llms.txt)
 - [Sitemap](https://clarity.addy.ie/sitemap-index.xml)
 - [Developer resources](https://clarity.addy.ie/developers/)

@@ -18,6 +18,7 @@ Do not treat Clarity as an authorship detector, fact verifier, API, or source of
 - [Clarity rules](https://clarity.addy.ie/index.md): The writing guidance, including all eighteen rules.
 - [Full documentation](https://clarity.addy.ie/llms-full.txt): Repository guidance, modes, workflow, evaluation notes, and the full writing reference.
 - [Approach, example, and evals](https://clarity.addy.ie/approach/index.md): What makes Clarity different, one brief written three ways, and the public behavioural evaluation protocol.
+- [Tutorials](https://clarity.addy.ie/tutorials/index.md): Concrete Claude Code and Codex walkthroughs for review, rewrite, and interview mode, including the author's decision points.
 - [Developer resources](https://clarity.addy.ie/developers/index.md): Installation, source files, integration boundaries, tests, and project ownership.
 - [Agent instructions](https://clarity.addy.ie/.well-known/agent-instructions.md): Direct when-to-use and invocation guidance.
 

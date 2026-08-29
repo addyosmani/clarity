@@ -107,6 +107,18 @@ test("explicit index.html URLs use the same negotiated representation", async ()
   assert.deepEqual(context.calls, ["https://clarity.addy.ie/app/index.md"]);
 });
 
+test("tutorials negotiate their Markdown representation", async () => {
+  const context = contextFor();
+  const response = await contentNegotiation(
+    new Request("https://clarity.addy.ie/tutorials/", {
+      headers: { Accept: "text/markdown" },
+    }),
+    context,
+  );
+  assert.equal(response.headers.get("Content-Type"), "text/markdown; charset=utf-8");
+  assert.deepEqual(context.calls, ["https://clarity.addy.ie/tutorials/index.md"]);
+});
+
 test("unsupported representations receive 406", async () => {
   const response = await contentNegotiation(
     new Request("https://clarity.addy.ie/developers/", {
@@ -149,12 +161,14 @@ test("all human and machine-readable endpoints are emitted", async () => {
     "index.html",
     "example/index.html",
     "approach/index.html",
+    "tutorials/index.html",
     "app/index.html",
     "developers/index.html",
     "404.html",
     "index.md",
     "example/index.md",
     "approach/index.md",
+    "tutorials/index.md",
     "app/index.md",
     "developers/index.md",
     "404.md",
@@ -180,6 +194,7 @@ test("llms.txt follows the proposed order and contains when-to-use guidance", as
   assert.match(lines[2], /^> /);
   assert.ok(llms.indexOf("## When to use this") > llms.indexOf("> Clarity"));
   assert.match(llms, /Developer resources/);
+  assert.match(llms, /Tutorials/);
   assert.match(llms, /does not currently expose an API/);
 });
 
@@ -211,6 +226,11 @@ test("public pages use distinct search metadata and generous preview directives"
       path: "approach/index.html",
       title: "AI writing skill approach, examples, and evals | Clarity",
       phrase: "AI humanizer",
+    },
+    {
+      path: "tutorials/index.html",
+      title: "Clarity tutorials: review, rewrite, and interview",
+      phrase: "Hands-on guides for Claude Code and Codex",
     },
     {
       path: "app/index.html",
@@ -279,6 +299,38 @@ test("editor identifies itself as a free private WebApplication", async () => {
   assert.match(structuredData.featureList.join(" "), /AI writing tell review/);
 });
 
+test("tutorials show all three human-in-the-loop workflows", async () => {
+  const tutorials = await readDist("tutorials/index.html");
+  const tutorialsMarkdown = await read("public/tutorials/index.md");
+
+  assert.match(tutorials, /id="review"/);
+  assert.match(tutorials, /id="rewrite"/);
+  assert.match(tutorials, /id="interview"/);
+  assert.match(tutorials, /\/clarity review incident-reviews\.md/);
+  assert.match(tutorials, /\$clarity Review incident-reviews\.md/);
+  assert.match(tutorials, /ask-author/);
+  assert.match(tutorials, /git diff --word-diff/);
+  assert.match(tutorials, /The provenance note is part of the handoff/);
+
+  const scriptMatch = tutorials.match(
+    /<script type="application\/ld\+json">([\s\S]*?)<\/script>/,
+  );
+  assert.ok(scriptMatch, "tutorials should contain JSON-LD");
+  const structuredData = JSON.parse(scriptMatch[1]);
+  const tutorialList = structuredData["@graph"].find(
+    (entry) => entry["@type"] === "ItemList",
+  );
+  assert.equal(tutorialList.numberOfItems, 3);
+  assert.deepEqual(
+    tutorialList.itemListElement.map((entry) => entry.item["@type"]),
+    ["HowTo", "HowTo", "HowTo"],
+  );
+
+  assert.match(tutorialsMarkdown, /## 1\. Review an existing draft/);
+  assert.match(tutorialsMarkdown, /## 2\. Rewrite an existing draft/);
+  assert.match(tutorialsMarkdown, /## 3\. Interview the author/);
+});
+
 test("the site and editor publish complete large-image sharing metadata", async () => {
   const homepage = await readDist("index.html");
   const editor = await readDist("app/index.html");
@@ -315,6 +367,7 @@ test("custom 404 and developer page give agents honest recovery paths", async ()
   const developers = await readDist("developers/index.html");
   assert.match(notFound, /llms\.txt/);
   assert.match(notFound, /sitemap-index\.xml/);
+  assert.match(notFound, /\/tutorials\//);
   assert.match(notFound, /noindex, follow/);
   assert.match(developers, /Clarity by Addy Osmani: developer resources/);
   assert.match(developers, /does not currently expose an HTTP API/);
@@ -355,6 +408,15 @@ test("old example URLs retain a permanent path to the approach", async () => {
 test("homepage leads visitors to the approach page", async () => {
   const homepage = await readDist("index.html");
   assert.match(homepage, /href="\/approach\/"[^>]*>Approach<\/a>/);
+  assert.match(homepage, /href="\/tutorials\/"[^>]*>Tutorials<\/a>/);
   assert.match(homepage, /href="\/approach\/#example"[^>]*>See the approach/);
+  assert.ok(
+    homepage.indexOf('href="/approach/"') < homepage.indexOf('href="/tutorials/"'),
+    "Tutorials should follow Approach in the navigation",
+  );
+  assert.ok(
+    homepage.indexOf('href="/tutorials/"') < homepage.indexOf('href="/app/"'),
+    "Tutorials should come before Editor in the navigation",
+  );
   assert.doesNotMatch(homepage, /href="\/example\/"[^>]*>Example<\/a>/);
 });

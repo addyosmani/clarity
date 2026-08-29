@@ -15,6 +15,7 @@ const description =
       <a class="brand" href="#top">clarity</a>
       <span class="here" data-here aria-hidden="true"></span>
       <a class="navlink" href="/approach/">Approach</a>
+      <a class="navlink" href="/tutorials/">Tutorials</a>
       <a class="navlink" href="/app/">Editor</a>
       <a class="repo" href="https://github.com/addyosmani/clarity">GitHub Repo</a>
     </div>
@@ -342,6 +343,7 @@ MIT. Built by <a href="https://addyosmani.com">Addy Osmani</a>. Sibling site:
   main { padding-bottom: clamp(4rem, 10vw, 7rem); }
 
   @media (max-width: 46rem) {
+    .repo { display: none; }
     .rule .num { display: none; }
     .rule h3 .n { display: inline; }
     .part .margin { display: none; }
