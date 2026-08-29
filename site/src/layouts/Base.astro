@@ -5,15 +5,66 @@ interface Props {
   title?: string;
   description?: string;
   ogImage?: string;
+  markdownPath?: string;
+  skipHref?: string;
+  skipLabel?: string;
+  noindex?: boolean;
 }
 const {
-  title = 'clarity — writing that earns its reader',
+  title = 'Clarity by Addy Osmani - writing that earns its reader',
   description =
     'Eighteen rules for writing that carries a point of view, and an Agent Skill that applies them when you draft, rewrite, or review prose with a coding agent.',
   ogImage = '/og.png',
+  markdownPath,
+  skipHref = '#rules',
+  skipLabel = 'Skip to the rules',
+  noindex = false,
 } = Astro.props;
 
 const canonical = new URL(Astro.url.pathname, Astro.site ?? 'https://clarity.addy.ie');
+const resolvedMarkdownPath = markdownPath ??
+  (Astro.url.pathname === '/' ? '/index.md' : `${Astro.url.pathname.replace(/\/$/, '')}/index.md`);
+const productDescription =
+  'An open-source Agent Skill and private browser editor for writing that is useful, clear, and recognisably the author\'s own.';
+const structuredData = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'Person',
+      '@id': 'https://addyosmani.com/#person',
+      name: 'Addy Osmani',
+      url: 'https://addyosmani.com',
+      sameAs: ['https://github.com/addyosmani'],
+    },
+    {
+      '@type': 'SoftwareApplication',
+      '@id': 'https://clarity.addy.ie/#software',
+      name: 'Clarity by Addy Osmani',
+      alternateName: ['Clarity Agent Skill', 'Clarity Writing Editor'],
+      description: productDescription,
+      url: 'https://clarity.addy.ie/',
+      applicationCategory: 'DeveloperApplication',
+      operatingSystem: 'Any',
+      isAccessibleForFree: true,
+      license: 'https://opensource.org/license/mit',
+      author: { '@id': 'https://addyosmani.com/#person' },
+      offers: {
+        '@type': 'Offer',
+        price: '0',
+        priceCurrency: 'USD',
+      },
+      sameAs: ['https://github.com/addyosmani/clarity'],
+    },
+    {
+      '@type': 'WebSite',
+      '@id': 'https://clarity.addy.ie/#website',
+      name: 'Clarity by Addy Osmani',
+      url: 'https://clarity.addy.ie/',
+      description: productDescription,
+      publisher: { '@id': 'https://addyosmani.com/#person' },
+    },
+  ],
+};
 ---
 
 <!doctype html>
@@ -24,29 +75,34 @@ const canonical = new URL(Astro.url.pathname, Astro.site ?? 'https://clarity.add
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <link rel="canonical" href={canonical} />
+    <link rel="alternate" type="text/markdown" href={resolvedMarkdownPath} />
+    <link rel="describedby" href="/llms.txt" />
 
     <title>{title}</title>
     <meta name="description" content={description} />
+    <meta name="application-name" content="Clarity by Addy Osmani" />
+    {noindex && <meta name="robots" content="noindex, follow" />}
     <meta name="theme-color" content="#0c0c0e" />
 
     <meta property="og:type" content="website" />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonical} />
-    <meta property="og:site_name" content="clarity" />
+    <meta property="og:site_name" content="Clarity by Addy Osmani" />
     <meta property="og:locale" content="en_GB" />
     <meta property="og:image" content={new URL(ogImage, canonical)} />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
-    <meta property="og:image:alt" content="clarity — writing that earns its reader. Install with npx skills add addyosmani/clarity" />
+    <meta property="og:image:alt" content="clarity - writing that earns its reader. Install with npx skills add addyosmani/clarity" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:creator" content="@addyosmani" />
     <meta name="twitter:site" content="@addyosmani" />
     <meta name="twitter:image" content={new URL(ogImage, canonical)} />
-    <meta name="twitter:image:alt" content="clarity — writing that earns its reader. Install with npx skills add addyosmani/clarity" />
+    <meta name="twitter:image:alt" content="clarity - writing that earns its reader. Install with npx skills add addyosmani/clarity" />
     <meta name="author" content="Addy Osmani" />
+    <script type="application/ld+json" set:html={JSON.stringify(structuredData)} />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -57,7 +113,7 @@ const canonical = new URL(Astro.url.pathname, Astro.site ?? 'https://clarity.add
     <link rel="sitemap" href="/sitemap-index.xml" />
   </head>
   <body>
-    <a href="#rules" class="skip-link">Skip to the rules</a>
+    <a href={skipHref} class="skip-link">{skipLabel}</a>
     <slot />
   </body>
 </html>

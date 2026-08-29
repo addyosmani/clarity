@@ -1,3 +1,5 @@
 dist/
 .astro/
 node_modules/
+public/index.md
+public/llms-full.txt

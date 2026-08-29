@@ -1,0 +1,41 @@
+---
+import Base from '../layouts/Base.astro';
+---
+
+<Base
+  title="Page not found - Clarity by Addy Osmani"
+  description="The requested Clarity page does not exist."
+  markdownPath="/404.md"
+  skipHref="#content"
+  skipLabel="Skip to recovery links"
+  noindex={true}
+>
+  <main class="sheet" id="content">
+    <div class="row">
+      <p class="margin">404</p>
+      <div class="col prose">
+        <a class="brand" href="/">clarity</a>
+        <h1>That page does not exist.</h1>
+        <p>Try one of these known paths:</p>
+        <ul>
+          <li><a href="/">Clarity home and the eighteen rules</a></li>
+          <li><a href="/llms.txt">Agent index</a></li>
+          <li><a href="/sitemap-index.xml">Sitemap</a></li>
+          <li><a href="/developers/">Developer resources</a></li>
+          <li><a href="/app/">Browser writing editor</a></li>
+        </ul>
+      </div>
+    </div>
+  </main>
+</Base>
+
+<style>
+  main { min-height: 100vh; display: grid; align-content: center; padding-block: 3rem; }
+  .brand {
+    display: inline-block; margin-bottom: 2rem; color: var(--accent);
+    font-family: var(--font-sans); font-size: 0.85rem; font-weight: 600;
+    text-decoration: none;
+  }
+  h1 { font-family: var(--font-sans); font-size: clamp(2rem, 6vw, 3.4rem); }
+  li + li { margin-top: 0.45rem; }
+</style>

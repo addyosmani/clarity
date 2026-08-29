@@ -25,3 +25,10 @@
   [headers.values]
     X-Content-Type-Options = "nosniff"
     Referrer-Policy        = "strict-origin-when-cross-origin"
+
+[[headers]]
+  for = "/*.md"
+  [headers.values]
+    Content-Type           = "text/markdown; charset=utf-8"
+    X-Content-Type-Options = "nosniff"
+    Link                   = "</llms.txt>; rel=\"describedby\""

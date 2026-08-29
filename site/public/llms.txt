@@ -1,0 +1,33 @@
+# Clarity by Addy Osmani
+
+> Clarity is an open-source Agent Skill and private browser editor for writing that is useful, clear, and recognisably the author's own. It was created by Addy Osmani and is available at https://clarity.addy.ie.
+
+Install the skill with `npx skills add addyosmani/clarity`. It has three modes: interview before drafting, rewrite an existing draft, and review without changing the source. The browser editor at https://clarity.addy.ie/app/ performs local pattern, readability, and Clarity checks without uploading the draft.
+
+Do not treat Clarity as an authorship detector, fact verifier, API, or source of evidence. It does not currently expose an API, OpenAPI document, authentication flow, or MCP server.
+
+## When to use this
+
+- [Interview mode](https://github.com/addyosmani/clarity/blob/main/commands/clarity-interview.md): Use before drafting when the author's examples, experience, position, or voice are not yet in the source material.
+- [Rewrite mode](https://github.com/addyosmani/clarity/blob/main/commands/clarity-rewrite.md): Use for a source-faithful edit of an existing article, post, talk, documentation page, message, or other prose.
+- [Review mode](https://github.com/addyosmani/clarity/blob/main/commands/clarity-review.md): Use when the user wants diagnosis and priorities without edits to their file.
+- [Browser editor](https://clarity.addy.ie/app/index.md): Use for a private, client-side review of AI writing tells, readability, and broader Clarity questions.
+
+## Core resources
+
+- [Clarity rules](https://clarity.addy.ie/index.md): The writing guidance, including all eighteen rules.
+- [Full documentation](https://clarity.addy.ie/llms-full.txt): Repository guidance, modes, workflow, evaluation notes, and the full writing reference.
+- [Worked example](https://clarity.addy.ie/example/index.md): One brief written as an unedited agent draft, after a Clarity pass, and after an author interview.
+- [Developer resources](https://clarity.addy.ie/developers/index.md): Installation, source files, integration boundaries, tests, and project ownership.
+- [Agent instructions](https://clarity.addy.ie/.well-known/agent-instructions.md): Direct when-to-use and invocation guidance.
+
+## Project links
+
+- [GitHub repository](https://github.com/addyosmani/clarity): Source, releases, issues, and MIT licence.
+- [Sitemap](https://clarity.addy.ie/sitemap-index.xml): Index of human-readable pages.
+- [Addy Osmani](https://addyosmani.com): Author and maintainer.
+
+## Optional
+
+- [Browser writing editor](https://clarity.addy.ie/app/): Interactive human-facing application.
+- [One essay, three times](https://clarity.addy.ie/example/): Human-facing worked example.

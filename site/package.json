@@ -5,10 +5,11 @@
   "private": true,
   "description": "The site for clarity — an Agent Skill for writing that earns its reader.",
   "scripts": {
-    "dev": "astro dev",
-    "start": "astro dev",
-    "build": "astro build",
-    "test": "node --test tests/app/*.test.mjs",
+    "generate:agent-files": "node scripts/generate-agent-files.mjs",
+    "dev": "npm run generate:agent-files && astro dev",
+    "start": "npm run dev",
+    "build": "npm run generate:agent-files && astro build",
+    "test": "npm run build && node --test tests/app/*.test.mjs tests/site/*.test.mjs",
     "preview": "astro preview",
     "astro": "astro"
   },

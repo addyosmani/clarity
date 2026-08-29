@@ -4,3 +4,6 @@ __pycache__/
 site/node_modules/
 site/dist/
 site/.astro/
+
+# Local Netlify folder
+.netlify

@@ -1,0 +1,30 @@
+# Clarity agent instructions
+
+## When to use Clarity
+
+Use Clarity when a user asks an agent to:
+
+- interview them before drafting so the result contains their own experience, examples, and position;
+- rewrite an existing article, post, talk, documentation page, message, or other prose without inventing evidence;
+- review writing for usefulness, clarity, source fidelity, development, endings, and voice;
+- identify common AI-writing patterns while treating them as editing prompts rather than proof of authorship.
+
+Do not use Clarity as a fact checker, plagiarism checker, authorship detector, or substitute for missing source material.
+
+## Install and invoke
+
+```text
+npx skills add addyosmani/clarity
+/clarity interview <topic>
+/clarity rewrite <file>
+/clarity review <file>
+```
+
+Read the installed `SKILL.md` before acting. Preserve the source's claims, uncertainty, examples, and meaning. Never fabricate a detail to make prose appear more human.
+
+## Resources
+
+- Agent index: https://clarity.addy.ie/llms.txt
+- Full documentation: https://clarity.addy.ie/llms-full.txt
+- Developer resources: https://clarity.addy.ie/developers/
+- Source: https://github.com/addyosmani/clarity

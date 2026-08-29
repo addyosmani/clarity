@@ -1,0 +1,92 @@
+---
+import Base from '../layouts/Base.astro';
+
+const title = 'Clarity by Addy Osmani developer resources';
+const description =
+  'Installation, interfaces, source, tests, ownership, and integration boundaries for the Clarity Agent Skill and Writing Editor.';
+---
+
+<Base
+  title={title}
+  description={description}
+  markdownPath="/developers/index.md"
+  skipHref="#content"
+  skipLabel="Skip to developer resources"
+>
+  <header class="head">
+    <div class="sheet head-in">
+      <a class="brand" href="/">clarity</a>
+      <span class="spacer"></span>
+      <a href="/llms.txt">llms.txt</a>
+      <a href="https://github.com/addyosmani/clarity">GitHub</a>
+    </div>
+  </header>
+
+  <main class="sheet" id="content">
+    <div class="row">
+      <p class="margin">Developers</p>
+      <article class="col prose">
+        <h1>Clarity by Addy Osmani: developer resources</h1>
+        <p class="lede">
+          Clarity is an open-source Agent Skill and private browser writing editor created and
+          maintained by Addy Osmani.
+        </p>
+
+        <h2>Install</h2>
+        <pre><code>npx skills add addyosmani/clarity</code></pre>
+        <p>
+          The installed package exposes <code>SKILL.md</code>, optional command wrappers,
+          editing and interview references, evaluation cases, and diagnostic scripts. Start
+          with <code>SKILL.md</code>; it routes agents to the smallest relevant reference.
+        </p>
+
+        <h2>Supported interfaces</h2>
+        <ul>
+          <li><a href="https://github.com/addyosmani/clarity">Agent Skill source</a></li>
+          <li><a href="/app/">Browser writing editor</a></li>
+          <li><a href="/llms.txt">Agent index</a></li>
+          <li><a href="/.well-known/agent-instructions.md">Agent instructions</a></li>
+          <li><a href="https://github.com/addyosmani/clarity/tree/main/evals">Behavioural evaluations</a></li>
+        </ul>
+        <p>
+          Clarity does not currently expose an HTTP API, OpenAPI specification,
+          authentication flow, or MCP server. Its supported interfaces are the installable
+          Agent Skill and the client-side browser editor.
+        </p>
+
+        <h2>Ownership and licence</h2>
+        <ul>
+          <li>Maintainer: <a href="https://addyosmani.com">Addy Osmani</a></li>
+          <li>Repository: <a href="https://github.com/addyosmani/clarity">addyosmani/clarity</a></li>
+          <li>Licence: MIT</li>
+        </ul>
+      </article>
+    </div>
+  </main>
+</Base>
+
+<style>
+  .head {
+    height: var(--head-h); border-bottom: 1px solid var(--border);
+  }
+  .head-in {
+    height: 100%; display: flex; align-items: center; gap: 1rem;
+    font-family: var(--font-sans); font-size: 0.8125rem;
+  }
+  .brand { color: var(--fg-bright); font-weight: 600; text-decoration: none; }
+  .spacer { flex: 1; }
+  .head-in a:not(.brand) { color: var(--fg-muted); text-decoration: none; }
+  main { padding-block: clamp(3rem, 9vw, 6rem); }
+  h1 { font-family: var(--font-sans); font-size: clamp(2rem, 5vw, 3rem); }
+  .lede { color: var(--fg-muted); font-size: 1.15rem; }
+  h2 {
+    margin-top: 2.8rem; font-family: var(--font-sans); font-size: 0.78rem;
+    letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent);
+  }
+  pre {
+    overflow-x: auto; padding: 1rem 1.1rem; background: var(--surface);
+    border: 1px solid var(--border); border-radius: var(--r-md);
+  }
+  pre code { border: 0; padding: 0; background: transparent; }
+  li + li { margin-top: 0.35rem; }
+</style>
