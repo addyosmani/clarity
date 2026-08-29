@@ -8,6 +8,7 @@
     "dev": "astro dev",
     "start": "astro dev",
     "build": "astro build",
+    "test": "node --test tests/app/*.test.mjs",
     "preview": "astro preview",
     "astro": "astro"
   },
