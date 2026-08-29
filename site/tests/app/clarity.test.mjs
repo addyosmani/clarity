@@ -1,6 +1,6 @@
 // Correctness checks for the medium-aware Clarity review layer.
 // Run: node apps/ai-writing-editor/clarity.test.mjs
-import { analyzeClarity, MEDIUMS } from "../../public/app/clarity.js";
+import { analyzeClarity, MEDIUMS } from "../../src/lib/editor/clarity.js";
 
 let failures = 0;
 function check(name, cond) {

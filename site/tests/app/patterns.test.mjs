@@ -1,6 +1,6 @@
 // Correctness checks for the AI-tell + readability engine.
 // Run: node apps/ai-writing-editor/patterns.test.mjs
-import { analyze } from "../../public/app/patterns.js";
+import { analyze } from "../../src/lib/editor/patterns.js";
 
 let failures = 0;
 function check(name, cond) {

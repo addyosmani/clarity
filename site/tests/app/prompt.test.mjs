@@ -1,6 +1,6 @@
 // Correctness checks for the agent-facing editing prompt.
 // Run: node apps/ai-writing-editor/prompt.test.mjs
-import { buildEditingPrompt } from "../../public/app/prompt.js";
+import { buildEditingPrompt } from "../../src/lib/editor/prompt.js";
 
 let failures = 0;
 function check(name, condition) {

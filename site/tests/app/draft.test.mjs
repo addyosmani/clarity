@@ -1,6 +1,6 @@
 // Correctness checks for local draft persistence.
 // Run: node apps/ai-writing-editor/draft.test.mjs
-import { DRAFT_STORAGE_KEY, loadDraft, saveDraft, clearDraft } from "../../public/app/draft.js";
+import { DRAFT_STORAGE_KEY, loadDraft, saveDraft, clearDraft } from "../../src/lib/editor/draft.js";
 
 let failures = 0;
 function check(name, condition) {

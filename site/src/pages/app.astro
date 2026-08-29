@@ -1,3 +1,8 @@
+---
+import EditorApp from "@/components/editor/EditorApp"
+import "@/styles/editor.css"
+---
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -6,114 +11,25 @@
     <title>Clarity Writing Editor - clarity.addy.ie</title>
     <meta
       name="description"
-      content="A writing editor for AI writing tells, readability, and Clarity review."
+      content="A private writing editor for AI writing tells, readability, and Clarity review."
     />
     <meta name="application-name" content="Clarity by Addy Osmani" />
+    <meta name="theme-color" content="#fafafa" />
     <link rel="canonical" href="https://clarity.addy.ie/app/" />
     <link rel="alternate" type="text/markdown" href="/app/index.md" />
     <link rel="describedby" href="/llms.txt" />
+    <link rel="icon" href="/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      rel="icon"
-      href="/favicon.svg"
+      href="https://fonts.googleapis.com/css2?family=Geist:wght@400;450;500;550;600&family=Geist+Mono:wght@400;500;550&display=swap"
+      rel="stylesheet"
     />
-    <link rel="stylesheet" href="/app/base.css?v=clarity-app-1" />
-    <link rel="stylesheet" href="/app/app.css?v=clarity-app-1" />
   </head>
   <body>
-    <div class="wrap wide">
-      <header class="appbar">
-        <h1>✍️ Clarity Writing Editor</h1>
-      </header>
-
-      <p class="intro muted">
-        Review <strong>AI writing tells</strong>, readability, and the broader
-        <strong>Clarity</strong> questions that pattern matching cannot settle.
-      </p>
-
-      <div class="editor-layout">
-        <aside class="overview-sidebar" aria-label="Overview">
-          <div class="sidebar-heading">Overview</div>
-          <div class="stat-cards">
-            <div class="stat-card score" id="card-score">
-              <div class="stat-num" id="stat-score">0</div>
-              <div class="stat-label">Surface-pattern score</div>
-              <div class="meter"><div class="meter-fill" id="score-meter"></div></div>
-              <div class="stat-sub" id="score-label">Few flagged patterns</div>
-            </div>
-            <div class="stat-card">
-              <div class="stat-num" id="stat-tells">0</div>
-              <div class="stat-label">Flagged patterns</div>
-            </div>
-            <div class="stat-card">
-              <div class="stat-num" id="stat-grade">0</div>
-              <div class="stat-label">Readability grade</div>
-              <div class="stat-sub" id="grade-label">-</div>
-            </div>
-          </div>
-          <div class="mini-stats" id="mini-stats"></div>
-        </aside>
-
-        <div class="editor-pane">
-          <div id="hl-wrap" class="hl-wrap">
-            <div id="backdrop" class="backdrop" aria-hidden="true"></div>
-            <textarea
-              id="input"
-              class="input"
-              spellcheck="false"
-              placeholder="Paste or write your text here…"
-            ></textarea>
-          </div>
-          <div class="editor-actions" aria-label="Editor actions">
-            <button id="sample" class="btn">Load example</button>
-            <button id="clear" class="btn">Clear</button>
-            <button id="copy-prompt" class="btn" title="Copy the text with line-specific findings for an editing agent">Copy prompt</button>
-            <button id="copy" class="btn">Copy text</button>
-          </div>
-        </div>
-
-        <aside class="sidebar review-sidebar">
-          <div class="sidebar-tabs" role="tablist" aria-label="Writing analysis">
-            <button class="sidebar-tab active" id="tab-tells" type="button" role="tab" aria-selected="true" aria-controls="panel-tells" data-tab="tells">Tells</button>
-            <button class="sidebar-tab" id="tab-clarity" type="button" role="tab" aria-selected="false" aria-controls="panel-clarity" data-tab="clarity" tabindex="-1">Clarity</button>
-            <button class="sidebar-tab" id="tab-signals" type="button" role="tab" aria-selected="false" aria-controls="panel-signals" data-tab="signals" tabindex="-1">Signals</button>
-          </div>
-
-          <section class="sidebar-panel active" id="panel-tells" role="tabpanel" aria-labelledby="tab-tells">
-            <div class="legend" id="legend"></div>
-            <div class="issues" id="issues">
-              <p class="muted empty-note">Start typing to see highlights and suggestions.</p>
-            </div>
-          </section>
-
-          <section class="sidebar-panel" id="panel-clarity" role="tabpanel" aria-labelledby="tab-clarity" hidden>
-            <div class="clarity-panel">
-              <div class="signals-title clarity-title">
-                <span>Clarity review</span>
-                <span id="clarity-summary">-</span>
-              </div>
-              <p class="clarity-note">Observable risks plus judgment prompts - not a quality or authorship score.</p>
-              <div class="clarity-checks" id="clarity-checks"></div>
-            </div>
-          </section>
-
-          <section class="sidebar-panel" id="panel-signals" role="tabpanel" aria-labelledby="tab-signals" hidden>
-            <div class="signals-panel" id="signals-panel">
-              <div class="signals-title">Descriptive signals</div>
-              <div class="signals" id="signals"></div>
-            </div>
-          </section>
-        </aside>
-      </div>
-
-      <footer class="site-footer">
-        <p>
-          Built by <a href="https://addyosmani.com">Addy Osmani</a> as part of the
-          <a href="https://clarity.addy.ie">Clarity project</a>.
-        </p>
-      </footer>
-    </div>
-
-    <div id="tooltip" class="tooltip" role="status"></div>
-    <script type="module" src="/app/app.js?v=clarity-app-1"></script>
+    <EditorApp client:load />
+    <noscript>
+      <p>This editor needs JavaScript to analyze text locally in your browser.</p>
+    </noscript>
   </body>
 </html>
