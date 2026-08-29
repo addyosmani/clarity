@@ -18,6 +18,9 @@ Then pick a mode:
 
 [Full walkthrough below.](#three-ways-to-use-it) [`samples/`](samples/) has two essays before and after a pass, plus one built from an interview with its transcript.
 
+Prefer working in the browser? The [Clarity Writing Editor](https://clarity.addy.ie/app/)
+reviews AI writing tells, readability, and the broader Clarity questions without uploading your draft.
+
 ## On writing that earns its reader
 
 A reader gives you their attention one sentence at a time. They take it back the moment a
@@ -221,6 +224,7 @@ evals/JUDGE.md               blinded comparison protocol
 scripts/prose_stats.py       diagnostic linter, with no composite score by design
 scripts/strip_markdown.py    reduces a markdown draft to the prose a reader reads
 scripts/validate_package.py  package, routing, sample, and eval validation
+site/                        clarity.addy.ie, including the browser editor at /app/
 ```
 
 ### Three ways to use it
