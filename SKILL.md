@@ -3,7 +3,7 @@ name: clarity
 description: "Draft, rewrite, or review reader-facing prose so it is specific, useful, and recognizably the author's without inventing facts or performing humanness. Use for essays, articles, newsletters, documentation, talks, launch copy, and other important prose that feels generic, hollow, or AI-shaped. Supports co-write, rewrite, review, and lint modes."
 license: MIT
 metadata:
-  version: "0.2.0"
+  version: "0.2.1"
 ---
 
 # Clarity

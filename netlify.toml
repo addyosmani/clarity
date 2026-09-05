@@ -11,8 +11,9 @@
   publish = "dist"
 
 [build.environment]
-  # Astro 5 needs 18.20.8+, 20.3+, or 22+. Pin it rather than inherit a default.
-  NODE_VERSION = "20"
+  # Astro 7 needs Node 22.12 or newer. Pin the current LTS line rather than
+  # inherit a changing Netlify default.
+  NODE_VERSION = "22"
 
 # Keep old links to the standalone example working after it became part of
 # the fuller approach page.

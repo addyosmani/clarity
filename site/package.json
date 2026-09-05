@@ -23,7 +23,7 @@
     "@radix-ui/react-tabs": "^1.1.21",
     "@radix-ui/react-tooltip": "^1.2.16",
     "@tailwindcss/vite": "^4.3.3",
-    "astro": "^5.13.0",
+    "astro": "^7.3.1",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "lucide-react": "^1.37.0",
