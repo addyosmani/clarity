@@ -4,8 +4,16 @@ Clear writing is a matter of understanding what your reader needs, and giving it
 
 `clarity` is also an Agent Skill that applies the rules below when you draft, rewrite, or review prose with a coding agent. To install it:
 
+##### NPM
+
 ```bash
 npx skills add addyosmani/clarity
+```
+
+##### pnpm
+
+```bash
+pnpm dlx skills add addyosmani/clarity
 ```
 
 Then pick a mode:
